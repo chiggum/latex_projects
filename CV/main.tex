@@ -1,0 +1,157 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{black}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+% character encoding                     % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+% adjust the page margins
+\usepackage[scale=0.78125]{geometry}
+\setlength{\hintscolumnwidth}{2.05cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Dhruv}{Kohli}
+\title{Curriculum Vitae}                               % optional, remove / comment the line if not wanted
+%\address{street and number}{postcode city}{country}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+%\phone[mobile]{+91~8473~994~884}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+2~(345)~678~901}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{}                               % optional, remove / comment the line if not wanted
+\email{dhkohli@ucsd.edu}
+\homepage{dhruvkohli.github.io}                         % optional, remove / comment the line if not wanted
+%\extrainfo{https://github.com/chiggum}                 % optional, remove / comment the line if not wanted
+\extrainfo{\href{https://math.stackexchange.com/users/97188/dhruv-kohli-expittp1z0}{Math.StackExchange Profile}}
+%\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+%\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+\vspace{-1cm}
+
+\section{Education}
+\cvitem{2018-2020}{Master of Science in Computational Science, Mathematics and Engineering. \newline \textbf{University of California, San Diego} \newline \footnotesize{GPA - NA}}
+\cvitem{2012-2016}{Bachelor of Technology in Mathematics and Computing. \newline \textbf{Indian Institute of Technology, Guwahati} \newline \footnotesize{GPA - 9.06 / 10, Department Rank 2 / 54}}
+% \cvitem{2012-2016}{Bachelors in Mathematics \& Computing. \newline \textbf{Indian Institute of Technology}, Guwahati (India) \newline \href{http://chiggum.github.io/Neural-Turing-Machines}{\footnotesize{Bachelor Thesis: Reasoning, Attention and Memory based Machine Learning Models$^*$.}} \newline \footnotesize{Advisor: Prof. Amit Sethi} \newline \footnotesize{GPA - 9.06 / 10, Department Rank 2 / 54}}
+% \footnotetext{$^1$\href{http://chiggum.github.io/Neural-Turing-Machines}{Link to project page.}}
+% \footnotetext{$^*$follow link for more details.}
+
+%\cvitem{2011-2012}{Higher Secondary. \newline \textbf{DAV Public School}, Delhi (India) \newline \footnotesize{CBSE Central Board Exams 92.0\%, Mathematics score: 98 / 100}}
+
+\section{Work Experience}
+\cvitem{09/2018-Present}{Graduate Teaching Assistant, Calculus Based Probability and Statistics \newline \textbf{University of California, San Diego}}
+\cvitem{}{
+\begin{itemize}
+    \item Lead weekly discussions in sections of $36\times 4$ students by describing subtle details of core concepts and fielding questions. Graded exams and held office hours for assistance.\vspace*{-0.5\baselineskip}
+\end{itemize}}
+\cvitem{06/2016-03/2017}{Software Engineer, Advanced Technology Lab - Multimedia Division \newline \textbf{Samsung Research Institute}, Bangalore (India)}
+\cvitem{}{
+\begin{itemize}
+    \item Developed a deep hierarchical network invariant to rotation of objects in the input image with two times better cross-dataset accuracy than conventional CNN on mnist-rot.
+    \item Extensively studied a technique based on contraction mappings to increase the lower bound on the margin in the input space of a non-linear classifier.
+    \item Implemented video temporal segmentation as a core component of video summarization, based on affinity propagation and sequential determinantal point process.\vspace*{-0.5\baselineskip}
+\end{itemize}}
+%\vspace{-0.2cm}
+\cvitem{05/2015-07/2015}{Research Intern, Cloud and Information Services Lab Group \newline \textbf{Microsoft Research}, Bangalore (India)}
+\cvitem{}{
+\begin{itemize}
+    \item Worked on real-time detection of issues in high-dimensional performance counter time series data with the aim of detecting the time of the issue and the subset of counters which caused the issue.
+    \item Modeled the data using a time-varying gaussian distribution whose mean and covariance had sparse dictionary based representations that were learned automatically, and the sparse codes were constrained to be temporally dependent.
+    \item Other approaches that we explored - clustering of objects on subsets of attributes, switching state space models, GMM, HMM and kalman filter.\vspace*{-0.5\baselineskip}
+\end{itemize}
+}
+\cvitem{05/2014-08/2014}{Software Developer, Google Summer of Code \newline \textbf{International Neuroinformatics Coordinating Facility}}
+\cvitem{}{
+\begin{itemize}
+    \item Worked on real-time vectorization of brain atlases.
+    Developed an open source software ``mindthegap'' that vectorizes bitmaps without introducing gaps or overlaps between adjacent regions. \hfill [\href{http://chiggum.github.io/mindthegap/}{Link}]
+    \item Added services on scalable brain atlas website, enabling researchers to view the region contours of various brain atlases generated by mindthegap. \hfill [\href{https://scalablebrainatlas.incf.org/macaque/DB09}{Link}]\vspace*{-\baselineskip}
+\end{itemize}}
+
+\section{Projects}
+\cvitem{10/2017-04/2018}{\textbf{Mini-Projects Based on Original Ideas}
+\begin{itemize}
+    \item Devised and implemented a diversity promoting prior based on Determinantal Point Process to promote diversity among filters in a convolutional layer.  \hfill [\href{http://github.com/chiggum/diversity-in-cnn-filters}{Code}]
+    \item Implemented a layer to compute Mobius transformation of dense layer. \hfill [\href{https://github.com/chiggum/mobius-networks}{Code}]
+    \item Fitted Bezier surfaces to digital images to represent them as 2D analog signals. \hfill [\href{https://github.com/chiggum/Bezier-Surface-Fitter}{Code}]
+    \item Devised and implemented a method to represent fractals acoustically. \hfill [\href{http://github.com/chiggum/dibo}{Code}]\vspace*{-0.8\baselineskip}
+\end{itemize} 
+}   
+% \textbf{Diversity in CNN Filters}:  \newline \textbf{Mobius Networks}:  \newline \textbf{Bezier Surface Fitter}: \newline \textbf{dibo}: 
+
+\cvitem{08/2015-04/2016}{Thesis: \textbf{Reasoning, Attention and Memory based Machine Learning Models} \newline Advisor: \textit{Prof. Amit Sethi} \newline Performed a survey on deep learning models for sequence to sequence learning and on RAM based machine learning models with emphasis on Neural Turing Machines and End to End Memory Networks. Implemented the former from scratch in theano. \iffalse and presented ideas on how actions of an agent trained using deep reinforcement learning can be made more interpret-able using NTM.\fi \hfill [\href{http://chiggum.github.io/Neural-Turing-Machines}{Link}]}
+\vspace{0.1cm}
+
+%\cvitem{03/2015}{\textbf{Deterministic Automata Membership Test in SIMT Environment} \newline \textit{Prof. Kalpesh Kapoor} \newline Implemented an algorithm for the DFA membership test in CUDA with deployment on a Tesla K40. The algorithm involved specialized partitioning of the input string into chunks so as to balance the workload on threads and minimize latency.}
+%\vspace{0.1cm}
+
+\cvitem{12/2014-02/2015}{\textbf{Game Playing Agent using Deep Reinforcement Learning} \newline Implemented a deep learning model in caffe that learns to play atari games based on a paper by Google DeepMind. Successfully tested the model on pong and breakout. Learned various concepts in reinforcement learning such as structured markov decision process, value iteration, Q-learning and temporal difference learning.}
+
+\section{Publications}
+\cvitem{}{\textbf{Dhruv Kohli}, Biplab Ch Das, Viswanath Gopalakrishnan, Kiran Nanjunda Iyer, \textit{Learning Rotation Invariance in Deep Hierarchies using Circular Symmetric Filters}, International Conference on Acoustics, Speech and Signal Processing, 2017 (Accepted). \hfill [\href{http://chiggum.github.io/rotation_invariant_cnn.pdf}{Link}]}
+\cvitem{}{\textbf{Dhruv Kohli}, Viswanath Gopalakrishnan, Biplab Ch Das \textit{Maximizing Margin Lower Bound in Deep Nonlinear Networks}. \hfill [\href{http://chiggum.github.io/high_margin_nn.pdf}{Link}]}
+
+\section{Awards and Honors}
+\cvitem{2017}{Ranked 18 across country in entrance exam for Master in Statistics organized by Indian Statistical Institute, Kolkata.\hfill [\href{https://www.isical.ac.in/~admission/IsiAdmission2017/MeritList2017/MStat-2017-Merit-List.pdf}{Link}]}
+\cvitem{2014}{Ranked 1 across the country in CUDA Coding Challenge India organized by Nvidia in High Performance Computing Conference.\hfill [\href{https://github.com/chiggum/cuda-challenge-india-2014/blob/master/main.cu}{Code}][\href{https://1drv.ms/i/s!AsWdE6fYJr8igqpCkvCHFo6rd93IOw}{Link}]}
+\cvitem{2014}{Ranked 2 in ML module of Kriti, Intra-College Technical Competition.\hfill [\href{https://github.com/chiggum/kriti-2014-image-classifier}{Link}]}
+%\cvitem{2013}{Among top 5 teams in Code.Fun.Do organized by Microsoft at IIT Guwahati.}
+\cvitem{2012}{Ranked 2076 out of 600,000 students in IIT Joint Entrance Exam.}
+\cvitem{2012}{Recommended for KVPY (Kishore Vaigyanik Protsahan Yojana) Fellowship.}
+%\cvitem{2011}{Qualified in Regional Mathematics Olympiad (RMO), Delhi}
+%\cvitem{2008}{Awarded Student of the Year by The Times of India for excellent all-round performance.}
+
+\section{Skills}
+\cvitem{Prog. Lang.}{Python, C$++$, CUDA, MATLAB, R}
+\cvitem{ML Libs}{Keras, Tensorflow}
+\cvitem{Others}{Git, LateX}
+
+\section{Relevant Coursework}
+\cvitem{U.Graduate}{Linear Algebra, Complex Analysis, Basic Topology, Statistical Inference, Stochastic Processes, ODE, PDE, Machine Learning, Parallel Computing.\hfill [\href{https://chiggum.github.io/study.html}{Link}]}
+\cvitem{Graduate}{Differential Geometry, Numerical Methods, Convex Analysis and Optimization.}
+
+% Publications from a BibTeX file without multibib
+%  for numerical labels: \renewcommand{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}% CONSIDER MERGING WITH PREAMBLE PART
+%  to redefine the heading string ("Publications"): \renewcommand{\refname}{Articles}
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{publications}                        % 'publications' is the name of a BibTeX file
+
+% Publications from a BibTeX file using the multibib package
+%\section{Publications}
+%\nocitebook{book1,book2}
+%\bibliographystylebook{plain}
+%\bibliographybook{publications}                   % 'publications' is the name of a BibTeX file
+%\nocitemisc{misc1,misc2,misc3}
+%\bibliographystylemisc{plain}
+%\bibliographymisc{publications}                   % 'publications' is the name of a BibTeX file
+
+\end{document}
+
+
+%% end of file `template.tex'.
