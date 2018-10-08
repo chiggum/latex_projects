@@ -1,0 +1,425 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+
+
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Positive Definite Matrices 1}
+
+% A subtitle is optional and this may be deleted
+%\subtitle{Optional Subtitle}
+
+\author{Dhruv Kohli}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Indian Institute of Technology, Guwahati] % (optional, but mostly needed)
+{
+  Department of Mathematics\\
+  Indian Institute of Technology, Guwahati
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Linear Algebra and its Applications}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\usepackage{biblatex}
+\addbibresource{ref.bib}
+\setbeamertemplate{bibliography item}{}
+
+% Let's get started
+\begin{document}
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{1pt}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\section{Motivation}
+\begin{frame}{Motivation}{}
+  \begin{itemize}
+  \item {
+   Signs of eigenvalues are crucial.
+    \begin{itemize}
+        \item Stability of differential equations governed by sign of $\lambda$. Example: $e^{\lambda t}$ is unstable for $\lambda > 0$.
+    \end{itemize}
+  }
+  \item {
+    Finding Minima of a function is an extremely important problem. For single variable functions the tests are $f'(a) = 0$ and $f''(a) > 0$. Analogous tests required for multivaraible functions.
+  }
+  \item {
+    When a multiple of one row is subtracted from another, the row space, nullspace, rank and determinant, all remain the same. The eigenvalues are unchanged with similarity transformation. What are the elementary operations and invariants for $x^TAx$?
+  }
+  \end{itemize}
+\end{frame}
+
+\section{Minima, Maxima and Saddle Points}
+
+\begin{frame}{Tests for Minima in 2-variable functions}{}
+\begin{itemize}
+    \item We want to check whether $F(x,y)$ has minima at $(a,b)$.
+    \item {
+        \textbf{Step $\mathbf{1}$}: Check whether $(a,b)$ is a stationary point:
+        \begin{equation*}
+            F_x(a,b) = 0 \text{ and } F_y(a,b) = 0
+        \end{equation*}
+        
+    \item[o] If yes, then $z = F(a,b)$ will be tangential to $z = F(x,y)$.
+        
+    }
+    \item {
+        \textbf{Step $\mathbf{2}$}: Check whether the neighbourhood of $(a,b)$ is above $F(a,b)$ or below or both. Now, we construct a test based on second order terms. First, note that the \textbf{quadratic part of $F$} is (assuming $F_{xy} = F_{yx}$):
+        \begin{equation*}
+            g(x,y) = \frac{x^2}{2}F_{xx}(a,b) + xyF_{xy}(a,b) + \frac{y^2}{2}F_{yy}(a,b)
+        \end{equation*}
+    \item[o] $g(x,y)$ behaves near $(0,0)$ in the same manner as $F(x,y)$ near $(a,b)$.\footnote{Ignoring singular case when each second order term is zero, in which case, higher order terms are drawn into the problem.} Note that $g_x(0,0) = 0$ and $g_y(0,0) = 0$.
+    }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests for Minima in 2-variable functions contd.}{}
+\begin{itemize}
+    \item Consider $g(x,y) = ax^2 + 2bxy + cy^2$. Note, $g(0,0) = 0$, $g_{x}(0,0) = 0$ and  $g_{y}(0,0) = 0$. So, $g(x,y)$ has a stationary point at $(0,0)$. When $g(x,y)$ is strictly positive at points other than $(0,0)$, then $g(x,y)$ is called \textbf{positive definite} and it has a minima at $(0,0)$.
+    \item {\textbf{What conditions on $a,b$ and $c$ ensure that $g(x,y)$ is positive definite?}
+        \begin{align*}
+            g(1,0) > 0 &\Rightarrow a > 0\\
+            g(0,1) > 0 &\Rightarrow c > 0        
+        \end{align*}
+    }
+    \item[o] A large cross term can still pull graph below zero. Example: $h(x,y) = x^2 - 10xy +y^2$ has $a = c = 1 > 0$ but $h(1,1) = -8 < 0$. Also, the sign of $b$ is of no importance. Example: $h(x,y) = 2x^2 + 4xy + y^2$ has $a,b,c > 0$ but $h(1,-1) = -1 < 0$. \textbf{It is the size of b compared to a and c that must be controlled.} 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests for Minima in 2-variable functions contd.}{}
+\begin{itemize}
+    \item Express $g(x,y)$ using squares:
+        \begin{equation}
+            g(x,y) = a\left(x + \frac{b}{a}y\right)^2 + \left(c - \frac{b^2}{a}\right)y^2
+        \label{eq_1}
+        \end{equation}
+    \item So, the third necessary condition is: 
+    \begin{equation*}
+        g(x,y) > 0 \Rightarrow ac > b^2
+    \end{equation*}
+\end{itemize}
+\begin{block}{Result 1}
+g(x,y) = $ax^2 + 2bxy + cy^2$ is positive definite $\iff a > 0$ and $ac > b^2$.\footnote{$a > 0 \text{ and } ac > b^2 \Rightarrow c > 0$} The surface $z=g(x,y)$ will be a bowl opeining up.\\
+Any $F(x,y)$ has a minimum at a point $(a,b)$ if 
+\begin{align*}
+&F_x(a,b) = 0, \ F_y(a,b) = 0\\
+&F_{xx}(a,b) > 0 \ \text{ and }\  F_{xx}(a,b)F_{yy}(a,b) > F_{xy}(a,b)^2
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Other tests in 2-variable functions}{}
+\begin{itemize}
+    \item \textbf{Maximum}: $g(x,y)$ has a maximum whenever $-g(x,y)$ has a minimum. So, the necessary and sufficient conditions for a maximum can be derived by reversing signs of $a,b$ and $c$ in conditions for a minimum: $a < 0 \text{ and } ac > b^2$.
+    \item \textbf{Singular case $\mathbf{ac = b^2}$}: Equation \ref{eq_1} reduces to $g(x,y) = a\left(x + \frac{b}{a}y\right)^2$ which is \textbf{positive semidefinite} if $a>0$ and \textbf{negative semidefinite} if $a<0$. The surface of $z = g(x,y)$ will be a valley (not a bowl) running along $x+\frac{b}{a}y = 0$. Example: $g(x,y) = (x+y)^2$.
+    \item \textbf{Saddle point $\mathbf{ac < b^2}$} The neighborhood of $g(x,y)$ at $(0,0)$ will have points both above and below zero. Therefore, $(0,0)$ is neither a maximum nor a minimum and is called a \textbf{saddle point} and $g(x,y)$ is \textbf{indefinite}. Example: $h(x,y) = 2xy$, $h(x,y) = x^2 - y^2$.
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{In-Lecture Exercise}{}
+% \begin{itemize}
+%     \item Add some easy and relevant questions.
+% \end{itemize}
+% \end{frame}
+
+\section{Tests for Positive Definiteness in Higher Dimensions}
+
+\begin{frame}{Higher Dimensions}{}
+\begin{itemize}
+    \item {$g(x,y) = ax^2 + 2bxy + cy^2$ can be expressed in matrix notation as:
+        \begin{equation*}
+            ax^2 + 2bxy + cy^2 = \begin{bmatrix}x&y\end{bmatrix}\begin{bmatrix}a&b\\b&c\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}
+        \end{equation*}
+    }
+    \item[o] Note that $a,b$ and $c$ are second order terms.
+    \item {Similarly, for any symmetric matrix $A$, the product $x^TAx$ is a pure quadratic form $P(x_1,x_2,\ldots,x_n)$:
+        \begin{equation*}
+            \begin{bmatrix}x_1&x_2&.&x_n\end{bmatrix}\begin{bmatrix}a_{11}&a_{12}&.&a_{1n}\\a_{21}&a_{22}&.&a_{2n}\\.&.&.&.\\a_{n1}&a_{n2}&.&a_{nn}\end{bmatrix}\begin{bmatrix}x_1\\x_2\\.\\x_n\end{bmatrix} = \sum_{i=1}^{n}\sum_{j=1}^{n}a_{ij}x_ix_j
+        \end{equation*}
+    }
+    \item[o] Note: $P(\mathbf{0}) = 0$ and $\mathbf{0}$ is a stationary point. $A$ contains second order terms where $P_{x_ix_j}(\mathbf{0}) = P_{x_jx_i}(\mathbf{0})$, implying, $A$ is symmetric. \textbf{$\mathbf{P}$ has a minimum at $\mathbf{0}$ when the pure quadratic form $\mathbf{x^TAx}$ is positive definite.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests for Positive Definiteness}{}
+\begin{block}{Result 2}
+Each of the following tests is a necessary and sufficient condition for the real symmetric matrix $A$ to be \textbf{positive definite}:
+\begin{enumerate}
+    \item $x^TAx > 0$ for all nonzero real vectors $x$.
+    \item All the eigenvalues of $A$ satisfy $\lambda_i > 0$.
+    \item All the upper left submatrices $A_k$ have positive determinants.
+    \item All the pivots (without row exchanges) satisfy $d_k > 0$.
+\end{enumerate}
+\end{block}
+Before proving this result, we check it on $\begin{bmatrix}a&b\\b&c\end{bmatrix}$.
+\end{frame}
+
+\begin{frame}{Tests for Positive Definiteness - $2\times 2$ case}{}
+\begin{itemize}
+    \item Consider $A = \begin{bmatrix}a&b\\b&c\end{bmatrix}\xrightarrow{\text{after elimination}} \begin{bmatrix}a&b\\0&c-\frac{b^2}{a}\end{bmatrix}$.
+    \item From result $1$, $A$ is positive definite if and only if $a > 0$ and $ac>b^2$ ($\Rightarrow c > 0$).
+    \item[o] $\mathbf{1 \iff  2}$:
+        \begin{equation*}
+            \begin{matrix}\lambda_1 + \lambda_2 = tr(A) = a+c > 0 \\ \lambda_1\lambda_2 = det(A) = ac-b^2 > 0 \end{matrix} \iff \lambda_1 > 0,\ \lambda_2 > 0
+        \end{equation*}
+    \item[o] $\mathbf{1 \iff  3}$:
+        \begin{equation*}
+            \det(A_1) = a > 0,\ \det(A_2) = ac-b^2 > 0
+        \end{equation*}
+    \item[o] $\mathbf{1 \iff  4}$:
+        \begin{equation*}
+            d_1 = a > 0,\ d_2 = c-\frac{b^2}{a} > 0
+        \end{equation*}
+    \item[o] Note: $\mathbf{3 \Rightarrow  4}$ since $d_k = \frac{det(A_k)}{det(A_{k-1})}$ where $det(A_0) = 1$.
+    
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tests for Positive Definiteness - Proof Hints}{}
+\begin{block}{$\mathbf{1 \iff  2}$}
+$x_i^TAx_i = \lambda_i x_i^Tx_i \Rightarrow \lambda_i = \frac{x_i^TAx_i}{x_i^Tx_i}$.\\
+ $A = A^T \Rightarrow A$ has full set of orthonormal evecs $x_1, x_2, \ldots, x_n$. 
+\begin{equation*}
+    x = \sum_{i=1}^{n}c_ix_i \Rightarrow Ax = \sum_{i=1}^{n}c_i\lambda_ix_i \Rightarrow x^TAx = \sum_{i=1}^{n}c_i^2\lambda_i>0
+\end{equation*}
+\end{block}
+\begin{block}{$\mathbf{1 \Rightarrow  3}$}
+Take $x = (x_k,0)$ where last $n-k$ terms are $0$. 
+\begin{equation*}
+x^TAx > 0 \Rightarrow x_k^TA_kx_k > 0 \Rightarrow \lambda_{k_i} > 0 \Rightarrow det(A_k) = \prod\lambda_{k_i} > 0
+\end{equation*}
+\end{block}
+\begin{block}{$\mathbf{3 \Rightarrow  4}, \ \mathbf{4 \Rightarrow  1}$}
+$d_k = det(A_k)/det(A_{k-1}), \ det(A_0) = 1$.\\
+$A = A^T \Rightarrow A = LDL^T \Rightarrow x^TAx = y^TDy = \sum_{i}d_iy_i^2,\ y = L^Tx$
+\end{block}
+\end{frame}
+
+\begin{frame}{Remarks - Result $2$}{}
+\begin{itemize}
+    \item Result $2$ connects: Eigenvalues, Determinants and Pivots. Each test is enough by itself.
+    \item {$4 \implies 1$ shows that elimination and completing the square are actually the same. Example:
+        \begin{align*}
+            &A = \begin{bmatrix}2&-1&0\\-1&2&-1\\0&-1&2\end{bmatrix} = LDL^T, \\ &L^T=\begin{bmatrix}1&\frac{-1}{2}&0\\0&1&-\frac{2}{3}\\0&0&1\end{bmatrix}, D = \begin{bmatrix}2&&\\&\frac{3}{2}&\\&&\frac{4}{3}\end{bmatrix}\\
+            &y=L^Tx = \begin{bmatrix}x_1-\frac{x_2}{2}, x_2-\frac{2}{3}x_3, x_3\end{bmatrix}^T\\
+            &x^TAx = y^TDy = 2\left(x_1-\frac{x_2}{2}\right)^2 + \frac{3}{2}\left(x_2-\frac{2}{3}x_3\right)^2 + \frac{4}{3}x_3^2
+        \end{align*}
+    }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Positive Definite Matrices and Least Squares}{}
+\begin{block}{Result 3}
+The symmetric matrix $A$ is positive definite $\iff$ there exists a matrix $R$ with independent columns such that $A = R^TR$.\\
+Proof - Hints:\\
+$\mathbf{(\Leftarrow)}\ x^TR^TRx = (Rx)^T(Rx) > 0$\\
+$\mathbf{(\Rightarrow)}$ \textbf{Elimination}: $A = LDL^T = R^TR$ where $R = \sqrt{D}L^T$. Since $A$'s pivots $d_k > 0 \Rightarrow \text{rank}(A) = n$ and therefore, columns of $R$ are independent.\\
+$\mathbf{(\Rightarrow)}$ \textbf{Eigenvalues}: $A = Q\Lambda Q^T = R^TR$ where $R = \sqrt{\Lambda}Q^T$. Since $\Lambda_{ii} > 0$ and $Q$'s columns are orthonormal, therefore, columns of $R$ are independent.\\
+$\mathbf{(\Rightarrow)}$ \textbf{Symmetric Positive Def. Square Root}: $A = Q\sqrt{\Lambda}Q^T$.
+$\mathbf{(\Rightarrow)}$ \textbf{Many Choices}: Let $Q$ be a matrix with orthonormal columns, then $(QR)^T(QR) = R^TQ^TQR = R^TR$.
+\end{block}
+\end{frame}
+
+\section{Tests for Positive Semidefiniteness}
+
+\begin{frame}{Tests for Positive Semidefiniteness}{}
+\begin{block}{Result 3}
+Each of the following tests is a necessary and sufficient condition for the real symmetric matrix $A$ to be \textbf{positive semidefinite}:
+\begin{enumerate}
+    \item $x^TAx \geq 0$ for all nonzero real vectors $x$.
+    \item All the eigenvalues of $A$ satisfy $\lambda_i \geq 0$.
+    \item All the principal submatrices have nonnegative determinants. All principal minors are nonnegative.
+    \item All the pivots satisfy $d_k \geq 0$.
+    \item $\exists R$ possibly with dependent columns such that $A=R^TR$.
+\end{enumerate}
+\end{block}
+\textbf{Remark on proof}: \small{Add $\epsilon I$ to $A$ so that $A+\epsilon I$ is positive definite. Then let $\epsilon$ approach $0$. Since determinants and eigenvalues depend continuously on $\epsilon$, they will be positive until the very last moment. At $\epsilon = 0$, they must still be nonnegative.}
+\end{frame}
+
+\begin{frame}{What if $A$ is unsymmetric?}{}
+\begin{itemize}
+    \item {A reasonable definition of unsymmetric positive definite matrices is: $\frac{1}{2}(A+A^H)$ should be positive definite. That guarantees that the real parts of eigenvalues of $A$ are positive but the converse is not true.
+        \begin{align*}
+            &x^HAx = \lambda x^Hx, \ x^HA^Hx = \bar{\lambda}x^Hx \\
+            &\Rightarrow Re(\lambda) = \frac{x^H(A+A^H)x}{2x^Hx} > 0
+        \end{align*}
+    }
+    \item[o] Counterexample for converse: $A = \begin{bmatrix}1&4\\0&1\end{bmatrix}$ has $\lambda > 0$, but $\frac{1}{2}(A+A^T) = \begin{bmatrix}1&2\\2&1\end{bmatrix}$ is indefinite.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Ellipsoids in n Dimensions}{}
+\begin{itemize}
+    \item When $A$ is positive definite then $x^TAx = 1$ defines a curved figure called \textbf{ellipsoid} in $n$ dimensions.
+    \item When $A=I$ then it is a sphere in $n$ dimensions.
+    \item When $A$ is diagonal then $A$ is ellipsoid with axes lined up with coordinate axes.
+    \item When $A\neq I$ then the axes point towards eigenvectors of $A$ with major axis pointing toward eigenvector corresponding to least eigenvalue.
+    \begin{align*}
+        x^TAx = 1 \Rightarrow x^TQ\Lambda Q^Tx = 1 \Rightarrow y^T\Lambda y = \sum_{i=1}^{n}\lambda_iy_i^2 = 1
+    \end{align*}
+    \item[o] The resulting ellipsoid has length $\frac{1}{\sqrt{\lambda_i}}$ from origin along the eigenvector $Q_i$. The change from $x$ to $y=Q^Tx$ rotates the axes of the space to match the axes of the ellipsoid.
+\end{itemize}
+\end{frame}
+
+\section{The Law of Inertia}
+\begin{frame}{The Law of Inertia}{}
+\begin{itemize}
+    \item {
+        \textbf{Congruence transformation}: $A \rightarrow C^TAC$ for some nonsingular $C$.
+    }
+\end{itemize}
+\begin{block}{Result 4}
+$C^TAC$ has the same number of positive eigenvalues, negative eigenvalues and zero eigenvalues.\\
+\textit{Proof} Try to prove in some other way.
+\end{block}
+\end{frame}
+
+\begin{frame}{The Law of Inertia - Application}
+\begin{block}{Result 5}
+For any symmetric matrix $A$, the signs of the pivots agree with the signs of eigenvalues. The eigenvalue matrix $\Lambda$ and the pivots matrix $D$ has the same number of positive entries, negative entries and zero entries.\\
+\textit{Proof - Hints}: Use $A = LDL^T$ (without row exchanges) and result $4$ and conclude that signs of eigenvalues of $A$ and $D$ (for which eigenvalues are pivots) agree.
+\end{block}
+\end{frame}
+
+\section{The Generalized Eigenvalue Problem}
+\begin{frame}{The Generalized Eigenvalue Problem}
+\begin{itemize}
+    \item {
+        $\mathbf{Ax = \lambda Mx}$ is the \textbf{generalized eigenvalue problem} which involves two matrices instead of one as in $Ax = \lambda x$.
+    }
+    \item {
+        To solve this problem, we proceed in the same way as the standard eigenvalue problem, i.e., $det(A-\lambda M) = 0$.
+    }
+    \item {
+        If $M$ is symmetric (then $A$ is also symmetric) and is positive definite, then simplification of the generalized eigenvalue problem to standard eigenvalue problem is possible, since $M$ can be decomposed into $R^TR$:
+        \begin{align*}
+            &Ax = \lambda Mx = \lambda R^TRx \xrightarrow{y = Rx} AR^{-1}y = \lambda R^Ty\\
+            &C^TACy = \lambda y, \ C = R^{-1}
+        \end{align*}
+    }
+    \item[o] {
+        The eigenvalues are same as for the original problem and the eigenvectors are related by $y_j = Rx_j$.
+    }
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Generalized Eigenvalue Problem contd.}
+\begin{block}{Result 6}
+When $A=A^T$ and $M$ is symmetric and positive definite, then, $Ax = \lambda Mx$ reduces to $C^TAC y = \lambda y$ where $C = R^{-1}$ and $M = R^TR$, leading to the following properties:
+\begin{enumerate}
+    \item {
+        Eigenvalues for $Ax=\lambda Mx$ are real $\because$ $C^TAC$ is symmetric.
+    }
+    \item {
+        The $\lambda$'s have same sign as sign of $A$ by the law of inertia.
+    }
+    \item {
+        $C^TAC$ has orthogonal eigenvectors $y_j$. So, the eigenvectors of $Ax = \lambda Mx$ have $\mathbf{M}$\textbf{-orthogonality},
+        \begin{equation*}
+            y_i^Ty_j = 0 \iff x_i^TR^TRx_j = 0 \iff x_i^TMx_j = 0
+        \end{equation*}
+    }
+    \item {
+        $A$ and $M$ are simultaneously diagonalized.
+        \begin{align*}
+            &C^TAC = Q\Lambda Q^T \Rightarrow S^TAS = \Lambda, \ S = CQ\\
+            &S^TMS = (R^{-1}Q)^TR^TR(R^{-1}Q) = Q^TQ = I
+        \end{align*}
+        \small{This is congruence ($S^T$) not similarity transformation ($S^{-1}$)}.
+    }
+\end{enumerate}
+\end{block}
+\end{frame}
+
+% \begin{frame}{In-Lecture Exercise}
+% \end{frame}
+
+\section{Bibliography}
+\begin{frame}[t]
+    \frametitle{Bibliography}
+    \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}
+
+

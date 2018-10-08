@@ -1,0 +1,769 @@
+%This is a LaTeX template for homework assignments
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\begin{document}
+\raggedright
+
+
+\begin{center}
+    \textbf{\Large{Solution Manual}}\\~\\
+    \textit{prepared by}\\~\\
+    Dhruv Kohli\\~\\
+    \textit{for}\\~\\
+    \textbf{\Large{Introduction to Topological Manifolds, 2nd ed.}}\\~\\
+    \textit{by}\\~\\
+    \large{John M. Lee}~\\
+\end{center}
+\clearpage
+
+\begin{center}
+    \textbf{\large{2. Topological Spaces}}
+\end{center}
+
+${\textbf{Ex. 2.4}}$
+
+$\mathbf{(a)}$ $(\implies)$ For all $x \in M$ and every $r > 0$, $B_{r}^{d}(x)$ is open ball in $M$ with respect to $d$. Both $d$ and $d'$ generate the same topology on $M$ which implies that $B_{r}^{d}(x)$ must be open with respect to $d'$. Therefore, $\exists\ r_1>0$ s.t. $B_{r_1}^{d'}(x) \subseteq B_{r}^{d}(x)$. By symmetry, $\exists\ r_2>0$ s.t. $B_{r_2}^{d}(x) \subseteq B_{r}^{d'}(x)$.\\~\\
+
+$(\impliedby)$ Let $A \subseteq M$ be open in $M$ with respect to $d$. Then, $\forall x \in A, \ \exists \ r>0$ s.t. $B_{r}^{d}(x) \subseteq A$. Also, $\exists\ r_1>0$ s.t. $B_{r_1}^{d'}(x) \subseteq B_{r}^{d}(x)$. Therefore, $\forall x \in A, \ \exists \ r_1>0$ s.t.$B_{r_1}^{d'}(x) \subseteq A$. Hence, $A$ is also open in $M$ with respect to $d'$. Similarly, every open subset of $M$ with respect to $d'$ is also open with repect to $d$. Hence, $d$ and $d'$ generate same topology on $M$.\\~\\
+
+$\mathbf{(b)}$ $\forall x \in M, \forall r>0$ and for $r_1 = rc > 0$ and $r_2 = \frac{r}{c} > 0$, $B_{r_1}^{d'}(x) = B_{r}^{d}(x)$ and $B_{r}^{d'}(x) = B_{r_2}^{d}(x)$. Then use ${\mathbf{(a)}}$.\\~\\
+
+$\mathbf{(c)}$ $$d'(x,y) \leq d(x,y) \leq \sqrt{n}d'(x,y)$$
+
+$\forall x \in M, \forall r>0$ s.t. for $r_1 = \frac{r}{\sqrt{n}} > 0$ and $r_2 = r > 0$, $B_{r_1}^{d'}(x) \subseteq B_{r}^{d}(x)$ and $B_{r}^{d'}(x) \subseteq B_{r_2}^{d}(x)$. Then use ${\mathbf{(a)}}$.\\~\\
+
+$\mathbf{(d)}$ $\forall x \in X, B_{0.5}^{d}(x) = \{x\}$. Therefore, every subset of $X$ is open with respect to $d$. Then, $d$ generates discrete topology on $X$.\\~\\
+
+$\mathbf{(e)}$ $\forall x \in \mathbb{Z}, B_{0.5}^{d}(x) = \{x\} = B_{0.5}^{d'}(x)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.5}}$
+
+$$\mathcal{T} = \{U \subseteq Y \text{ and } U \text{ is open in }X\}$$
+$(i)$ $U=\phi$ and  $U=Y \in \mathcal{T}$.\\~\\
+
+$(ii)$ $U_1,\ldots,U_n\in\mathcal{T} \implies U_i \subseteq Y$ and $U_i$ is open in $X$ $\implies \cap_{i=1}^{n}U_i \subseteq Y$ and $\cap_{i=1}^{n}U_i$ is open in $X$ by definition.\\~\\
+
+$(iii)$ $\forall \alpha \in A, U_\alpha\in\mathcal{T} \implies \forall \alpha \in A, U_\alpha\subseteq Y$ and $\forall \alpha \in A, U_\alpha$ is open in $X$ $\implies \cup_{\alpha\in A}U_\alpha \subseteq Y$ and $\cup_{\alpha\in A}U_\alpha$ is open in $X$ by definition.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.6}}$
+
+$(i)$ $\phi \in \mathcal{T}_{\alpha} \text{ and } X \in \mathcal{T}_{\alpha} \implies \phi \in \cap_{\alpha\in A}\mathcal{T}_{\alpha} \text{ and } X \in \cap_{\alpha\in A}\mathcal{T}_{\alpha}$.\\~\\
+
+$(ii)$ $U_1,\ldots,U_n\in\cap_{\alpha\in A}\mathcal{T}_{\alpha} \implies \forall i, U_i \in \mathcal{T}_{\alpha} \implies \cap_{i=1}^{n}U_i \in \mathcal{T}_{\alpha}\implies \cap_{i=1}^{n}U_i\in\cap_{\alpha\in A}\mathcal{T}_{\alpha}$.\\~\\
+
+$(iii)$ $\forall \beta \in B, U_{\beta}\in\cap_{\alpha\in A}\mathcal{T}_{\alpha} \implies \forall \beta \in B, U_{\beta} \in \mathcal{T}_{\alpha} \implies \cup_{\beta\in B}U_{\beta} \in \mathcal{T}_{\alpha}\implies \cup_{\beta\in B}U_{\beta}\in\cap_{\alpha\in A}\mathcal{T}_{\alpha}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.9}}$
+
+$\mathbf{(a)}$ $(\implies)$ Suppose $p \in \operatorname{Int}A$. Then by definition of $\operatorname{Int}A$, $\exists\ C \subseteq A$ and $C$ is open in $X$ s.t. $p \in C$. $(\impliedby)$ Suppose $C$ is a neighbourhood (open in $X$) of a point $p$ s.t. $C \subseteq A$. Then by definition of $\operatorname{Int}A$, $C \subseteq \operatorname{Int}A$. Hence, $p \in C \subseteq \operatorname{Int}A \implies p \in \operatorname{Int}A$.\\~\\
+
+$\mathbf{(b)}$ First note that $\operatorname{Ext}A = X \setminus \bar{A} = \bigcup \{X\setminus B$ where $B \supseteq A$ and $B$ is closed in $X\}$ which can further be simplified as $\operatorname{Ext}A = \bigcup \{D$ where $X \setminus D \subseteq X \setminus A$ and $D$ is open in $X\}$. Now, use a similar argument as in $\mathbf{(a)}$.\\~\\
+
+$\mathbf{(c)}$ Suppose $p \in \partial A$, then, $p \not\in \operatorname{Int}A \cup \operatorname{Ext}A$ which implies that $\not\exists\ C$ neighbourhood (open in $X$) of $p$ s.t. $C \subseteq A$ or $X \setminus C \subseteq X \setminus A$ which further implies that every neighbourhood of $p$ contains both a point of $A$ and a point of $X \setminus A$. $(\impliedby)$ Suppose every neighbourhood of $p \in X$ contains both a point of $A$ and a point of $X \setminus A$, then, by definition of $\operatorname{Int}A$ and $\operatorname{Ext}A$, $p \not\in \operatorname{Int}A \cup \operatorname{Ext}A$, which implies that $p \in X \setminus \operatorname{Int}A \cup \operatorname{Ext}A \equiv p \in \partial A$.\\~\\
+
+$\mathbf{(d)}$ Negate $\mathbf{(b)}$.\\~\\
+
+$\mathbf{(e)}$ First note that $X$ is the disjoint union of $\operatorname{Int}A$, $\partial A$ and $\operatorname{Ext}A$. Using $\mathbf{(a)}, \mathbf{(b)}$ and $\mathbf{\mathbf{(c)}}$, conclude that $p \in \operatorname{Int}A \cup \partial A \iff$ every neighbourhood of $p$ has a point in $A$. Using $\mathbf{(d)}$, conclude that $\bar{A} = \operatorname{Int}A \cup \partial A$. Using $\operatorname{Int}A \subseteq A \subseteq \operatorname{Int}A \cup \partial A \implies A \cup \partial A = \operatorname{Int}A \cup \partial A$, conclude that $\bar{A} = A \cup \partial A = \operatorname{Int}A \cup \partial A$.\\~\\
+
+$\mathbf{(f)}$ Use $\mathbf{(a)}$, $\mathbf{(b)}$, $\operatorname{Ext}A = X \setminus \bar{A}$, $\partial A = X \setminus \operatorname{Int}A \cup \operatorname{Ext}A$, the fact that union of two open sets is open and the complement of a closed (open) set is open (closed).\\~\\
+
+$\mathbf{(g)}$ and $\mathbf{(h)}$ follows from above derived results.\\~\\
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.10}}$
+
+$(\implies)$ Note that $\bar{A}$ contains all limit points (using $\mathbf{2.9(b)}$ and $\mathbf{2.9(d)}$) and if $A$ is closed then by using $\mathbf{2.9(h)}$, $A = \bar{A}$. $(\impliedby)$ Suppose $p \in \partial A$, then, $p$ can either be an isolated point or a limit point. If $p$ is isolated then $p \in A$ by definition. Since $A$ contains all its limit points, therefore, if $p$ is a limit point then also $p \in A$. Hence, the boundary $\partial A$ is contained in $A$. Using $\mathbf{2.9(h)}$ conclude that $A$ is closed.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.11}}$
+
+$(\implies)$ If $\bar{A} = X$, then, by using $\mathbf{2.9(d)}$, $\forall x \in X$, every neighbourhood of $x$ contains a point in $A$. Suppose $B$ be any non-empty open subset of $X$ and let $y \in B \subseteq X$ then $B$ is a neighbourhood of $y$, hence, contains a point in $A$. $(\impliedby)$ $\forall x \in X$, every neighbourhood of $x$ is an open subset of $X$ (by definition of neighbourhood). Since every open subset of $X$ contains a point in $A$, therefore, every neighbourhood of $x$ contains a point in $A$ and by using $\mathbf{2.9(d)}$ $x \in \bar{A}$. Hence, $\bar{A} = X$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.12}}$
+
+Neighbourhood of $x \in X \equiv B_{r}^{d}(x)$ for some $r > 0$. Every neighbourhood of $x \equiv \forall r > 0, B_{r}^{d}(x)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.13}}$
+
+$\forall x \in X$, $\{x\}$ is a neighbourhood of $x$. Therefore, by definition of convergence of sequence, $\exists N \in \mathbb{N}$ s.t. $\forall i \geq N, x_i \in \{x\}$. In other words, $\exists N \in \mathbb{N}$ s.t. $\forall i \geq N, x_i = x$. Therefore, for every sequence $(x_i)$ converging to $x \in X$, $x_i = x$ for all but finitely many $i$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.14}}$
+
+By definition of convergence of sequence, for every neighbourhood $U$ of $x \in X$, $\exists N \in \mathbb{N}$ s.t. $\forall i \geq N, x_i \in U$ where $x_i$ is a point in $A$. In other words, every neighbourhood of $x \in X$ contains a point in $A$ and by using $\mathbf{2.9(d)}$, $x \in \bar{A}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.16}}$
+
+\textbf{Method} $\mathbf{(i)}$ $(\implies)$ Let $A \subseteq Y$ be closed in $Y$. Then $Y \setminus A \subseteq Y$ will be open in $Y$. Since $f$ is a continuous function, $f^{-1}(Y\setminus A)$ is open in $X$. Note that $f^{-1}(Y\setminus A) = X \setminus f^{-1}(A)$, which implies that $X \setminus f^{-1}(A)$ is open in $X$, hence, $f^{-1}(A)$ is closed in $X$. $(\impliedby)$ Let $A \subseteq Y$ be open in $Y$. Then $Y \setminus A \subseteq Y$ will be closed in $Y$ and $f^{-1}(Y\setminus A)$ is closed in $X$. By proposition, $f^{-1}(Y\setminus A) = X \setminus f^{-1}(A)$ is closed in $X$, hence, $f^{-1}(A)$ is open in $X$. Therefore, by definition of continuous function, $f$ is continuous.\\~\\
+
+\textbf{Method} $\mathbf{(ii)}$ $\ (\implies)$ Let $A \subseteq Y$ be closed in $Y$. Consider a sequence $(x_i)$ where $x_i \in f^{-1}(A)$ converging to $x \in X$. Define a new sequence $(y_i)$ where $y_i = f(x_i) \in A$. Since $f$ is continuous, the sequence $(y_i)$ converges to $y = f(x)$. Since $A$ is closed, by using $\mathbf{2.14}$, $y = f(x) \in A$ which implies $x \in f^{-1}(A)$. Again, by using $\mathbf{2.14}$, $f^{-1}(A)$ is closed. $(\impliedby)$ Proof of converse is same as in $(i)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.18}}$
+
+$\mathbf{(a)}$ The constant map is given by $f(x) = y$ where $y \in Y$. Consider $U \subseteq Y$ s.t. $U$ is open in $Y$. If $y \in U$, then $f^{-1}(U) = X$ where $X$ is open in $X$. If $y \not\in U$, then $f^{-1}(y) = \phi$ where $\phi$ is again open in $X$. Therefore, the preimage of every open subset of $Y$ is open in $X$ and thus, by definition of continuous function, $f$ is continuous.\\~\\
+
+$\mathbf{(b)}$ The identity map is given by $\operatorname{Id}_{X}(x) = x$ where $x \in X$. Let $U \subseteq X$ be open in $X$. Then, $\operatorname{Id}_{X}^{-1}(U) = U$. Conclude that $\operatorname{Id}_{X}$ is continuous using definition of continuous function.\\~\\
+
+$[\text{verify}]$ $\mathbf{(c)}$ Let $U \subseteq X$ be open in $X$. The restriction of $f$ to $U$ is given by $f\big\vert_{U}:U \rightarrow Y$. Let $A \subseteq Y$ be open in $Y$, then, $f\big\vert_{U}^{-1}(A) = \{x \in U: f(x) \in A\} = f^{-1}(A)\cap U$. Since, $f$ is continuous, $f^{-1}(A)$ is open in $X$ and therefore, $f^{-1}(A)\cap U$ is open in $X$ (and is open in $U$ with respect to subspace topology on $U$).\\~\\
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.20}}$
+
+$(i)$ $X \approx X$ because $\operatorname{Id}_{X}$ is a continuous bijective function with continuous inverse.\\~\\
+
+$(ii)$ Suppose $X \approx Y$ with $f$ as the homeomorphism from $X$ to $Y$. Then, $f^{-1}:Y \rightarrow X$ is a continuous bijective function with continuous inverse ($(f^{-1})^{-1} = f$) and thus, is a homeomorphism from $Y$ to $X$. Therefore, $Y \approx X$.\\~\\
+
+$(iii)$ Suppose $X \approx Y$ with respect to $f$, $Y \approx Z$ with respect to $g$ then $g \circ f: X \rightarrow Z$ is a continuous bijective function with continuous inverse ($(g \circ f)^{-1} = f^{-1} \circ g^{-1}$) because $f^{-1}$ and $g^{-1}$ are continuous. Thus, $g \circ f$ is a homeomorphism from $X$ to $Z$. Therfore, $X \approx Z$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.21}}$
+
+$(\implies)$ $f$ is a homeomorphism from $X_1$ to $X_2$ then $f$ and $f^{-1}$ are continuous. Let $U \subseteq X_1$ be open in $X_1$, then the preimage of $U$ in $f^{-1}$, $f(U)$, will be an open subset of $X_2$. Similarly, let $U \subseteq X_2$ be open in $X_2$, then the preimage of $U$ in $f$, $f^{-1}(U)$, will be an open subset of $X_1$. In other words, if $V = f^{-1}(U)$ then $f(V) \subseteq X_2$ being open in $X_2$ implies that $V \subseteq X_1$ is open in $X_1$. $(\impliedby)$ The condition $U \in \mathcal{T}_{1} \iff f(U) \in \mathcal{T}_{2}$ which is equivalent to $f^{-1}(U) \in \mathcal{T}_{1} \iff U \in \mathcal{T}_{2}$ implies, by definition of continuous function, that $f$ and $f^{-1}$ are continuous. Since $f$ is already bijective, implies that $f$ is a homeomorphism from $X_1$ to $X_2$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.22}}$
+
+$U\subseteq X$ is open in $X$ and $f$ is a homeomorphism from $X$ to $Y$. Continuity of $f^{-1}$ implies $f(U)$ is open in $Y$. Since $f$ is bijective from $X$ to $Y$ implies that $f\big\vert_{U}$ is bijective from $U \subseteq X$ to $f(U) \subseteq Y$. Let $V \subseteq f(U)$ be open in $f(U)$ (with respect to subspace topology on $f(U)$) then $f\big\vert_{U}^{-1}(V) = \{x \in U: f(x) \in V\} = f^{-1}(V) \cap U$. Since $f$ is continuous, $V \subseteq f(U) \subseteq Y$ is open in $Y$ and $f$ is continuous implies that $f^{-1}(V)\subseteq U \subseteq X$ is open in $X$, thus, intersection of $f^{-1}(V)$ and $U$ is open in $X$ (and in $U$ with respect to subspace topology on $U$) which implies that $f\big\vert_{U}$ is continuous. Now, let $A \subset U$ (with respect to subspace topology on $U$) be open in $U$ then $f\big\vert_{U}(A) = \{f(x)\in f(U): x \in A\} = f(A) \cap f(U)$ which is open in $Y$ (and in $f(U)$) by a similar argument, which implies that $f\big\vert_{U}^{-1}$ is continuous. So, $f\big\vert_{U}$ is a continuous bijective function from $U$ to $f(U)$ which has continuous inverse. Hence, $f\big\vert_{U}$ is a homeomorphism from $U$ to $f(U)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.23}}$
+
+Note that the identity function in the question is different from the identity function defined from $(X,\mathcal{T})$ to $(X,\mathcal{T})$ which is always continuous (and in fact, is a homeomorphism from $X$ to itself).\\~\\
+
+$(\implies)$ Let $U \in \mathcal{T}_{2}$. Since $\operatorname{Id}_{X}$ is continuous, preimage of $U$ in $\operatorname{Id}_{X}$, $\operatorname{Id}_{X}^{-1}(U) = U$, must blie in $\mathcal{T}_1$ i.e. $U \in \mathcal{T}_1$. Therefore, $\mathcal{T}_2 \subseteq \mathcal{T}_1$, making $\mathcal{T}_1$ finer than $\mathcal{T}_2$. $(\impliedby)$ Let $U \in \mathcal{T}_2$, then, $U = \operatorname{Id}_{X}^{-1}(U) \in \mathcal{T}_1$. By definition of continuous function, $\operatorname{Id}_{X}$ is continuous.\\~\\
+
+For $\operatorname{Id}_{X}$ (which is already a bijective map) to be a homeomorphism from $(X,\mathcal{T}_1)$ to $(X,\mathcal{T}_2)$, $\operatorname{Id}_{X}$ and $\operatorname{Id}_{X}^{-1}$ must be continuous which is the case if and only if $\mathcal{T}_2 \subseteq \mathcal{T}_1$ and $\mathcal{T}_1 \subseteq \mathcal{T}_2$, respectively. Thus, $\operatorname{Id}_{X}$ and $\operatorname{Id}_{X}^{-1}$ are continuous (and hence, $\operatorname{Id}_{X}$ is a homeomorphism from $(X,\mathcal{T}_1)$ to $(X,\mathcal{T}_2)$) if and only if $\mathcal{T}_1 = \mathcal{T}_2$.\\~\\
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.27}}$
+
+$$\varphi(x,y,z) = \frac{(x,y,z)}{\sqrt{x^2+y^2+z^2}} = (x',y',z') \text{ where } \max\{|x|,|y|,|z|\}=1$$
+
+$$\max\{|x|,|y|,|z|\}=1 \implies \max\{|x'|,|y'|,|z'|\}=\frac{1}{\sqrt{x^2+y^2+z^2}}$$
+
+$$\therefore\ \varphi^{-1}(x',y',z') = \frac{(x',y',z')}{\max\{|x'|,|y'|,|z'|\}}$$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.28}}$
+
+Define $s(x):[0,1)\rightarrow \mathbb{S}^1$ as $s(x) = e^{2\pi ix}$ and its inverse as $x(s) = \frac{\log(s)}{2\pi i}$. Observe that $\operatorname{Re}(s(x)) = \cos(2\pi x)$ and $\operatorname{Im}(s(x)) = \sin(2\pi x)$ are continuous functions of $x \in [0,1)$ making $s(x)$ a continuous function of $x \in [0,1)$. However, $x(s)$ is discontinuous at $s=1+0i$. Note that $x(1+0^{-}i)$ will be close to $1$, while  $x(1+0i) = 0$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.29}}$
+
+$\mathbf{(a)}\implies \mathbf{(b)}$ and $\mathbf{(a)}\implies \mathbf{(c)}$: Since $f$ is a homeomorphism, $f^{-1}$ is continuous. By the definition of continuous function, let $U \subseteq X$ be open in $X$, then, $(f^{-1})^{-1}(U) = f(U)$ will be open in $Y$ making $f$ an open map. Similarly, use $\mathbf{2.16}$ to conclude that $f$ is a closed map.\\~\\
+
+$\mathbf{(b)}\implies \mathbf{(a)}$ Since $f$ is an open map, by definition of continuous function, $f^{-1}$ is continuous. Therefore, $f$ is continuous and bijective with continuous inverse, hence, $f$ is a homeomorphism from $X$ to $Y$.\\~\\
+
+$\mathbf{(c)}\implies \mathbf{(a)}$ Use $\mathbf{2.16}$ and an argument similar to $\mathbf{(b)}\implies \mathbf{(a)}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.32}}$
+
+$\mathbf{(a)}$ Let $f:X\rightarrow Y$ be a homeomorphism from $X$ to $Y$. Let $x \in X$ and $U \subseteq X$ be a neighbourhood of $x$, then, $f(U)$ is open subset of $Y$ because $f^{-1}$ is continuous. By using $\mathbf{2.22}$, $f\big\vert_{U}:U\rightarrow f(U)$ is a homeomorphism from $U$ to $f(U)$, thus, a local homeomorphism.\\~\\
+
+$\mathbf{(b)}$ (Continuity): Let $U \subseteq Y$ be open in $Y$. We must show that $f^{-1}(U)$ is open. Let $x \in f^{-1}(U)$. Then, by definition of local homeomorphism, $\exists\ V_x \subseteq X$ which is a neighbourhood of $x$ s.t. $f(V_x)$ is open and $f\big\vert_{V_x}:V_x\rightarrow f(V_x)$ is a homeomorphism. Since $U$ and $f(V_x)$ are open in $Y$, then, so is $U \cap f(V_x)$ is open in $Y$. Since, $f\big\vert_{V_x}$ is continuous, $f\big\vert_{V_x}^{-1}(U \cap f(V_x)) = \{x \in V_x: f(x) \in U \cap f(V_x)\} = V_x \cap f^{-1}(U)$ is open in $X$. But $V_x \cap f^{-1}(U)$ is a neighbourhood of $x$ contained in $f^{-1}(U)$ and because $x \in f^{-1}(U)$ is arbitrary, therefore, $f^{-1}(U) = \cup_{x \in f^{-1}(U)}(V_x\cap f^{-1}(U))$ is open in $X$. Hence, $f$ is continuous. (Open): Let $A\subseteq X$ be open in $X$. By the defintion of local homeomorphism, for every $x \in A$, $\exists U_x \subseteq X$ which is a neighbourhood of $x$ in $X$ s.t. $f(U_x)$ is open in $Y$ and $f\big\vert_{U_x}:U_x \rightarrow f(U_x)$ is a homeomorphism. Since , $U_x \cap A$ is open in $U_x$, therefore, $f(U_x \cap A)$ is open in $f(U_x)$ and thus in $Y$. Finally, $A = \cup_{x \in A} U_x \cap A$ and $f(\cup_{x \in A} U_x \cap A)$ is open in $Y$, so is $f(A)$.\\~\\
+
+$\mathbf{(c)}$ Bijective local homeomorphism is bijective, continuous and open, thus, homeomorphism by $\mathbf{(2.29)}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.33}}$
+
+Let $(y_i)$ be any sequence in $Y$ which converges to some $y \in Y$. The only neighbourhood of $y$ is $Y$ itself and since, $\forall i \geq 1, y_i \in Y$, $y$ can take any value in $Y$. Thus, every sequence in $Y$ converges to every point of $Y$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.35}}$
+
+Let $f^{-1}(0) = \{p\}$ for some $p \in X$. Let $q \in X$ s.t. $q \neq p$ and $f(q) = a \neq 0$. Then, $f^{-1}((-a/2, a/2))$ is a neighbourhood of $p$ and $f^{-1}((3a/2,4a/2))$ is a neighbourhood of $q$ s.t. they are disjoint. Note that no point of $X$ can lie in both neighbourhoods.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.38}}$
+
+Since the finite set $X$ has Hausdorff topology, every finite subset of $X$ is closed and its complement is open. Therefore, every subset of $X$ is both closed and open. Therefore, the topology on $X$ is discrete.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.40}}$
+
+$(\implies)$ Let $U\subseteq X$ be open, then, $\forall p \in U, \exists\ C \subseteq U$ s.t. $C$ is open in $X$ and $p\in C$. By definition of basis, $C = \cup_{\alpha \in A} B_{\alpha}$. Since $p \in C$, $\exists\ B \in \{B_{\alpha}:\alpha \in A\}$ s.t. $p \in B \subseteq C \subseteq U$. $(\impliedby)$ The proof of converse follows directly from the definition of open set.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.42}}$
+
+We must show that the an element of $\mathcal{B}$ is an open subset of $X$ and every open subset of $X$ is the union of some collection of elements of $\mathcal{B}$.\\~\\
+
+$\mathbf{(a)}$ Let $p \in C_{s}(x)$, then, define $s^* = \min\limits_{i=1}^{n} (\min(|x_i+s/2-p_i|,|p_i-(x_i-s/2)|))$ and conclude that $C_{s^*}(p)$ is a neighbourhood of $p$ contained in $C_s(x)$. Therefore, $C_s(x)$ is open in $X$. Let $A$ be an open subset of $\mathbb{R}^n$. Then, $A$ is a union of open balls contained in it. If $B_{r}(p)$ is such a ball, then, $C_{\sqrt{2}r}(p) \subseteq B_{r}(p)$. Therefore, $A = \cup_{x\in A}B_{r_x}(x) = \cup_{x\in A}C_{\sqrt{2}r_x}(x)$. Thus, $A$ is a union of open cubes. Hence, $\mathcal{B}_1$ is a basis for the Euclidean topology on $\mathbb{R}^n$.\\~\\
+
+$\mathbf{(b)}$ First, note that we can always find a rational number between two irrational numbers and a rational number between a rational and an irrational number. Here, is a sketch of proof. Let $m$ and $n$ are two irrational numbers s.t. $m > n > 0$. Define $r = m-n$, then, by Archimedes property, we can find a $t$ such that $\frac{1}{r} < t$. Therefore, $rt > 1 \implies mt > nt + 1$ and we can find $p \in \mathbb{N}$ s.t. $mt > p > nt \implies m > \frac{p}{t} > n$. Now, let $B_{r}(x)$ be an open ball with rational $r$ and $x$ has rational coordinates. By definition, it is open. Let $A$ be an open subset of $\mathbb{R}^n$ and for some arbitrary $y \in A$, let $B_{s}(y) \subseteq A$ be an arbitrary open ball containing $y$. We must find a ball with rational radius and coordinates s.t. it contains $y$ and is contained in or equal to $B_{s}(y)$. If $y$ and $s$ are rational then take $B_{r_y}(x_y) = B_{s}(y)$. If $s$ and $y$ are irrational (workout the case when one of them is rational in a similar manner), we find a rational $x_y$ s.t. $x_y \in B_{s/2}(y)$ and a rational $r_y$ s.t. $|x_y-y| < r_y < s/2$. Define $x_y$ s.t $x_{y_i} \in (y_i, y_i+s/2)$ is rational and define $r_y$ s.t. $r_y \in (|x_y-y|,s/2)$ is rational (this is possible based on the argument in beginning). Based on this construction, $B_{r_y}(x_y)$ contains $y$ and is contained in $B_{s}(y)$. Finally, $A = \cup_{y\in A}B_{s}(y) = \cup_{y \in A}B_{r_y}(x_y)$. Therefore, $\mathcal{B}_2$ is a basis.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.45}}$
+
+$\mathbf{(i)}$ By property $1$ of basis, $B \subseteq X$, therefore, $\cup_{B \in \mathcal{B}}B \subseteq X$. By property $2$ of basis, since $X$ is open in $X$, $X = \cup_{\alpha \in A}B_{\alpha} \subseteq \cup_{B \in \mathcal{B}} B$. Therefore, $X = \cup_{B \in \mathcal{B}} B$.\\~\\
+
+$\mathbf{(ii)}$ $B_1, B_2 \in \mathcal{B}$, then $B_1 \cap B_2$ is open subset of $X$. Then $B_1 \cap B_2$ satisfy the basis criterion with respect to $\mathcal{B}$ i.e. for every $x \in B_1\cap B_2, \exists\ B_3 \in \mathcal{B}$ s.t. $x \in B_3 \subseteq B_1 \cap B_2$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.51}}$
+
+Let $\{B_{\alpha}, \alpha \in A\}$ be the countable basis. Form a subset $D$ of $X$ in the following manner - Take any one $x_{\alpha}$ from $B_{\alpha}$ and put it in $D$. Then, $D = \{x_{\alpha}, \alpha \in A\}$ is a countable dense subset of $X$ because, for every $x \in X$, and for every neighbourhood of $x$, there exist a collection of basis, the union of which forms the neighbourhood and thus, every neighbourhood of $x$ has a point in $D$ making $x$ to be in closure of $D$. Thus, $\bar{D} = X$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.54}}$
+
+$(\implies)$ Let $M$ be a $0$-manifold. Let $p \in M$, then, $\exists$ neighbourhood $U$ of $p$ s.t. $U$ is homeomorphic to a single point. This can only be the case when $U = \{p\}$. Adding or removing an element to $U$ makes sure that there is no bijection from $U$ to a sinlge point. Since $p$ was arbitrary, for every point $p$ in $M$,  $\{p\}$ is an open subset of $M$. Since $M$ is second countable, therefore, countably many points $p$ exist in $M$. Using the the properties of a topology, arbitrary union of single the point sets $\{p\}$ are also open, making $M$ to be a countable discrete space. $(\impliedby)$ Let $M$ be a countable discrete space, then it is locally Euclidean of dimension $0$, since every point $p$ has a neighbourhood $\{p\}$ which is homeomorphic to single point. It is also second countable, since the basis is the collection of all single point sets $\{p\}$ in $M$. Finally, M is Hausdorff because $\{p_1\}\cap \{p_2\} = \phi$ when $p_1 \neq p_2$, where $\{p_1\}$ and $\{p_2\}$ are neighbourhoods of $p_1$ and $p_2$. Therefore, $M$ is a $0$-manifold.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    \textbf{\large{3. New Spaces from Old}}
+\end{center}
+
+${\textbf{Ex. 3.1}}$
+
+$(i)$ $V = \phi$ gives $U = \phi$ and $V=X$ gives $U = S$.\\~\\
+
+$(ii)$ Let $(U_i)_{i=1}^{n}$ be open subsets of $S$, then, $\exists\ (V_i)_{i=1}^{n}$ which are open subsets of $X$ s.t. $U_i = S\cap V_i$. Since $\cap_{i=1}^{n}V_i$ is open in $X$, $\cap_{i=1}^{n}U_i = \cap_{i=1}^{n}(S\cap V_i) = S\cap (\cap_{i=1}^{n}V_i)$ is open in $S$.\\~\\
+
+$(iii)$ Let $U_{\alpha}, \alpha \in A$ be open subsets of $S$, then, $\exists\ V_\alpha, \alpha \in A$ which are open subsets of $X$ s.t. $U_\alpha = S \cap V_{\alpha}$. Since $\cup_{\alpha \in A} V_{\alpha}$ is open in $X$, $\cup_{\alpha \in A}U_\alpha = \cup_{\alpha \in A}S\cap V_{\alpha} = S\cap(\cup_{\alpha \in A}V_{\alpha})$ is open in $S$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.2}}$
+
+$(\implies)$ Let $B \subseteq S$ be closed in $S$. Then $S\setminus B$ will be open in $S$. Therefore, $\exists\ V\subseteq X$ s.t. $V$ is open in $X$ and $S\setminus B = S\cap V$. Then, $B = S\setminus (S\cap V) = S \cap (X\setminus S \cup X \setminus V) = S\cap X\setminus V$, where $X\setminus V$ is closed in $X$. $(\impliedby)$ Let $B = S\cap V$ where $V$ is closed in $X$. Then, $S\setminus B = S\cap (X\setminus V)$, where $X\setminus V$ is open in $X$. Thus, $S\setminus B$ is open in $S$ and hence, $B$ is closed in $S$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.3}}$
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.6}}$
+
+$\mathbf{(a)}$ Since $U$ is open in $S$, $U = S \cap V$ where $V$ is open in $X$. Because, $S$ is also open in $X$ and $U$ is the intersection of two open subsets of $X$, hence, $U$ is open in $X$. Similarly, using $\mathbf{3.2}$, $U$ is closed in $S$, then, $U = S\cap V$ where $V$ is closed in $X$. Since, $S$ is closed in $X$ and $U$ is the intersection of two closed subsets of $X$, hence, $U$ is closed in $X$.\\~\\
+
+$\mathbf{(b)}$ Since $U \subseteq S$, $U = S \cap U$. By definition of subspace topology, if $U$ is open in $X$ then $U$ is open in $S$ and by using $\mathbf{3.2}$, if $U$ is closed in $X$, then $U$ is closed in $S$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.7}}$
+
+$\mathbf{(a)}$ Let $p \in S$ s.t. $p \in $ closure of $U$ in $S$. Therefore, every relative neighbourhood of $p$ contains a point in $U$. Let $V$ be an arbitrary neighbourhood of $p$ in $X$. Then, $S \cap V$ is a relative neighbourhood of $p$ which contains a point in $U$. Since, $S\cap V \subseteq V$, $V$ contains a point in $U$. Since, $V$ is arbitrary neighbourhood of $p$ in $X$ which contains a point in $U$, $p \in \bar{U}$, and hence, $p \in \bar{U} \cap S$. Thus, closure of $U$ in $S$ $\subseteq \bar{U} \cap S$.\\~\\
+
+Now, let $p \in \bar{U} \cap S$. Then, $p\in S$ and every neighbourhood of $p$ in $X$ contains a point in $U$. Let $A$ be an arbitrary relative neighbourhood of $p$, then, $A = S \cap V$ where $V$ is open in $X$. Note that $p \in A$ implies that $p \in V$ and therefore, $V$ is a neighbourhood of $p$ in $X$. Since, $U \subseteq S$ and $V$ contains a point in $U$, therefore, $A =S \cap V$ contains a point in $U$. Since, $A$ was arbitrary, $p \in $ closure of $U$ in $S$. Thus, $\bar{U} \cap S \subseteq$ closure of $U$ in $S$.
+
+$\mathbf{(b)}$ Let $p \in \operatorname{Int}U \cap S$, then, $p \in S$ and $\exists\ V \subseteq U$ s.t. $V$ is open in $X$ and $p \in V$. Therefore, $p \in S \cap V$. Since $V \subseteq U$ and $V$ is open in $X$, $S \cap V \subseteq U$ and is open in $S$. Therefore, $p \in $ interior of $U$ in $S$. Thus, $\operatorname{Int}U \cap S \subseteq$ interior of $U$ in $S$.\\~\\
+
+Following example shows that interior of $U$ in $S \not\subseteq \operatorname{Int}U \cap S$: Consider $S = [0,2] \subseteq \mathbb{R}$. Let $U = [0,1)$. Then $U$ is relatively open in $S$ (because $U = S\cap(-1,1)$) and therefore the interior of $U$ in $S$ is $U$ itself. But, $\operatorname{Int}U = (0,1)$ and $\operatorname{Int}U\cap S = (0,1)$. Now, $0 \in $ interior of $U$ in $S$ but $0 \not\in\operatorname{Int}U\cap S$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.12}}$
+
+$\mathbf{(c)}$ $(\implies)$ Let $p_i \rightarrow p$ in $S$. Then, for every relative neighbourhood $U$ of $p$, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in U$. Let $V$ be an arbitrary neighbourhood of $p$ in $X$. Since, $S \cap V$ is a relative neighbourhood of $p$ in $S$, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in S\cap V \subseteq V$, implies, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in V$. Since, $V$ is arbitrary, $p_i \rightarrow p$ in X. $(\impliedby)$ Let $p_i \rightarrow p$ in $X$. Then, for every neighbourhood $V$ of $p$, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in V$. But $p_i \in S$, therefore, for every neighbourhood $V$ of $p$, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in S\cap V$. Let $U$ be a relative neighbourhood of $p$, then, $\exists\ V \subseteq X$ open in $X$ s.t. $U = S \cap V$. Also, $p \in U$ implies $p \in V$ and therefore, $V$ is a neighbourhood of $p$ in $X$. By above argument, $\exists\ N \in \mathbb{N}$ s.t. $\forall i \geq N, p_i \in U$. Since, $U$ was arbitrary, $p_i \rightarrow p$ in $S$.\\~\\
+
+$\mathbf{(d)}$ Let $p_1, p_2 \in S \subseteq X$. Since $X$ is Hausdorff, $\exists\ U_1$ and  $U_2$ neighbourhood of $p_1$ and $p_2$ in $X$ s.t. $U_1 \cap U_2 = \phi$. Define relative neighbourhoods of $p_1$ and $p_2$ as $S\cap U_1$ and $S \cap U_2$, respectively. Then, $S\cap U_1\cap S \cap U_2 = S \cap (U_1\cap U_2) = S\cap\phi = \phi$. Therefore, $S$ is also Hausdorff.\\~\\
+
+$\mathbf{(e)}$ Let $p \in S \subseteq X$. Since $X$ is first countable, there exists a countable collection of neighbourhoods of $p$ in $X$, $\mathcal{B}_p$, such that for every neighbourhood $V$ of $p$ in $X$, $\exists\ B \in \mathcal{B}_p$ s.t. $B \subseteq V$. Define a new collection of relative neighbourhoods of $p$ in $S$ as $\mathcal{B}_{S_p} = \{S\cap B: B \in \mathcal{B}_{p}\}$. Consider an arbitrary relative neighbourhood $U$ of $p$ in $S$. Then, $\exists\ V \subseteq X$, a neighbourhood of $p$ in $X$ s.t. $U = S \cap V$. Since, $\exists B \in \mathcal{B}_p$ s.t. $B \subseteq V$, therefore, $S \cap B \subseteq S \cap V = U$ where $S \cap B \in \mathcal{B}_{S_p}$. Since $U$ and $p$ are arbitrary, we conclude that for every $p \in S$, there exists a collection of relative neighbourhood of $p$ in $S$, $\mathcal{B}_{S_p}$ s.t. for every relative neighbourhood $U$ of $p$, there exists $B \in \mathcal{B}_{S_p}$ s.t. $B \subseteq U$. Finally, note that $|\mathcal{B}| = |\mathcal{B}_{S_p}|$, therefore, $S$ is first countable.\\~\\
+
+$\mathbf{(f)}$ Let $\mathcal{B}$ be the countable set of basis for $X$ and $\mathcal{B}_S$ be the basis for $S$. Using $\mathbf{(b)}$, $|\mathcal{B}_S| = |\mathcal{B}|$, therefore, $\mathcal{B}_S$ is countable and hence, $S$ is second countable.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.13}}$
+
+$\eta_{S}:S\hookrightarrow X$ be the inclusion map from $S$ to $X$.\\~\\
+
+$(i)$ Injective: $\eta_S(x_1) = \eta_S(x_2) \implies x_1 = x_2$.\\~\\
+
+$(ii)$ Continuous: Let $A \subseteq X$ be open in $X$, then, $\eta_{S}^{-1}(A) = S \cap A$ which is open in $S$ with respect to subspace topology on $S$.\\~\\
+
+$(iii)$ Homeomorphism onto its image: $\eta_{S}':S\rightarrow \eta_{S}(S)$ where $\eta_{S}(S) = S$ is nothing but $\operatorname{Id}_{S}$ which is a homeomorphism from $S$ with subspace topology to itself with same topology.   
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.17}}$
+
+Let $S = [0,1)$ and $\eta_{S}:S \hookrightarrow \mathbb{R}$ be an inclusion map. Note that $S$ is both open and closed in $S$ but $\eta_{S}(S) = [0,1)$ is neither open nor closed in $\mathbb{R}$. Therefore, $\eta_{S}$ is neither an open nor a closed map but it is still a topological embedding using $\mathbf{3.13}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.19}}$
+
+Image of a surjective map is same as the codomain. Therefore, by definition of topological embedding, a surjective topological embedding is a homeomorphism.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.25}}$
+
+$(i)$ $\cup_{B \in \mathcal{B}} B = \cup_{U_i \subseteq X_i \text{ is open in }X_i}(U_1, \ldots, U_n) = (X_1, \ldots, X_n)$.\\~\\
+
+$(ii)$ Let $(A_1, \ldots, A_n)$ be open in $(X_1, X_2 , \ldots , X_n)$ then note that $(A_1, \ldots, A_n)$ is already in $\mathcal{B}$.
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.26}}$
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.29}}$
+
+Let $U$ be open in $X_i$. Then $\pi_i^{-1}(U) = (X_1, \ldots, X_{i-1}, U, X_{i+1}, \ldots, X_n)$. Since, $X_j$ is open in $X_j$ and $U$ is open in $X_i$, $\pi_i^{-1}(U)$ is open in $(X_1 , \ldots , X_n)$, $\pi_i$ is continuous.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.32}}$
+
+$\mathbf{(a)}$ The basis of the three topologies are same.\\~\\
+
+$\mathbf{(b)}$ Injective: $f(x) = f(x') \implies (x_1,\ldots,x_{i-1},x,x_{i+1},\ldots,x_n) = (x_1,\ldots,x_{i-1},x',x_{i+1},\ldots,x_n) \implies x=x'$. Continuous: Let $U = (U_1,\ldots,U_n)$ be open in $(X_1,X_2,\ldots,X_n)$. Then $f^{-1}(U) = U_i$ is open in $X_i$ by definition. Continuous and injective onto image follows from Corollary $3.10$. Surjective onto image implies bijective onto image. Let $U_i$ be open in $X_i$, then, $f(U_i) = (X_1, \ldots, X_{i-1}, U_i, X_{i+1}, \ldots, X_{n})$ is open in $(X_1,X_2,\ldots,X_n)$.\\~\\
+
+$\mathbf{(c)}$ Let $U = (U_1,\ldots,U_n)$ be open in $(X_1,X_2,\ldots,X_n)$. Then $\pi_{i}(U) = U_i$ is open in $X_i$, hence, $\pi_i$ is an open map.\\~\\
+
+$\mathbf{(d)}$ Let $(p_1, \ldots, p_n) \in (U_1, \ldots, U_n)$, where $U_i$ is open in $X_i$, then, $p_i \in U_i$ and by basis criterion, $\exists\ B_i \in \mathcal{B}_i$ s.t. $p_i \in B_i \subseteq U_i$. Therefore, $(p_1, \ldots, p_n) \in (B_1, \ldots, B_n) \subseteq (U_1, \ldots, U_n)$ and $(U_1, \ldots, U_n)$ satisfies basis criterion with respect to basis $\{(B_1, \ldots, B_n): B_i \in \mathcal{B}_i\}$\\~\\
+
+$\mathbf{(e)}$ Product topology basis: $\{(U_1,\ldots,U_n)$ where $U_i$ is open in subspace $S_i$ i.e. $\exists\ V_i$ open in $X_i$ s.t. $U_i = S_i \cap V_i\}$. Subspace topology basis: $\{(U_1,\ldots,U_n): (U_1,\ldots,U_n) = (S_1,\ldots,S_n)\cap(V_1,\ldots,V_n)$ for $V_i$ open in $X_i\}$. Here, also, $U_i = S_i \cap V_i$.\\~\\
+
+$\mathbf{(f)}$ Let $p=(p_1,\ldots,p_n)$ and $p'=(p_1',\ldots,p_n')$ are points in $(X_1,\ldots,X_n)$. Since, $X_i$ is Hausdorff, $\exists\ U_i$ and $U_i'$ neighbourhood of $p_1$ and $p_1'$ s.t. $U_i \cap U_i' = \phi$. Define neighbourhoods of $p$ and $p'$ as $(U_1,\ldots,U_n)$ and $(U_1',\ldots,U_n')$, then, their intersection is $(U_1\cap U_1',\ldots,U_n\cap U_n') = (\phi,\ldots,\phi) = \phi$. Therefore, $(X_1,\ldots,X_n)$ is Hausdorff.\\~\\
+
+$\mathbf{(g)}$ Define a collection of neighbourhoods of $p=(p_1,\ldots,p_n)$ as $\mathcal{B}_{p} = \{(B_1,\ldots,B_n): B_i \in \mathcal{B}_{p_i}\}$. Since $\mathcal{B}_{p_i}$ is countable, then, so is $\mathcal{B}_{p}$ because $|\mathcal{B}_p| = \prod_{i=1}^{n}|\mathcal{B}_{p_i}|$.\\~\\
+
+$\mathbf{(h)}$ From $\mathbf{(d)}$, $|\mathcal{B}| = \prod_{i=1}^{n}|\mathcal{B}_i|$. Since $|\mathcal{B}_i|$ is countable and $n$ is finite, then, so is $|\mathcal{B}|$. Therefore, $(X_1,\ldots,X_n)$ is second countable.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.34}}$
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.40}}$
+
+$\mathbf{(i)}$ $\phi$ and $\sqcup_{\alpha \in A}X_{\alpha}$ are open.\\~\\
+
+$\mathbf{(ii)}$ Let $(U_i)_{i=1}^{n}$ be open in $\sqcup_{\alpha \in A}X_{\alpha}$, then, $U_i = \sqcup_{\alpha \in A}U_{i_\alpha}$ where $U_{i_\alpha}$ is open in $X_{\alpha}$. Since $\cap_{i=1}^{n}U_{i_\alpha}$ is open in $X_{\alpha}$, therefore, $\cap_{i=1}^{n}U_i = \cap_{i=1}^{n}\sqcup_{\alpha \in A}U_{i_\alpha} = \sqcup_{\alpha \in A}\cap_{i=1}^{n}U_{i_\alpha}$ is open in $\sqcup_{\alpha \in A}X_{\alpha}$.\\~\\
+
+$\mathbf{(iii)}$ Let $(U_\beta)_{\beta \in B}$ be open in $\sqcup_{\alpha \in A}X_{\alpha}$, then, $U_\beta = \sqcup_{\alpha \in A}U_{\beta_\alpha}$ where $U_{\beta_\alpha}$ is open in $X_{\alpha}$. Since $\cup_{\beta \in B}U_{\beta_\alpha}$ is open in $X_{\alpha}$, therefore, $\cup_{\beta \in B}U_\beta = \cup_{\beta \in B}\sqcup_{\alpha \in A}U_{\beta_\alpha} = \sqcup_{\alpha \in A}\cup_{\beta \in B}U_{\beta_\alpha}$ is open in $\sqcup_{\alpha \in A}X_{\alpha}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.43}}$
+
+$\mathbf{(a)}$ $(\implies)$ Let $U = \sqcup_{\alpha \in A}U_{\alpha}$, where $U_\alpha$ is the intersection of $U$ with $X_\alpha$, be a closed subset of $\sqcup_{\alpha \in A}X_{\alpha}$, then, $\sqcup_{\alpha \in A}X_{\alpha} \setminus \sqcup_{\alpha \in A}U_{\alpha} = \sqcup_{\alpha \in A}X_\alpha \setminus U_{\alpha}$ is open in $\sqcup_{\alpha \in A}X_{\alpha}$. Therefore, $X_\alpha \setminus U_\alpha$ is open in $X_\alpha$, implying that, $U_\alpha$ is closed in $X_\alpha$. $(\impliedby)$ Let $U = \sqcup_{\alpha \in A}U_{\alpha} \subseteq \sqcup_{\alpha \in A}X_{\alpha}$ where $U_\alpha$ is the intersection of $U$ with $X_\alpha$ which is closed in $X_\alpha$. Then, $\sqcup_{\alpha \in A}X_{\alpha} \setminus U = \sqcup_{\alpha \in A}X_{\alpha} \setminus \sqcup_{\alpha \in A}U_{\alpha} = \sqcup_{\alpha \in A}X_\alpha \setminus U_{\alpha}$, the intersection of which with $X_{\alpha}$ is $X_{\alpha}\setminus U_{\alpha}$ which is open in $X_{\alpha}$. Therefore, $\sqcup_{\alpha \in A}X_{\alpha} \setminus U$ is open in $\sqcup_{\alpha \in A}X_{\alpha}$, hence, $U$ is closed in $\sqcup_{\alpha \in A}X_{\alpha}$.\\~\\
+
+$\mathbf{(b)}$ (Injective): $\eta_\alpha(x_1) = \eta_\alpha(x_2) \implies x_1 = x_2$. (Continuous): Let $U = \sqcup_{\alpha \in A}U_{\alpha}$ be open subset of $\sqcup_{\alpha \in A}X_{\alpha}$, then, $U_\alpha$ is open subset of $X_\alpha$. Since, $\eta_{\alpha}^{-1}(U) = U_\alpha$ which is open in $X_\alpha$, therefore, $\eta_\alpha$ is continuous. (Open map): Let $U_\alpha$ be open in $X_\alpha$, then $\eta_{\alpha}(U_\alpha) = (U_\alpha, \alpha)$, the intersection of which with $X_\alpha$ is $U_\alpha$ which is open $X_\alpha$ and the intersection with $X_{\alpha'}, \alpha' \neq \alpha$ is $\phi$ which is again open in $X_{\alpha'}$. Therefore, $\eta_{\alpha}(U_\alpha)$ is open in $\sqcup_{\alpha \in A}X_{\alpha}$ and thus, $\eta_\alpha$ is an open map. (Closed map): Proceed in a similar manner as for (Open map). By proposition $\mathbf{(3.16)}$, $\eta_\alpha$ is a topological embedding.\\~\\
+
+$\mathbf{(c)}$ Let $x_1 = (p_1,\alpha_1)$ and $x_2 = (p_2,\alpha_2)$ are point in $\sqcup_{\alpha \in A}X_{\alpha}$. If $\alpha_1 \neq \alpha_2$, then $X_{\alpha_1} = (X_{\alpha_1}, \alpha_1)$ and $X_{\alpha_2} = (X_{\alpha_2}, \alpha_2)$ are open neighbourhoods containing $x_1$ and $x_2$ with empty intersection. If $\alpha_1 = \alpha_2$, then, since $X_\alpha$ is Hausdorff, $\exists\ U_1$ and $U_2$, neighbourhoods of $p_1$ and $p_2$ in $X_\alpha$ s.t. $U_1 \cap U_2 = \phi$, we define neighbourhoods $V_1 = (U_1,\alpha_1)$ and $V_2 = (U_2, \alpha_1)$ in $\sqcup_{\alpha \in A}X_{\alpha}$ whose intersection is $(U_1\cap U_2, \alpha_1) = (\phi,\alpha_1) = \phi$.\\~\\
+
+$\mathbf{(d)}$ Let $\mathcal{B}_{\alpha_p}$ be the countable collection of neighbourhoods for $p \in X_{\alpha}$ s.t. for every neighbourhood of $p$, $\exists\ B_\alpha \in \mathcal{B}_{\alpha_p}$ s.t. $B_\alpha$ is contained in the neighbourhood. Then, $(\mathcal{B}_{\alpha_p},\alpha)$ is the countable collection of neighbourhood of $(p,\alpha)$ in $\sqcup_{\alpha \in A} X_\alpha$ s.t. for every neighbourhood of $(p,\alpha)$, $\exists\ (B_\alpha,\alpha) \in (\mathcal{B}_{\alpha_p},\alpha)$ s.t. $(B_\alpha,\alpha)$ is contained in the neighbourhood.\\~\\
+
+$\mathbf{(e)}$ Let $\mathcal{B}_\alpha$ be the basis of $X_\alpha$, then $\mathcal{B} = \sqcup_{\alpha \in A}\mathcal{B}_\alpha$ is the basis of $\sqcup_{\alpha \in A}X_\alpha$ where $|\mathcal{B}| = \sum_{\alpha \in A}|\mathcal{B}_\alpha|$ which is countable if $\mathcal{B}_\alpha$ is countable and $A$ is countable.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.44}}$
+
+$(\implies)$ If $\sqcup_{\alpha \in A} X_{\alpha}$ is an $n$-manifold, then it is second countable. By using $\mathbf{3.43 (e)}$, we have $\sum_{\alpha \in A}\mathcal{B}_\alpha$ is countable. We are given that $\mathcal{B}_\alpha$ is countable and conclude that $A$ shouble be countable. $(\impliedby)$ Converse follows directly from $\mathbf{3.43 (e), (d)}$ and the fact that $(p,\alpha)$ has a neighbourhood which is homeomorphic to an open subset of $\mathbb{R}^n$ because $p$ has a neighbourhood in $X_\alpha$ which is homeomorphic to an open subset of $\mathbb{R}^n$ and $(X_\alpha,\alpha) \approx X_\alpha$. 
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.45}}$
+
+An element of $(X,Y)$ is $(x,y)$ for some $x \in X$ and $y \in Y$ and an element of $\sqcup_{y\in Y}X$ is $(x,y)$ where $x \in X$ and $y \in Y$. So, the two spaces are same. Let $U$ be an open subset of $X$, then $(U,y)$ is an open subset of $(X,Y)$. By definition of disjoint topology, $(U,y)$ is open in $\sqcup_{y\in Y}X$ because the intersection of it, with $X$ is $U$ which is open in $X$. Converse follows in a similar manner.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.46}}$
+
+$(i)$ $q^{-1}(\phi) = \phi$ and $q^{-1}(Y) = X$ because $q$ is surjective.\\~\\
+
+$(ii)$ Let $(V_i)_{i=1}^{n}$ be open in $Y$, then, $\forall i \in \{1,\ldots,n\},q^{-1}(V_i)$ is open in $X$. Since, $q^{-1}(\cap_{i=1}^{n}V_i) = \cap_{i=1}^{n}q^{-1}(V_i)$ which is open in $X$, therefore, $\cap_{i=1}^{n}V_i$ is open in $Y$.\\~\\
+
+$(iii)$ Let $(V_\alpha)_{\alpha \in A}$ be open in $Y$, then, $\forall \alpha \in A, q^{-1}(V_\alpha)$ is open in $X$. Since, $q^{-1}(\cup_{\alpha\in A}V_\alpha) = \cup_{\alpha \in A}q^{-1}(V_\alpha)$ is open in $X$, therefore, $\cup_{\alpha \in A}V_{\alpha}$ is open in $Y$. 
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.55}}$
+
+Let $(X_{\alpha})_{\alpha \in A}$ be a collection of Hausdorff spaces. Let $p$ be the point where all the base points $(p_{\alpha})_{\alpha \in A}$ collapse to form wedge sum $\bigvee_{\alpha \in A} X_{\alpha}$. Let $p_1$ and $p_2$ be two distinct points in $\bigvee_{\alpha \in A} X_{\alpha}$.\\~\\
+
+If $p_1 \neq p$ and $p_2 \neq p$, then two cases arise - $(i)$ $p_1, p_2 \in X_{\alpha}$, then, since $X_{\alpha}$ is Hausdorff, $\exists\ U_1, U_2$ neighbourhoods of $p_1$ and $p_2$ such that $U_1 \cap U_2 = \phi$, $(ii)$ $p_1 \in X_{\alpha}$ and $p_2 \in X_{\beta}$, then, let $U_1$ be a neighbourhood of $p_1$ which does not contain $p$ (which certainly exist because $X_{\alpha}$ is Hausdorff). Similarly, let $U_2$ be the neighbourhood of $p_2$ which does not contain $p$. Then, $U_1 \subseteq X_{\alpha}$ and $U_2 \subseteq X_{\beta}$ where $p \not\in U_1$ and $p \not\in U_2$, therefore, $U_1 \cap U_2 = \phi$.\\~\\
+
+If one of $p_i = p$, then use argument in $(ii)$, and finally, conclude that $\bigvee_{\alpha \in A} X_{\alpha}$ is Hausdorff.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.59}}$
+
+$\mathbf{(a)} \implies \mathbf{(b),(c),(d)}$ Since $U$ is saturated, $\exists\ V \subseteq Y$ s.t. $U = q^{-1}(V)$. Then, $q(U) = V$ and therefore, $U = q^{-1}(q(U))$. Also, $V = \cup_{y \in V}\{y\}$, thus, $U = q^{-1}(\cup_{y \in V}\{y\}) = \cup_{y\in V}q^{-1}(y)$. Let $x \in U$ and $x'$ be any arbitrary point in $X$ s.t. $q(x) = q(x')$. Since $q(x) \in V$, then $q(x') \in V$, implies that, $x'\in q^{-1}(V) = U$.\\~\\
+
+$\mathbf{(b)} \implies \mathbf{(a)}$ Take $V = q(U)$.\\~\\
+
+$\mathbf{(c)} \implies \mathbf{(a)}$ $U = \cup_{y \in V}q^{-1}(y) = q^{-1}(\cup_{y \in V}\{y\}) = q^{-1}(V)$.\\~\\
+
+$\mathbf{(d)} \implies \mathbf{(a)}$ Let $q(U) = V$, then, $U \subseteq q^{-1}(V)$. We show that $q^{-1}(V) \subseteq U$. Let $x' \in q^{-1}(V)$, then, $q(x') \in V$. Since, $V = q(U), \exists\ x \in U$ s.t. $q(x) \in V$ and $q(x) = q(x')$. By the given condition, $x' \in U$, therefore, $q^{-1}(V) \subseteq U$. Hence, $U = q^{-1}(V)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.61}}$
+
+$(\implies)$ Let $U \subseteq X$ s.t. $U$ is saturated and open in $X$, then, $\exists\ V \subseteq Y$ s.t. $U = q^{-1}(V)$. Given that $q^{-1}(V)$ is open, by definition of quotient map, $V$ is open in $Y$. Similarly, let $U \subseteq X$ s.t. $U$ is saturated and closed in $X$, then, $\exists\ V \subseteq Y$ s.t. $U = q^{-1}(V)$. Given that $X\setminus q^{-1}(V) = q^{-1}(Y)$ is open, by surjectivity of quotient map, $X\setminus q^{-1}(V) = q^{-1}(Y) \setminus q^{-1}(V) = q^{-1}(Y\setminus V)$ and by definition of quotient map, $Y\setminus V$ is open in $Y$, thus, $V$ is closed in $Y$. $(\impliedby)$ Let $U \subseteq Y$ be open in $Y$, then $q^{-1}(U)$ is open in $X$ due to continuity of $q$. Now, let $U=q^{-1}(V)$ be open in $X$ for some $V\subseteq Y$. Since, $U$ is saturated and open, by the proposition, $q(U) = V$ is open subset of $Y$, therefore, $q$ is a quotient map. OR Let $U = q^{-1}(V)$ be open in $X$, then, $X\setminus U = X \setminus q^{-1}(V)$ is closed in $X$. Using surjectivity of $q$, $X \setminus q^{-1}(V) = q^{-1}(Y) \setminus q^{-1}(V) = q^{-1}(Y\setminus V)$. Given that $q^{-1}(Y\setminus V)$ is closed in $X$, by proposition, $Y\setminus V$ is closed subset of $Y$ and therefore, $V$ is open subset of $Y$. Hence, $q$ is a quotient map.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.63}}$
+
+$\mathbf{(a)}$ Let $q_i:X_i \rightarrow X_{i+1}$ be a quotient map for all $i \in \{1,\ldots,n\}$. Then, $q:X_1\rightarrow X_{n+1}$ be their composition given by $q = q_n \circ \ldots \circ q_1$. Let $U$ be open subset of $X_{n+1}$, then $q^{-1}(U) = q_{1}^{-1}(q_{2}^{-1}(\ldots(q_{n}^{-1}(U))\ldots))$ is open subset of $X_1$ by iteratively applying the definition of quotient map. Similarly, let $q^{-1}(U) = q_{1}^{-1}(q_{2}^{-1}(\ldots(q_{n}^{-1}(U))\ldots))$ be open subset of $X_1$ for some $U$ in $X_{n+1}$. Using definition of quotient map $q_1$, we have $q_1(q^{-1}(U)) = q_{2}^{-1}(\ldots(q_{n}^{-1}(U))\ldots)$ is open in $X_2$. Similarly, applying the defintion of quotient maps $q_2, \ldots, q_{n}$ in an iterative fashion, we get, $U$ is open in $X_{n+1}$.\\~\\
+
+$\mathbf{(b)}$ Injective quotient map, $q$, is bijective. Continuity of $q$ follows from the preimage of any open subset of $Y$ being open in $X$. Injectivity of $q$ ensures that $\forall V \subseteq X, \exists\ U \subseteq Y$ s.t. $V = q^{-1}(U)$. Let $V=q^{-1}(U)$ be open in $X$, then, by using defintion of quotient map, $q(V) = U$ is open in $Y$. Thus, $q^{-1}$ is continuous and $q$ is a homeomorphism.\\~\\
+
+$\mathbf{(c)}$ $(\implies)$ Let $K\subseteq Y$ be closed in $Y$, then, $Y \setminus K$ is open in $Y$. By definition of quotient map, $q^{-1}(Y\setminus K)$ is open in $X$. By surjectivity of $q$, $q^{-1}(Y\setminus K) = q^{-1}(Y)\setminus q^{-1}(K) = X \setminus q^{-1}(K)$ which is open in $X$, therefore, $q^{-1}(K)$ is closed in $X$. $(\impliedby)$ Let $q^{-1}(K)$ be closed in $X$ for some $K\subseteq Y$, then, $X \setminus q^{-1}(K)$ is open in $X$. By surjectivity of $q$, $X \setminus q^{-1}(K) = q^{-1}(Y) \setminus q^{-1}(K) = q^{-1}(Y\setminus K)$ which is open in $X$. By definition of $q$, $Y\setminus K$ is open in $Y$, therefore, $K \subseteq Y$ is closed in $Y$.\\~\\
+
+$\mathbf{(d)}$ Let $U \subseteq X$ be saturated and open in $X$. Let $V \subseteq q(U)$, then, $q\big\vert_{U}^{-1}(V) = U \cap q^{-1}(V) \subseteq U$. Note that $q\big\vert_{U}^{-1}(V)$ open in $U$, implies that $U \cap q^{-1}(V)$ is open in $U$ i.e. $U \cap q^{-1}(V) = U \cap A$ for some open $A$ in $X$. If $U$ would not have been saturated, we wouldn't be able to say anything (open or closed) about $q^{-1}(V)$, and therefore, couldn't conclude that $V$ is open. However, $U$ is saturated, therefore, $q^{-1}(V) \subseteq U$ and $U \cap q^{-1}(V) = q^{-1}(V)$ is open. Using the definition of $q$, $V$ is open in $Y$. Since $V\subseteq q(U)$ where $q(U)$ is open in $Y$, $V$ is open in $q(U)$. Now, let $V \subseteq q(U)$ open in $q(U)$, therefore, $V = q(U) \cap A$ where $A$ is open in $Y$. Using definition of $q$, $q^{-1}(A)$ is open in $X$ and  $q\big\vert_{U}^{-1}(V) = U \cap q^{-1}(A)$ is then open in $U$. Also, $q\big\vert_{U}$ is surjective by definition, therefore, is a quotient map. Proceed similarly if $U$ is closed saturated subset of $X$.\\~\\
+
+$\mathbf{(e)}$ Let $U$ be open subset of $\sqcup_{\alpha}Y_{\alpha}$, then, $U = \sqcup_{\alpha}U_{\alpha}$ where $U_\alpha = U \cap Y_{\alpha}$ is open in $Y_{\alpha}$ and $q^{-1}(U) = \sqcup_{\alpha}q_{\alpha}^{-1}(U_{\alpha}) \subseteq \sqcup_{\alpha}X_{\alpha}$. By definition of $q_{\alpha}$, $q^{-1}(U) \cap X_{\alpha} = q_{\alpha}^{-1}(U_{\alpha})$ is open subset of $X_{\alpha}$, therefore, $q^{-1}(U)$ is an open subset of $\sqcup_{\alpha}X_{\alpha}$. Let $U$ be a subset of $\sqcup_{\alpha}Y_{\alpha}$, then, $U = \sqcup_{\alpha}U_{\alpha}$ where $U_\alpha = U \cap Y_{\alpha} \subseteq Y_{\alpha}$. Let $q^{-1}(U) = \sqcup_{\alpha}q_{\alpha}^{-1}(U_{\alpha}) \subseteq \sqcup_{\alpha}X_{\alpha}$ be open in $\sqcup_{\alpha}X_{\alpha}$, then $q^{-1}(U) \cap X_{\alpha} = q_{\alpha}^{-1}U_{\alpha}$ is open in $X_{\alpha}$. By the definition of $q_{\alpha}$, $U_{\alpha} = U \cap Y_{\alpha}$ is open in $Y_{\alpha}$, making $U$ to be open in $\sqcup_{\alpha}Y_{\alpha}$. Finally, surjectivity of $q$ follows by observing that $y \in Y_{\alpha} \xleftarrow{q_{\alpha}} x \in X_{\alpha} \iff (y,\alpha) \in \sqcup_{\alpha}Y_{\alpha} \xleftarrow{q} (x,\alpha) \in \sqcup_{\alpha}X_{\alpha}$ Thus, $q$ is a quotient map.
+
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.72}}$
+
+Let $Y_q$ be the set with quotient topology and $Y_g$ be the same set with different topology satisfying the characteristic property of quotient topology. Let $\operatorname{Id_{qg}}:Y_q \rightarrow Y_g$ and $\operatorname{Id}_{gq}: Y_{g}\rightarrow Y_{q}$. Note that $\operatorname{Id}_{qg} = \operatorname{Id}_{gq}^{-1}$. Using the characteristic property, we have, $\operatorname{Id}_{gq}$ is continuous because $\operatorname{Id}_{gq} \circ\ q = q$ is continuous and $\operatorname{Id}_{qg}$ is continuous because $\operatorname{Id}_{qg} \circ\ q = q$ is continuous. Therefore, $\operatorname{Id}_{qg}$ is a continuous bijective map from $Y_q$ to $Y_g$ with continuous inverse, hence, $\operatorname{Id}_{qg}$ is a homeomorphism from $Y_q$ to $Y_g$. Thus, $Y_g$ has same topology as $Y_q$ which is the quotient topology.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.83}}$
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 3.85}}$
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    \textbf{\large{4. Connectedness and Compactness}}
+\end{center}
+
+${\textbf{Ex. 4.3}}$
+
+Suppose $Y=\{[x_{\alpha}]:\alpha \in A\}$ be the set of equivalence classes where $|A|>1$ and $\forall \alpha \in A, [x_{\alpha}]$ is open. Let $q$ be the quotient map corresponding to the equivalence relation, then, $q^{-1}([x_{\alpha}])$ is open subset of $X$. Since $q^{-1}(Y) = X$, define $U_1 = [x_{1}]$ and $U_2 = \{[x_{\beta}]:\beta \in A-\{1\}\}$. Note that both $U_1$ and $U_2$ are open in $Y$, 
+ so are $q^{-1}(U_1)$ and $q^{-1}(U_2)$ in $X$ by defintion of quotient map. Now, $q^{-1}(U_1) \cap q^{-1}(U_2) = \phi$ and $q^{-1}(U_1) \cup q^{-1}(U_2) = q^{-1}(Y) = X$ implies that $X$ is disconnected, reaching a contradiction. Hence, $|A| = 1$ and there is only one equivalence class, namely $X$ itself.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.4}}$
+
+$(\implies)$ Let $X$ be disconnected, then, $\exists\ U_1, U_2 \subseteq X$ which are non-empty open subsets of $X$ s.t. $U_1 \cap U_2 = \phi$ and $U_1 \cup U_2 = X$. Define a function $f:X \rightarrow \{0,1\}$ as 
+
+$$f(x) = \left\{\begin{matrix}0 & x \in U_1\\1 & x \in U_2\end{matrix}\right.$$
+
+Then, $f$ is a non-constant function which is continuous because the preimage of open subsets $\phi, \{0\}, \{1\}$ and $\{0,1\}$ of $\{0,1\}$ are $\phi,U_1,U_2$ and $X$ respectively, which are open in $X$. $(\impliedby)$ Let the given function be $g:X \rightarrow \{0,1\}$, then, define $U_1 = g^{-1}(\{0\})$ and $U_2 = g^{-1}(\{1\})$ (both must be non-empty other wise function is constant) and note that $U_1$ and $U_2$ are preimages of open subsets of $\{0,1\}$ in a continuous function, hence, are open subsets of $X$ with $U_1 \cap U_2 = \phi$ and $U_1 \cup U_2 = f^{-1}(\{0,1\}) = X$ implying that $X$ is disconnected.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.5}}$
+
+$(\implies)$ Follows from definition of disconnected topological space. $(\impliedby)$ Let $f: X \rightarrow \sqcup_{\alpha \in A}V_{\alpha}$, where $|A| \geq 2$, be a homeomorphism. Define $U_1 = f^{-1}(V_1)$ and $U_2 = f^{-1}(\sqcup_{\alpha \in A - \{1\}}V_{\alpha})$, then $U_1$ and $U_2$ are open in $X$ because they are preimages of open subsets of $\sqcup_{\alpha \in A}V_{\alpha}$ in a continuous function, with $U_1 \cap U_2 = \phi$ and $U_1 \cup U_2 = X$, implying that $X$ is disconnected.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.10}}$
+
+For the sake of argument, let $M_U$ and $M_L$ represent the same connected manifold $M$ with nonempty boundary where $U$ and $L$ imply that they are homeomorphic to upper half space and lower half space, respectively. Let $D(M)$ be disconnected. Then, $\exists\ U,V \neq \phi$ such that $U$ and $V$ are open in $D(M)$, $U \cap V = \phi$ and $U \cup V = D(M)$. Since both $M_U$ and $M_L$ are closed connected subsets of $D(M)$, using $\textbf{4.9(a)}$, $M_U \subseteq U$ or $M_U \subseteq V$ and $M_L \subseteq U$ or $M_L \subseteq V$. If both $M_U$ and $M_L$ are subsets of $U$, then, $D(M) = M_U \cup M_L \subseteq U$, which contradicts that $V \neq \phi$. By symmetry, if $M_U$ and $M_L$ are subsets of $V$, then contradicts that $U \neq \phi$. Finally, if $M_U \subseteq U$ and $M_L \subseteq V$, then, $dM_U = dM_L = M_U \cap M_L \subseteq U \cap V$, contradicting $U \cap V = \phi$. Therefore, our assumption that $D(M)$ is disconnected is wrong, hence, $D(M)$ is connected.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.14}}$
+
+$\mathbf{(a)}$ Let $X$ be a path connected space, therefore, $\forall p,q \in X$, $\exists\ f_{p,q}:I\rightarrow X$ s.t. $f_{p,q}$ is continuous, $f_{p,q}(0) = p$ and $f_{p,q}(1) = q$. Let $g: X \rightarrow g(X)$ be continuous. Then, $\forall a,b \in g(X)$, define $h:I \rightarrow g(X)$ as $h = g\circ f_{p',q'}$ for some $p' \in g^{-1}(\{a\})$ and $q' \in g^{-1}(\{b\})$. Then, $h$ is continuous because it is a composition of continuous maps, $h(0) = g(f_{p',q'}(0)) = g(p') = a$ and $h(1) = g(f_{p',q'}(0)) = g(q') = b$. Therefore, $h$ is a path in $g(X)$ from $a$ to $b$. Since $a$ and $b$ were arbitrary, $g(X)$ is path-connected.\\~\\
+
+$\mathbf{(b)}$ Let $p,q \in \cup_{\alpha \in A}B_{\alpha}$ be arbitrary whera $a$ is a common point of the path-conencted subspaces. If $p,q \in B_{\beta}$ for some $\beta \in A$, then, since $B_{\alpha}$ is path-connected, there is a path in $B_{\alpha}$ from $p$ to $q$, hence a path in $\cup_{\alpha \in A}B_{\alpha}$ from $p$ to $q$. If $p \in B_{1}$ and $q \in B_{2}$, then define a path in $\cup_{\alpha \in A}B_{\alpha}$ from $p$ to $q$ as $h:I \rightarrow \cup_{\alpha \in A}B_{\alpha}$ given by,
+
+$$h(u) = \left\{\begin{matrix}f_{p,a}(2u) & 0 < u \leq 0.5 \\ g_{a,q}(2u-1) & 0.5 < u \leq 1\end{matrix}\right.$$
+
+Note that $h$ is continuous at $u=0.5$, hence, continuous in $I$, $h(0) = f_{p,a}(0) = p$ and $h(1) = g_{a,q}(1) = q$. Since $p$ and $q$ were arbitrary, $\cup_{\alpha \in A}B_{\alpha}$ is path-connected.\\~\\
+
+$\mathbf{(c)}$ Let $p = (p_1,\ldots,p_n), q = (q_1,\ldots,q_n) \in (X_1,\ldots,X_n)$, then $f_{p_1,q_1} \times \ldots \times f_{p_n,q_n}$ is the required path from $p$ to $q$.\\~\\
+
+$\mathbf{(d)}$ Use the fact that quotient map is continuous and surjective and argument in $\mathbf{(a)}$. 
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.22}}$
+
+$\mathbf{(a)}$ We must show that path components are disjoint and their union is $X$. Let $U$ and $V$ be distinct path components of $X$. Suppose $x \in U \cap V$, then by $\mathbf{4.13 (b)}$ $U \cup V$ is path-connected. By maximality of $U$ and $V$ we get $U \cup V = U = V$, hence, $U$ and $V$ are not distinct, a contradiction. Therefore, $U \cap V = \phi$. Now, let $x \in X$, then $\{x\}$ is a path-connected subset of $X$ containing $x$. Let $B_x$ be the set of all path-connected subsets containing $x$, then, their union is path-connected and it certainly is maximal, so it is a path-component containing $x$. Since $x$ was arbitrary, therefore, union of path-components is $X$.\\~\\
+
+$\mathbf{(b)}$ A path-connected subset is connected. Therefore, every path-component which is a path-connected subset, is also a connected subset of $X$, hence is contained in a single component. Path components are disjoint as proved in $\mathbf{(a)}$. Let $U$ be a component and $x \in U$. Then, there is a path component which contains $x$ (from $\mathbf{(a)}$), which itself is contained $U$, therefore, a component is disjoint union of path components.\\~\\
+
+$\mathbf{(c)}$ Since components cover $X$ and from $\mathbf{(b)}$, path-components cover $X$. Let $A$ be a path-connected subset of $X$, then it has a point common with some path component $B$. Using $4.13(b)$, $A \cup B$ is path-connected. By maximality of $B$, $A\cup B = B$, therefore $A$ is contained in $B$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.24}}$
+
+Using $\mathbf{4.8}$ and $\mathbf{4.13(a)}$ every space homeomorphic to a (path-)connected space is (path-)connected. Consider a manifold $M$ with or without boundary. Since, every basis $B$ of $M$ is homeomorphic to an open subset of $\mathbb{R}^n$ or an open subset of $\mathbf{H}^n$ which are (path-)connected, therefore, $B$ is (path-)connected. So, $M$ is locally connected and locally path-connected.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.28}}$
+
+$(\implies)$ Let $\mathcal{U}_X$ be an open cover of $A$ containing open subsets of $X$ whose union contains $A$. Define a cover $\mathcal{U}_A$ as $\mathcal{U}_{A} = \{A\cap U: U \in \mathcal{U}_X\}$ which contains open subsets of $A$ whose union is $A$. Since $A$ is compact in the subspace topology, then, there is a finite subcover i.e. $\exists\ V_1, \ldots, V_k \in \mathcal{U}_A$ s.t. $\cup_{i=1}^{k}V_i = A$. Note that $V_i = A \cap U_i$, therefore, the corresponding $U_i$'s form a finite subcover of $\mathcal{U}_X$ containing $A$. $(\impliedby)$ Let $\mathcal{U}_A$ be an open cover containing open subsets of $A$ whose union is $A$. Then, for each $U_\alpha \in \mathcal{U}_A$, $\exists\ V_\alpha$ which is an open subset of $X$, s.t., $U_\alpha = A \cap V_\alpha$. The collection of all $V_\alpha$'s form an open cover of $A$ containing open subsets of $X$ whose union contains $A$. So, $\mathcal{U}_X$ has a finite subcover, i.e., $\exists V_1, V_2, \ldots, V_k$ s.t. $A \subseteq \cup_{i=1}^{k}V_k$. The collection of corresponding $U_i$'s where $U_i = A \cap V_i$ is a finite subcover of $A$ containing open subsets of $A$ whose union is $A$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.29}}$
+
+Let $(A_i)_{i=1}^{n}$ be finitely many compact subsets of of $X$. Let $\mathcal{U}_{A_i}$ be an open cover containing open subsets of $A_i$ whose union is $A_i$. Then, $\cup_{i=1}^{n}\mathcal{U}_{A_i}$ is an open cover of $\cup_{i=1}^{n}A_i$. Since, $A_i$'s are compact, there exists finite subcovers, i.e., $\exists\ (U_{A_{i_j}})_{j=1}^{k_i} \in \mathcal{U}_{A_i}$ whose union is $A_i$. Then, a collection of these finite subcovers is a subcover of $\cup_{i=1}^{n}\mathcal{U}_{A_i}$. Since this collection is finite, therefore, using $\mathbf{4.28}$, $\cup_{i=1}^{n}A_i$ is compact.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.37}}$
+
+Let $q$ be the quotient map from $M\sqcup M$ to $D(M) = M \cup_{h} M$. Since, $M$ is compact, $M \sqcup M$ is compact. Using $\mathbf{4.36(d)}$, $D(M)$ is compact.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.38}}$
+
+Suppose $\cap_{n}F_n = \phi$, then $\cup_{n}X\setminus F_n = X$. Since $F_i$ is closed, therefore, $X\setminus F_i$ is open and $\{X\setminus F_n: n\in \mathbb{N}\}$ is an open cover of $X$. Since $X$ is compact, there exists a finite subcover, $\{X\setminus F_{n_i}: i \in \{1,2,\ldots,k\}\}$. Since, $F_i \supseteq F_{i+1}$, therefore, $X\setminus F_i \subseteq X\setminus F_{i+1}$ and we get $X\setminus F_{n_k} = X$, which implies $F_{n_{k}} = \phi$ which is a contradiction (because $F_{i} \neq \phi$). So, $\cap_{n}F_n \neq \phi$.\\~\\
+
+Alternatively, \
+
+Note that (using $\mathbf{4.36(a)}$) $F_i$ is compact. Let $\cup_{n\geq 1} F_n = \phi$, then, $\cup_{n\geq 2} X\setminus F_n \supseteq F_1$, therfore, $\{X\setminus F_i: i \geq 2\}$ is an open cover of $F_1$. So, it has a finite subcover, say, $\{X\setminus F_{k_i}: i \in \{1,2,\ldots,m\}\}$ where $F_{k_i} \supseteq F_{k_{i+1}}$. Therefore, $F_1 \subseteq \cup_{i=1}^{m}X\setminus F_{k_{i}} \subseteq X\setminus F_{k_{m}}$. So, $F_1 \cap F_{k_{m}} = \phi$, but $F_{k_{m}} \subseteq F_1$, which means, $F_{1}\cap F_{k_{m}} = F_{k_{m}} = \phi$. This contradicts the fact that $F_{k_{m}}$ is non empty. Therefore, $\cup_{n\geq 1} F_n \neq \phi$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.49}}$
+
+$(\mathbf{4.46})$ Let $(p_k)$ be an arbitrary bounded sequence in $\mathbb{R}^n$. Then, $\exists\ M > 0$ s.t. $p_k \in [-M,M]^n$ for all $k$.
+\begin{itemize}
+    \item $[-M,M]^n$ is a closed and bounded subset of $\mathbb{R}^n$ $\implies $ it is compact.
+    \item Compactness $\implies $ Limit point compactness.
+    \item For first countable Hausdorff spaces, limit point compactness $\implies$ Sequential compactness.
+\end{itemize}
+
+Note that $\mathbb{R}^n$, being a metric space (equipped with some metric (*)), is first countable and Hausdorff, and so is its subset $[-M,M]^n$ in the subspace topology. By above arguments, $[-M,M]^n$ is sequentially compact. Hence, by the definition of sequential compactness, the sequence $(p_k)$ has a subsequence which converges to a point in $[-M,M]^n$.\\~\\
+
+(*) Same metric which is being used to evaluate convergence.
+
+A direct argument based on the following results is also possible:
+
+- For metric spaces, compactness, limit point compactness and sequential compactness are all equivalent properties.
+- Subset of a metric space is a metric subspace with metric inherited from the original space.\\~\\
+
+$(\mathbf{4.47})$ $(\implies)$ Let $A$ be a subset of $\mathbb{R}^n$ which is a complete metric space and $x$ be a limit point of $A$. Then, $\exists$ a Cauchy sequence $(x_k)$ s.t. $x_k \in A$ and $x_k \rightarrow x$. Since, $A$ is complete, $x \in A$. Therefore, $A$ contains all of its limit points, hence is closed. $(\impliedby)$ Let $A$ be closed in $\mathbb{R}^n$ and $(x_k)$ be a Cauchy sequence in s.t. $x_k \in A$. Since, a Cauchy sequence is bounded, $(x_k)$ is bounded and hence, by $\mathbf{4.46}$, has a convergent subsequence. A Cauchy sequence with convergent subsequence is convergent. Therefore, $(x_k)$ converges to say $x$, where $x$ is a limit point of $A$. Since, $A$ is closed, $x \in A$. Therefore, $A$ is a complete metric space. Finally, $\mathbb{R}^n$ is closed in $\mathbb{R}^n$, therefore, is a complete metric space.\\~\\
+
+$\mathbf{(4.48)}$ Let $X$ be a compact metric space and $(x_k)$ be a Cauchy sequence s.t. $x_k \in X$. By $\mathbf{4.45}$, $X$ is sequentially compact, therefore, $(x_k)$ has a convergent subsequence. A Cauchy sequence with a convergent subsequence is convergent (to some point in $X$). Therefore, $X$ is complete.
+
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.58}}$
+
+$A=\mathbb{S}^n\setminus\{0,0,\ldots,0,1\}$ is an open subset of $\mathbb{S}^n$ and is homeomorphic to $\mathbb{B}^n$. The closure of $A$ is given by $\bar{A} = \mathbb{S}^n$ but $\bar{A}\not\approx \bar{\mathbb{B}}^n$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.61}}$
+
+Clearly, $\phi_i^{-1}(B_{r}(x))$ is an open subset of $X$ because $\phi_i$ is continuous. Now, let $p \in U_i$ be mapped to $x \in \hat{U_i}$ where $x$ is irrational. Since $\hat{U_i}$ is open, $\exists\ r(x)>0$ s.t. $B_{r(x)}(x) \subseteq \hat{U_i}$. Now, even if $r(x)$ is irrational, $\exists\ x'$ and $r'$ s.t. both $x'$ and $r'$ are rational and $x \in B_{r'}(x')$. And therefore, $\phi_i^{-1}(B_{r'}(x'))$ which is an element of the basis, contains $x$. Finally, we conclude that $U_i = \cup_{x \in \hat{U_i}}\phi^{-1}B_{r}(x)$ where $r$ and $x$ are rational.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%TODO
+% ${\textbf{Ex. 4.62}}$
+
+% Proof similar to ${\textbf{4.61}}$
+
+% \vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.67}}$
+
+Let $X_1,X_2,\ldots,X_n$ be locally compact spaces and $(X_1, \ldots, X_n)$ be the corresponding product space. Let $p = (p_1,\ldots,p_n) \in (X_1, \ldots, X_n)$, then, for each $i$, $\exists\ U_i$ which is open in $X_i$ such that there is $V_i$ which is compact in $X_i$ and $p_i \in U_i \subseteq V_i$. Then, $(U_1,\ldots,U_n)$ is a neighbourhood of $p$ and is open in $(X_1, \ldots, X_n)$. Since, finite product of compact spaces is compact, $(V_1,\ldots,V_n)$ is compact in $(X_1,\ldots,X_n)$. Also, $p \in (U_1,\ldots,U_n) \subseteq (V_1,\ldots,V_n)$, therefore, $(X_1, \ldots, X_n)$ is locally compact.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.70}}$
+
+Let $X$ be a Baire space and $A$ be a meager subset. Then, $A = \cup_{\alpha \in A} U_{\alpha}$ where $U_\alpha$ is nowhere dense. Note that $U_{\alpha} \subseteq \bar{U}_{\alpha}$, therefore, $X \setminus U_{\alpha} \supseteq X\setminus \bar{U}_{\alpha}$ and $X \setminus A \supseteq \cap_{\alpha \in A}X\setminus \bar{U}_{\alpha}$. Since, $X$ is a Baire space, $\cap_{\alpha \in A}X\setminus \bar{U}_{\alpha}$ is dense. So, $X \setminus A$ is dense, hence, $A$ has dense complement.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.73}}$
+
+%%TODO
+
+Let $x \in X$, then choose $A \in \mathcal{A}$ such that $x \in A$. Since $A$ intersects only finitely many other sets in $\mathcal{A}$, $X$ is locally finite. 
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.78}}$
+
+Let $X$ be a compact Hausdorff space. Let $A$ and $B$ be disjoint closed subsets of $X$. Then, by $\mathbf{4.36(a)}$, $A$ and $B$ are compact. Finally, by $\mathbf{4.34}$, there are disjoint open subsets $U,V \subseteq X$ such that $A\subseteq U$ and $B \subseteq V$. Therefore, $X$ is normal.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 4.79}}$
+
+Let $X$ be a normal space and $A$ be a closed subspace of $X$. Let $U_1$ and $U_2$ be disjoint closed subset of in $A$. Then, $U_1$ and $U_2$ are disjoint and closed in $X$ (by $\mathbf{3.5(a)}$). Since, $X$ is normal, $\exists$ disjoint open subsets $V_1,V_2\subseteq X$ such that $U_1 \subseteq V_1$ and $U_2 \subseteq V_2$. Then, $A \cap V_1$ and $A \cap V_2$ are disjoint and open in $A$ such that $U_1 \subseteq A \cap V_1$ and $U_2 \subseteq A \cap V_2$. Therefore, $A$ is normal.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%TODO
+% ${\textbf{Ex. 4.87}}$
+
+
+% \vspace{0.2in}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{center}
+    \textbf{\large{5. Cell Complexes}}
+\end{center}
+
+${\textbf{Ex. 5.3}}$
+
+$(\implies)$ Let $U$ be open in $Y$. Since $f$ is continuous $f^{-1}(U)$ is open in $X$. By definition of coherence, $f^{-1}(U) \cap B$ is open for every $B$. Therefore, $f\big\vert_{B}$ is continuous. $(\impliedby)$ Let $U$ be open subset of $Y$. Since $f\big\vert_{B}$ is continuous for every $B$, $f\big\vert_{B}^{-1}(U) = B \cap f^{-1}(U)$ is open in in $B$ for every $B$. By definition of coherence, $f^{-1}(U)$ is open in $X$, hence, $f$ is continuous. 
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.31}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.34}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.40}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\end{document}

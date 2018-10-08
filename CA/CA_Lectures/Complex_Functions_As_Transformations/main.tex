@@ -1,0 +1,81 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,mathtools}
+\usepackage{titlesec}
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\titleformat{\section}[runin]{\normalfont\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}[runin]{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\def\tf{\textbf}
+\def\tt{\textit}
+\def\mc{\ensuremath\mathcal}
+\def\mf{\ensuremath\mathbf}
+\def\mt{\ensuremath\mathit}
+\def\mb{\ensuremath\mathbb}
+\def\td{\ensuremath\tilde}
+\def\N{\ensuremath\mb{N}}
+\def\Z{\ensuremath\mb{Z}}
+\def\C{\ensuremath\mb{C}}
+\def\R{\ensuremath\mb{R}}
+\def\S{\ensuremath\mb{S}}
+\def\Ber{\ensuremath\mf{Ber}}
+\def\det{\ensuremath\mf{det}}
+\def\sigm{\ensuremath\mf{sigm}}
+\def\diag{\ensuremath\mf{diag}}
+\def\dom{\ensuremath\mf{dom}}
+\def\cond{\ensuremath\mf{cond}}
+\def\sign{\ensuremath\mf{sign}}
+\def\bd{\ensuremath\mf{bd}}
+\def\rto{\ensuremath\rightarrow\ }
+\def\Rto{\ensuremath\Rightarrow\ }
+\def\lto{\ensuremath\leftarrow\ }
+\def\Lto{\ensuremath\Leftarrow\ }
+\def\xrto{\ensuremath\xrightarrow}
+\def\xRto{\ensuremath\xRightarrow}
+\def\xlto{\ensuremath\xleftarrow}
+\def\xLto{\ensuremath\xLeftarrow}
+\def\rvec{\ensuremath\overrightarrow}
+\def\lvec{\ensuremath\overleftarrow}
+
+\providecommand\P[1]{}
+\renewcommand\P[1]{\mb{P}\{#1\}}
+\providecommand\E[1]{}
+\renewcommand\E[1]{\mb{E}[#1]}
+\providecommand\Var[1]{}
+\renewcommand\Var[1]{\mf{Var}(#1)}
+\providecommand\p[2]{}
+\renewcommand\p[2]{\frac{\partial #1}{\partial #2}}
+\providecommand\pp[2]{}
+\renewcommand\pp[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\providecommand\ps[3]{}
+\renewcommand\ps[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\providecommand\d[2]{}
+\renewcommand\d[2]{\frac{d #1}{d #2}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+    
+\begin{document}
+    
+\title{Complex Functions as Transformations - Notes}
+\author{Dhruv Kohli}
+\maketitle
+\section{Power Series}
+\begin{itemize}
+    \item If $P(z)$ is power series of $F(z)$ about $k$ then the radius of convergence of the power series is the distance of $k$ to the nearest singularity. $P(z)$ converges for all the points inside the disc and for none/some/all except singularity points on the boundary of disc and diverges outside disc.
+    \item A complex power series $P(z)$ is said to converge at $a$ to the point $A$ if for all $\epsilon > 0$, there exists $N \in \N$ s.t. $|A-P_n(a)|<\epsilon$ for every value of $n$ greater than $N$. Also, if $n>m>N$ then $P_{m}(a)$ and $P_{n}(a)$ both lie within the disc, and consequently the distance between them must be less than the diameter of the disc: $|P_{n}(a)-P_{m}(a)| < 2\epsilon$. Conversely, it can be shown that if this condition is met then $P(a)$ converges.
+    \item If $P(z)$ is absolutely convergent at some point, then it will also be convergent at that point. The converse is not true. Example $P(z)=\sum z^j/j$ at $-1$.
+    \item If $P(z)$ converges at $z=a$, then it will also converge (in fact absolutely converge) everywhere inside the disc $|z|<|a|$.
+    \item If $P(z)$ diverges at $z=d$, then it will also diverge everywhere outside the circle $|z|=|d|$.
+\end{itemize}
+\end{document}
+        

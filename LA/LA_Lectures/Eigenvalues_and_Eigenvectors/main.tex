@@ -1,0 +1,352 @@
+% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
+%
+% In principle, this file can be redistributed and/or modified under
+% the terms of the GNU Public License, version 2.
+%
+% However, this file is supposed to be a template to be modified
+% for your own needs. For this reason, if you use this file as a
+% template and not specifically distribute it as part of a another
+% package/program, I grant the extra permission to freely copy and
+% modify this file as you see fit and even to delete this copyright
+% notice. 
+
+\documentclass{beamer}
+\usepackage{verbatim} 
+
+
+% There are many different themes available for Beamer. A comprehensive
+% list with examples is given here:
+% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% You can uncomment the themes below if you would like to use a different
+% one:
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{boxes}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{default}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+\title{Eigenvalues and Eigenvectors}
+
+% A subtitle is optional and this may be deleted
+%\subtitle{Optional Subtitle}
+
+\author{Dhruv Kohli}
+% - Give the names in the same order as the appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation.
+
+\institute[Indian Institute of Technology, Guwahati] % (optional, but mostly needed)
+{
+  Department of Mathematics\\
+  Indian Institute of Technology, Guwahati
+}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{Linear Algebra and its Applications}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
+% \logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\usepackage{biblatex}
+\addbibresource{ref.bib}
+\setbeamertemplate{bibliography item}{}
+
+% Let's get started
+\begin{document}
+\setlength{\abovedisplayskip}{1pt}
+\setlength{\belowdisplayskip}{1pt}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+% Section and subsections will appear in the presentation overview
+% and table of contents.
+\begin{comment}
+\section{Motivation}
+\begin{frame}{Motivation}{}
+  \begin{itemize}
+  \item In mechanics, how to determine the principal directions of pure compression or tension with no shear?
+  \end{itemize}
+\end{frame}
+\end{comment}
+
+\section{Introduction}
+\begin{frame}{Introduction}
+\begin{itemize}
+    \item $Ax = \lambda x$ is a nonlinear equation. Given $\lambda$, it becomes linear in $x$.
+    \item Solving $Ax=\lambda x \iff (A-\lambda I)x = 0$ is to find $x$ in $N(A-\lambda I)$ where $\lambda$ is chosen so that $A-\lambda I$ has a nullspace. $x=0$ is always a solution, but is not interesting.
+    \item $N(A-\lambda I)$ must contain non-zero vector. It must be singular i.e. $\lambda$ is an eval. of $A$ $\iff det(A-\lambda I) = 0$ which is the characterisitc equation. Each $\lambda$ is associated with an evec. $x$.
+    \item Examples - Diagonal and triangular matrices have evals. on their diagonal and evals. of Projection matrices are $1$ and $0$ (Why$?$).
+    \item Geometrically, we find $\lambda$ and $x$ s.t. $Ax \parallel x$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction contd.}
+\begin{block}{Result 1}
+A matrix $A_{n\times n}$ has $n$ evals. $\{\lambda_i\}_{i=1}^{n}$ where,\\
+\begin{align*}
+    \sum_{i=1}^{n}\lambda_i = tr(A),\ \ \prod_{i=1}^{n}\lambda_i = det(A)
+\end{align*}
+\textit{Proof - Hints}:
+\begin{align*}
+    A-\lambda I = \begin{bmatrix}a_{11}-\lambda&a_{12}&.&a_{1n}\\
+                                a_{21}&a_{22}-\lambda&.&a_{2n}\\
+                                .&.&.&.\\
+                                a_{n1}&a_{n2}&.&a_{nn}-\lambda\end{bmatrix}
+\end{align*}
+$\Sigma$ evals. $=$ $(-1)^{n-1} \times $ coefficient of $\lambda^{n-1}$ in $det(A-\lambda I) = 0$ which equals $tr(A)$. $\prod$ evals. $=$  constant term in $det(A-\lambda I)$. Or put $\lambda = 0$ in $det(A-\lambda I) = \prod_{i=1}^{n}(\lambda_1-\lambda)$ (Why $?$).
+\end{block}
+\end{frame}
+
+\section{Diagonalization of a Matrix}
+
+\begin{frame}{Diagonalization of a Matrix}
+\begin{block}{Result 2}
+Suppose $A_{n\times n}$ has $n$ linearly independent vectors which are placed in the columns of a matrix $S$, then $S^{-1}AS$ is a diagonal matrix $\Lambda$ whose diagonal entries are evals. of $A$.\\
+\textit{Proof - Hints}:\\
+Note that $S$ is invertible.
+\begin{align*}
+    AS = [Ax_1,\ldots,Ax_n] = [\lambda_1x_1,\ldots,\lambda_nx_n] = S \ diag(\lambda_1,\ldots,\lambda_n)
+\end{align*}
+Therefore, $AS = S \Lambda$. Also, note that $A = S\Lambda S^{-1}$.
+\end{block}
+\begin{block}{Result 3}
+If $A_{n\times n}$ has $n$ distinct evals. then $n$ evecs. are linearly independent.\\
+\textit{Proof - Hints}: For $n=2$,
+\begin{align*}
+    0 = c_1x_1 + c_2x_2 \Rightarrow A0 = 0 = c_1\lambda_1x_1 + c_2\lambda_2x_2
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Diagonalization of a Matrix contd.}
+\begin{block}{Result 4}
+The evals. of $A^k$ are $\{\lambda_{i}^k\}_{i=1}^{n}$ and every evec. of $A$ is an evec. of $A^k$. If $S$ diagonalizes $A$, then, it also diagonalizes $A^k$.\\
+\textit{Proof - Hints}: Let $\lambda_i$ be an eval. of $A$ and $x_i$ be the associated evec. Then, $A^kx_i = A^{k-1}\lambda_ix_i \ldots = \lambda_i^kx_i$. If $S$ diagonalizes $A$, then, $S^{-1}A^{k}S = S^{-1}ASS^{-1}A^{k-1}S \ldots = \Lambda^k$.
+\begin{itemize}
+    \item If $A$ is invertible, this rule also applies to its inverse.
+    \item Analogy of this rule to product of two different matrices does not hold (construct an example) unless their evecs. are same.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Diagonalization of a Matrix contd.}
+\begin{block}{Result 5}
+Diagonalizable matrices share the same evec. matrix $S$ if and only if $AB=BA$ i.e. they commute.\\
+\textit{Proof - Hints}:\\
+$(\implies)$ $AB = S^{-1}\Lambda_1SS^{-1}\Lambda_2S = S^{-1}\Lambda_1\Lambda_2S = BA$\\
+$(\impliedby)$ Let $x$ be evec of $A$, then $ABx = BAx = \lambda Bx$, therefore, $Bx$ is an evec. of $A$. If we assume that all evals. of $A$ are distinct, then all eigenspaces are one-dimensional, and since $x$ and $Bx$ are evec. of $A$ with same eval. $\lambda$, $Bx$ must be a multiple of $x$. So, $x$ is evec. of $B$ (try to prove when evals. are repeated).
+\end{block}
+\end{frame}
+
+\section{Complex Matrices}
+\begin{frame}{Complex Matrices}
+\begin{itemize}
+    \item $\bar{x}^{T}y$ is different from $\bar{y}^Tx$.
+    \item $A$ Hermitian is $A^{H} = \bar{A}^T$ and $A$ is said to be Hermitian if $A = A^{H}$ and it contains real diagonal entries and the off-diagonal entries are mirror images across main diagonal.
+    \item Inner product of $x$ and $y$ is $x^Hy$. Orthogonal vectors have $x^{H}y = 0$.
+    \item The squared length of $x$ is $x^Hx = \sum_{i=1}^{n}|x_i|^2$.
+    \item $(AB)^H = B^HA^H$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Complex Matrices contd.}
+\begin{block}{Result 6}
+If $A = A^H$, then for all complex real vectors $x$, the number $x^HAx$ is real and therefore, evals. of $A$ are real.\\
+\textit{Proof - Hints}: $(x^HAx)^H = x^HA^Hx = x^HAx$, therefore, $x^HAx$ is real. Let $\lambda$ be an eval. of $A$ which is possibly complex. Then, $Ax = \lambda x \Rightarrow x^HAx = \lambda x^Hx \Rightarrow \lambda = \frac{x^HAx}{x^Hx}$. The denominator is real by definition and the numerator is real because $A$ is Hermitian, therefore, $\lambda$ is real.
+\end{block}
+
+\begin{block}{Result 7}
+Two evecs. of a real symmetric matrix or a Hermitian matrix, if they come from different evals., are orthogonal to one another.\\
+\textit{Proof - Hints}: Let $x$ and $y$ be evecs. associated with different evals. Then, $x^H\lambda_2y = x^HAy = x^HA^Hy = (Ax)^Hy = \lambda_1 x^Hy$, therefore, $x^Hy(\lambda_1-\lambda_2) = 0$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Complex Matrices contd.}
+\begin{itemize}
+    \item When $A$ is Hermitian, the diagonalizing matrix can be chosen so that the columns are orthonormal.
+    \item If $A$ is real-symmetric then evecs. are also real.
+    \item Spectral Theorem: A real symmetric matrix can be factored into $Q\Lambda Q^T$ where columns of $Q$ are orthonormal evecs and evals in $\Lambda$ ($Q^{-1}=Q^T$). Also, $A = Q\Lambda Q^T$ which can be written as the combinations one dimensional projections onto line through evec $x_i$, i.e. $\sum_{i=1}^{n}\lambda_i x_ix_i^T$.
+    \item Surely, if the eigenvalues of a symmetric matrix are distinct then $A = Q\Lambda Q^T$, but, even if the symmetric matrix has repeated evals., it still has a complete set of orthonormal evecs. [We will see soon.]
+    \item Complex matrix with orthonormal columns is called Unitary matrix. $U^HU = I, UU^H = I$ and $U^H = U^{-1}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Complex Matrices contd.}
+\begin{block}{Result 8}
+Unitary matrix preserve distances, have evals. with absolute value of $1$ and evecs. corresponding to different evals. are orthogonal.\\
+\textit{Proof - Hints}:\\
+\begin{align*}
+    &(Ux)^H(Uy) = x^HU^HUy = x^Hy, (Ux)^H(Ux) = x^Hx\\
+    &Ux = \lambda x\Rightarrow (Ux)^H(Ux) = (\lambda x)^{H}(\lambda x) \Rightarrow |\lambda| = 1\\
+    &x^Hy = (Ux)^HUy = \lambda_1^{H}\lambda_2 x^{H}y \Rightarrow x^{H}y(\lambda_1^{H}\lambda_2-1) = 0
+\end{align*}
+Since $\lambda_1 \neq \lambda_2$ and $|\lambda_1| = |\lambda_2| = 1$ $\lambda_1^H\lambda_2 \neq 1$, therefore, $x^Hy = 0$.
+\end{block}
+\end{frame}
+
+\begin{frame}{Complex Matrices contd.}
+\begin{block}{Result 9}
+Skew-Hermitian matrix have $K^H = -K$. If $A$ is Hermitian then $K=iA$ is skew-Hermitian and eigenvalues of a skew-Hermitian matrix are imaginary.\\
+\textit{Proof - Hints}: $K^H = A^H (-i) = -iA^H = -iA = -K$. Note that $x^HKx$ is imaginary $\because (x^HKx)^H = x^HK^Hx = -x^HKx$. Therefore, $\lambda = \frac{x^HKx}{x^Hx}$ has imaginary numerator and real denominator.
+\end{block}
+\begin{itemize}
+    \item Diagonal entries of $K$ are imaginary (allowing zero).
+    \item Evecs. of skew-Hermitian corresponding to different evals. are still orthogonal (easy proof) and $K$ can be decomposed into $K=U\Lambda U^{H}$ with unitary $U$ even if evals. are repeated (We will see this soon).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Complex Matrices contd.}
+\begin{itemize}
+    \item A Hermitian or symmetric matrix can be compared to a real number (evals. are real).
+    \item A Unitary matrix can be compared to a number on unit circle i.e. a complex number of absolute value $1$ (evals. have absolute value of $1$).
+    \item A skew-Hermitian matric can be compared with pure imaginary numbers (evals. are imaginary).
+    \item Normal matrices can be compared with all complex numbers (evals. are of form $a+ib$).
+    \item A nonnormal matrix without orthogonal evecs. belong to none of these classes and is outside the whole analogy.
+\end{itemize}
+\end{frame}
+
+\section{Similarity Transformation}
+\begin{frame}{Similarity Transformation}
+\begin{itemize}
+    \item The matrices $A$ and $M^{-1}AM$ are similar. Going from one to the other is similarity transformation.
+    \item These combination $M^{-1}AM$ arise upon change of variables in differential or difference equation.
+    \begin{align*}
+        \frac{du}{dt} = Au \xrightarrow{u = Mv} M\frac{dv}{dt} = AMv \text{ or } \frac{dv}{dt} = M^{-1}AMv
+    \end{align*}
+\end{itemize}
+\begin{block}{Result 10}
+Suppose $B=M^{-1}AM$ then both $A$ and $B$ have same evals. Every evec. $x$ of $A$ corresponds to evec. $M^{-1}x$ of $B$.\\
+\textit{Proof - Hints}: $Ax = \lambda x \Rightarrow MBM^{-1}x = \lambda x \Rightarrow BM^{-1} \lambda M^{-1}x$. Alternatively, $det(A-\lambda I) = det(MBM^{-1}-\lambda MM^{-1}) = det(M)det(B-\lambda I)det(M^{-1}) = det(B-\lambda I)$
+\end{block}
+\begin{itemize}
+    \item Every $M^{-1}AM$ has same number of independent evecs. as $A$ (each evec. is multiplied with $M^{-1}$).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{itemize}
+    \item Every linear transformation is represented by a matrix. The matrix depends on the choice of basis. If we change the basis by $M$ we change the matrix $A$ to a similar matrix $B$.
+    \item \textbf{Similar Matrices represent the same transformation $T$  with respect to different bases.}
+\end{itemize}
+\begin{exampleblock}{Change of Basis = Similarity Transformation}
+The matrices $A$ and $B$ which represent the same linear transformation with respect to different bases are similar:\\
+\begin{align*}
+    [T]_{V \text{ to } v} &= [I]_{v \text{ to } V} [T]_{v \text{ to } v} [I]_{V \text{ to } v}\\
+    B \ \ \ \ &= M^{-1}\ \ \ \ A\ \ \ \ \ \ M
+\end{align*}
+\end{exampleblock}
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{itemize}
+    \item The aim is to find an $M$ which can most simplify $A$ i.e. $M^{-1}AM$ becomes diagonal which is equivalent to finding evecs. of $A$ and fill in the columns of $M$ with them. The algebraist says the same thing in the language of Linear Transformation: Choose a basis consisting of evecs.
+    \item $M^{-1}AM$ do not arise in solving $Ax=b$. There we multiply $A$ on LHS by a matrix that subtracts a multiple of one row from another. Such a transformation preserved null space and row space but normally changes eigenvalues.
+    \item Eigenvalues are calculated by a sequence of similarities. The matrix goes gradually towards a triangular form, and the eigenvalues gradually appear on the diagonal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{block}{Result 11 - Schur's Lemma}
+There is a unitary matrix $M=U$ s.t $U^{-1}AU = T$ is triangular. The eigenvalues of $A$ appear along the diagonal of this similar matrix $T$.\\
+\textit{Proof - Hints}: $A$ will have atleast one eval. and therefore has atleast one \textbf{unit} evec. Put this evec. in the first column of a matrix $U_1$ and fill the rest of the matrix such that $U_1$ becomes unitary.
+\begin{align*}
+    U_1A = U_1\begin{bmatrix}\lambda_1&*&\ldots&*\\0&*&\ldots&*\\\vdots&\vdots&\ldots&\vdots\\0&*&\ldots&*\end{bmatrix} \implies U_1^{-1}AU_1 = \begin{bmatrix}\lambda_1&*&\ldots&*\\0&*&\ldots&*\\\vdots&\vdots&\ldots&\vdots\\0&*&\ldots&*\end{bmatrix}
+\end{align*}
+\end{block}
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{block}{Result 11 contd.}
+Now, work recursively with RHS matrix with first column and first row removed. Let $M_2$ be the unitary matrix corresponding to the submatrix then,
+\begin{align*}
+U_2 = \begin{bmatrix}1&0&.&0\\0&&&\\0&&M_2&\\0&&&\end{bmatrix}\implies U_2^{-1}U_1^{-1}AU_1U_2 = \begin{bmatrix}\lambda_1&*&.&*\\0&\lambda_2&.&*\\\vdots&\vdots&.&\vdots\\0&0&.&*\end{bmatrix}
+\end{align*}
+The product $U = U_1U_2U_3\ldots$ is still a unitary matrix.
+\end{block}
+This result applies to all matrices, with no assumption that $A$ is diagonalizable. This can also be used to prove that the powers $A^k$ approach zero when all $|\lambda_i|<1$, and the exponentials $e^{At}$ approach $0$ when all $Re\lambda_i < 0$ - even without full set of evecs.
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{block}{Result 12 - Spectral Theorem}
+Every real symmetric matrix can be diagonalized by an orthogonal matrix and every hermitian matrix can be diagonalized with unitary matrix.
+\begin{align*}
+(real) \ \ Q^{-1}AQ = \Lambda \ or\  A = Q\Lambda Q^T\\
+(complex) \ \ U^{-1}AU = \Lambda \ or\  A = U\Lambda U^{H}
+\end{align*}
+\textit{Proof - Hints}: From Schur's lemma, $U^{-1}AU = T$. Since $A = A^{H}$, $T = T^H$. Therefore, $T$ is diagonal and equals $\Lambda$.
+\end{block}
+Every Hermitian matrix with $k$ different evals. has a spectral decomposition into $A= \sum_{i=1}\lambda_i P_i$, where $P_i$ is the projection onto the eigenspace for $\lambda_i$. Since there is a full set of evecs., the projection add up to the identity and since the eigenspaces are orthogonal, $P_jP_i = 0$.
+\end{frame}
+
+\begin{frame}{Similarity Transformation contd.}
+\begin{itemize}
+    \item For which matrices $T = \Lambda$? Hermitian, skew-Hermitian and unitary matrices are in this class. They correspond to numbers on real axis, imaginary axis and the unit circle.
+    \item The whole class contain matrices (corresponding to all complex numbers) which are called normal.
+\end{itemize}
+\begin{block}{Result 13}
+Matrix $N$ is normal if it commutes with $N^H: NN^H = N^HN$. For such matrices and no others $T = U^{-1}NU$ is diagonal $\Lambda$. Normal matrices are exactly those that have a complete set of orthonormal evecs.\\
+\textit{Proof - Hints}: If $N$ is normal then $T$ is normal. A triangular normal matrix is a diagonal matrix.
+\end{block}
+\end{frame}
+
+\section{Bibliography}
+\begin{frame}[t]
+    \frametitle{Bibliography}
+    \nocite{*}
+    \printbibliography
+\end{frame}
+
+\end{document}
+
+

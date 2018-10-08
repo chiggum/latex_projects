@@ -1,0 +1,1781 @@
+%This is a LaTeX template for homework assignments
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{comment}
+
+\begin{document}
+\raggedright
+
+
+\begin{center}
+    \textbf{\Large{Solution Manual}}\\~\\
+    \textit{prepared by}\\~\\
+    Dhruv Kohli\\~\\
+    \textit{for}\\~\\
+    \textbf{\Large{Stochastic Processes, 2nd ed.}}\\~\\
+    \textit{by}\\~\\
+    \large{Sheldon M. Ross}~\\
+\end{center}
+\clearpage
+
+\begin{center}
+    \textbf{\large{2. The Possion Process}}
+\end{center}
+
+${\textbf{Ex. 2.1}}$
+\begin{align*}
+\mathbb{P}\{N(h)=1\} = e^{-\lambda h}\lambda h = \lambda h + \lambda h(e^{-\lambda h}-1)
+\end{align*}
+
+Since,
+
+\begin{align*}
+\lim_{h \rightarrow 0} \frac{\lambda h (e^{-\lambda h}-1)}{h} = 0
+\end{align*}
+
+we have,
+
+\begin{align*}
+\mathbb{P}\{N(h)=1\} = \lambda h + o(h)
+\end{align*}
+
+Similarly,
+
+\begin{align*}
+\mathbb{P}\{N(h)\geq 2\} = 1-e^{-\lambda h}\lambda h - e^{-\lambda h} = o(h)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.2}}$
+$\mathbf{(a)}$
+\begin{align*}
+P_{0}(t+s) = 1- \lambda (t+s) - o(t+s) = (1-\lambda t-o(t))(1-\lambda s - o(s)) = P_{0}(t)P_{0}(s)
+\end{align*}
+
+
+$\mathbf{(b)}$
+\begin{align*}
+P_{0}(t) &= P_{0}\left(\lim_{n\rightarrow \infty} \sum_{i=1}^{n}\frac{t}{n}\right) = \lim_{n \rightarrow \infty} \left(P_{0}\left(\frac{t}{n}\right)\right)^n = \lim_{n \rightarrow \infty} \exp\left(n\log\left(P_{0}\left(\frac{t}{n}\right)\right)\right)\\
+&= \lim_{n \rightarrow \infty} \exp(n\log(1-\lambda t/n + o(t/n)))\\
+&= \lim_{n \rightarrow \infty} \exp\left(-n\left(\sum_{i=1}^{\infty}(\lambda t/n + o(t/n))^i\right)\right)\\
+&= \lim_{n \rightarrow \infty} \exp\left(-\lambda t - \frac{to(t/n)}{t/n} - \left(\sum_{i=2}^{\infty}(\lambda t/n + o(t/n))^i\right)\right)\\
+&= \exp(-\lambda t)\\\\
+\mathbb{P}\{X_1>t\} &= P_0(t) = \exp(-\lambda t)\\\\
+\mathbb{P}\{X_2 > t | X_1 = s\} &= \mathbb{P}\{0 \text{ event in }(s,s+t]|X_1 = s\}\\
+&=  \mathbb{P}\{0 \text{ event in }(s,s+t]\} \ \ \ \ (\because \text{ independent increments})\\
+&= P_{0}(t) \ \ \ \ (\because \text{ stationarity})\\
+&= \exp(-\lambda t)
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{P}\{N(t) \geq n\} &= \mathbb{P}\{S_{n} \leq t\} = \int_{0}^{t}\frac{\lambda^n x^{n-1}\exp(-\lambda x)}{(n-1)!}dx\\
+&= -\frac{\exp(-\lambda t) (\lambda t)^{n-1}}{(n-1)!} - \int_{0}^{t}\frac{\lambda^{n-1} x^{n-2}\exp(-\lambda x)}{(n-2)!}dx\\
+&.\\
+&.\\
+&= -\sum_{i=1}^{n-1}\frac{\exp(-\lambda t) (\lambda t)^{i}}{i!} - \int_{0}^{t}\lambda\exp(-\lambda x)dx\\
+&= 1-\sum_{i=0}^{n-1}\frac{\exp(-\lambda t) (\lambda t)^{i}}{i!}\\\\
+\mathbb{P}\{N(t) = n\} &= \mathbb{P}\{N(t) \geq n\} - \mathbb{P}\{N(t) \geq n+1\}\\
+&= \frac{\exp(-\lambda t) (\lambda t)^{n}}{n!}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.3}}$
+\begin{align*}
+\mathbb{P}\{N(s) = k | N(t) = n\} &= \frac{\mathbb{P}\{N(s) = k, N(t) = n\}}{\mathbb{P}\{N(t)=n\}} = \frac{\mathbb{P}\{N(s) = k, N(t-s) = n-k\}}{\mathbb{P}\{N(t)=n\}}\\
+&= \frac{\exp(-\lambda s)(\lambda s)^k}{k!}\frac{\exp(-\lambda (t-s))(\lambda(t-s))^{t-s}}{(n-k)!}\frac{n!}{\exp(-\lambda t)(\lambda t)^n}\\
+&= \binom{n}{k}(s/t)^k(1-s/t)^{n-k}
+\end{align*}
+
+Alternatively, given that $N(t) = n$, those $n$ events have arrival times which are uniformly distributed over $(0,t)$ when considered as unordered random variables. Therefore, given $N(t) = n$ and $s<t$, $N(s)$ follows a binomial distribution with parameters $n$ and $p = \frac{s}{t}$, which is the probability of a randomly chosen event (out of $n$ events) to have an arrival time of less than or equal to $s$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.4}}$
+\begin{align*}
+\mathbb{E}[N(t)N(t+s)] &= \mathbb{E}[N(t)(N(t+s)-N(t)) + N(t)^{2}]\\
+&= \mathbb{E}[\mathbb{E}[N(t)(N(t+s)-N(t))|N(t))]+\mathbb{E}[N(t)^2]\\
+&= \mathbb{E}[\lambda sN(t)] + \lambda t + (\lambda t)^2 \ \ \ \ (\because N(t+s)-N(t) \perp N(t))\\
+&= \lambda^2t (t+s) + \lambda t
+\end{align*}
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.5}}$
+\begin{align*}
+\mathbb{P}\{N_1(t)+N_2(t) = n\} &= \sum_{k=0}^{\infty}\mathbb{P}\{N_1(t)+N_2(t)=n, N_1(t) = k\}\\
+&= \sum_{k=0}^{n}\mathbb{P}\{N_1(t)+N_2(t)=n, N_1(t) = k\}\\
+&= \sum_{k=0}^{n}\mathbb{P}\{N_2(t)=n-k, N_1(t) = k\}\\
+&= \sum_{k=0}^{n}\mathbb{P}\{N_2(t)=n-k\}\mathbb{P}\{N_1(t) = k\} \ \ \ \ (\because N_1 \perp N_2)\\
+&= \sum_{k=0}^{n}\frac{\exp(-\lambda_1t)(\lambda_1 t)^{k}}{k!}\frac{\exp(-\lambda_2t)(\lambda_2t)^{n-k}}{(n-k)!}\\
+&= \frac{\exp(-(\lambda_1+\lambda_2)t)t^n}{n!}\sum_{k=0}^{n}\binom{n}{k}\lambda_1^k\lambda_2^{n-k}\\
+&= \frac{\exp(-(\lambda_1+\lambda_2)t)((\lambda_1 + \lambda_2)t)^n}{n!}
+\end{align*}
+
+\begin{align*}
+\mathbb{P}\{X^{(1)}_1 < X^{(2)}_1\} &= \int_{0}^{\infty}\mathbb{P}\{X^{(1)}_1 < X^{(2)}_1,X^{(2)}_1=t\}dt\\
+&= \int_{0}^{\infty}\mathbb{P}\{X^{(1)}_1 < t\}\mathbb{P}\{X^{(2)}_1=t\}dt\\
+&= \int_{0}^{\infty}(1-\exp(-\lambda_1 t))\lambda_2 \exp(-\lambda_2 t)dt\\
+&= 1- \frac{\lambda_2}{\lambda_1 + \lambda_2} = \frac{\lambda_1}{\lambda_1 + \lambda_2}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.6}}$
+The combined process $N(t)$ will have a rate $\mu_1 + \mu_2$ (using $\mathbf{2.5}$). Let $S_{N}$ be the time when the machine fails where $N$ represents the number of components failed by time $S_{N}$. Then, we require $\mathbb{E}S_{N}$ where,
+
+\begin{align*}
+\mathbb{E}S_{N} = \mathbb{E}[\mathbb{E}[S_{N}|N)] = \mathbb{E}\left[\frac{N}{\mu_1+\mu_2}\right] = \frac{\mathbb{E}N}{\mu_1+\mu_2}
+\end{align*}
+
+Now, $\mathbb{E}N$ is given by,
+
+\begin{align*}
+\mathbb{E}N &= \mathbb{E}[N|\text{last event is type-1 fail}]P(\text{last event is type-1 fail}) + \mathbb{E}[N|\text{last event is type-2 fail}]P(\text{last event is type-2 fail})\\
+&= \sum_{k=n}^{n+m-1}k\binom{k-1}{n-1}\left(\frac{\mu_1}{\mu_1+\mu_2}\right)^{n}\left(\frac{\mu_2}{\mu_1+\mu_2}\right)^{k-n} + \sum_{k=m}^{m+n-1}k\binom{k-1}{m-1}\left(\frac{\mu_2}{\mu_1+\mu_2}\right)^{m}\left(\frac{\mu_1}{\mu_1+\mu_2}\right)^{k-m}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.7}}$
+\begin{align*}
+f_{S_1,S_2,S_3}(s_1,s_2,s_3) &= f_{X_1,X_2,X_3}(s_1,s_2-s_1,s_3-s_2)\\
+&= f_{X_1}(s_1)f_{X_2}(s_2-s_1)f_{X_3}(s_3-s_2)\ \ \ \ (X_i \perp X_j)\\
+&= \lambda \exp(-\lambda s_1)\lambda \exp(-\lambda (s_2-s_1))\lambda \exp(-\lambda(s_3-s_2))\\
+&= \lambda^3 \exp(-\lambda s_3)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.8}}$
+$\mathbf{(i)}$
+\begin{align*}
+U_i &= \exp(-\lambda X_i)\\
+\left|\frac{dU_i}{dX_i}\right| &= \lambda\exp(-\lambda X_i)\\
+f_{X_i}(x) &= \lambda \exp(-\lambda x) \mathbb{I}(\exp(-\lambda x) \in (0,1))\\
+&= \lambda \exp(-\lambda x) \mathbb{I}(x \in (0,\infty))
+\end{align*}
+
+$\mathbf{(ii)}$
+Taking negative $log$ of the inequality and dividing by $\lambda$ gives,
+\begin{align*}
+\sum_{i=1}^{n}X_i &\leq 1 < \sum_{i=1}^{n+1}X_i\\
+S_{n} &\leq 1 < S_{n+1}
+\end{align*}
+
+Thus $n$ represents number of events till time $1$ of a poisson process with rate $\lambda$. Therefore, $n = N(1)$ where $N(1)$ follows poisson distribution with mean $\lambda \cdot 1 = \lambda$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.9}}$
+$\mathbf{(a)}$
+Probability of winning equals the probability of exactly one event in $(s,T]$ which by stationarity of poisson process equals $h(s) = \exp(-\lambda(T-s))\lambda(T-s)$.
+
+$\mathbf{(b)}$
+\begin{align*}
+\frac{dh(s)}{ds} = 0 &\implies s = T-1/\lambda\\
+\frac{d^2h(s)}{ds^2}\bigg\vert_{s=T-1/\lambda} &= -\lambda^2 e^{-1} < 0 
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+h(T-1/\lambda) = e^{-1}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.10}}$
+$\mathbf{(a)}$
+\begin{align*}
+T &= \left\{\begin{matrix}X_1 + R, & X_1\leq s\\ s+W, & X_1 > s\end{matrix}\right.\\\\
+\mathbb{E}T &= \mathbb{E}[T|X_1 \leq s]\mathbb{P}\{X_1 \leq s\} + \mathbb{E}[T|X_1 >s ]\mathbb{P}\{X_1 > s\}\\
+&= \mathbb{E}[X_1+R|X_1 \leq s]\mathbb{P}\{X_1 \leq s\} + \mathbb{E}[s+W|X_1>s]\mathbb{P}\{X_1 > s\}\\
+&= \mathbb{E}[X_1\mathbb{I}(X_1\leq s)] + R(1-\exp(-\lambda s)) + (s+W)\exp(-\lambda s)\\
+&= \frac{1-\lambda s \exp(-\lambda s) - \exp(-\lambda s)}{\lambda} + R(1-\exp(-\lambda s)) + (s+W)\exp(-\lambda s)\\
+&= (R + 1/\lambda)(1-\exp(-\lambda s)) + W\exp(-\lambda s)\\
+\end{align*}
+
+$\mathbf{(b)}$
+When $W < R+1/\lambda$, minimum is achieved with $\exp(-\lambda s) = 1 \implies s = 0$. When $W > R+1/\lambda$, minimum is achieved with $1-\exp(-\lambda s) = 1 \implies s = \infty$. And, when $W = R+1/\lambda$, then all values of $s$ gives $\mathbb{E}T = W = R+1/\lambda$.
+
+$\mathbf{(c)}$
+The expected time of arrival of bus is $\mathbb{E}[X_1] = 1/\lambda$. So, intuitively, if $W < R+1/\lambda$, in order to minimize $\mathbb{E}T$, I will not wait at bus stop at all $(s=0)$, and reach home by walking. On the other hand, if $W > R+1/\lambda$, I will wait for the bus to arrive indefinitely $(s=\infty)$ (since the increase in time increases the likeliness of arrival of bus as $\lim_{t\rightarrow\infty}\mathbb{P}\{X_1 > t\} = 0$ and the expected arrival time is $1/\lambda$).
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.11}}$
+\begin{align*}
+W = \left\{\begin{matrix}0 & X_1 > T\\ W' + X_1 & X_1 \leq T\end{matrix}\right.
+\end{align*}
+
+Convince yourself that $W'$ and $W$ have the same distribution and hence the expectation. Also, note that $W'$ is independent of $X_1$. Therefore,
+
+\begin{align*}
+\mathbb{E}W &= \mathbb{E}[W|X_1>T]\mathbb{P}\{X_1 > T\} + \mathbb{E}[W|X_1 \leq T]\mathbb{P}\{X_1 \leq T\}\\
+&= 0 + \mathbb{E}[W'+X_1|X_1\leq T]\mathbb{P}\{X_1 \leq T\}\\
+&= \mathbb{E}[W']\mathbb{P}\{X_1\leq T\} + \mathbb{E}[X_1\mathbb{I}(X_1\leq T)]\\\\
+\mathbb{E}W &= \mathbb{E}[W](1-\exp(-\lambda T)) + \frac{1-\lambda T\exp(-\lambda T) - \exp(-\lambda T)}{\lambda}\ \ (\because \mathbb{E}W = \mathbb{E}W')\\
+\mathbb{E}W &= \frac{\exp(\lambda T) -\lambda T - 1}{\lambda} 
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.12}}$
+Let type-1 events be those which are registered and type-2 events be those which are not registered. An event at arbitrary time $s$ is type-1 event with probability $\mathbb{P}\{\text{0 event in }[s-b,s)\} = \exp(-\lambda b)$.
+
+$\mathbf{(a)}$
+Since the probability of an event happening at an arbitrary time is classified as a type-1 event with a probability of $p = \exp(-\lambda b)$ which is independent of the time of happening of the event. Therefore, the first $k$ events will be classified as type $1$ event with probability $p^k = \exp(-\lambda k b)$. This can also be formally computed as follows:
+
+\begin{align*}
+\mathbb{P}\{S_{k}^{(1)} < X_1^{(2)}\} &= \int_{0}^{\infty}\mathbb{P}\{X_{1}^{(2)} > t|S_{k}^{(1)} = t\}f_{S_{k}^{(1)}}(t) dt\\
+&= \int_{0}^{\infty}\mathbb{P}\{X_{1}^{(2)} > t\}f_{S_{k}^{(1)}}(t) dt\ \ \ \ (\because X_1^{(2)} \perp S_{k}^{(1)})\\
+&= \int_{0}^{\infty}\exp(-\lambda (1-p)t) \frac{(\lambda p)^kt^{k-1}\exp(-\lambda pt)}{(k-1)!}dt\\
+&= p^k\int_{0}^{\infty}\frac{\lambda^kt^{k-1}\exp(-\lambda t)}{(k-1)!}dt\\
+&= p^k \cdot 1\\
+&= \exp(-\lambda kb)
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{P}\{R(t) \geq n\} = \mathbb{P}\{N_1(t)\geq n\} = \sum_{k=n}^{\infty}\frac{\exp(-\lambda p t)(\lambda p t)^k}{k!}
+\end{align*}
+
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.13}}$
+[verify] Let there be two types of events. Type-1 events cause failure with probability $p$ and type-2 events do not cause failure.
+
+\begin{align*}
+\mathbb{P}\{N = n|T= t\} &= \mathbb{P}\{N = n| \text{ first type-1 event occurs at }t\}\\
+&= \mathbb{P}\{n-1 \text{ type-2 events occur before }t| \text{ first type-1 event occurs at }t\}\\
+&= \mathbb{P}\{n-1 \text{ type-2 events occur before }t\} \ \ \ \ (\because N_1(t) \perp N_2(t))\\
+&= \frac{\exp(-\lambda(1-p)t)(\lambda(1-p)t)^{n-1}}{(n-1)!}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.14}}$
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{E}O_j = \mathbb{E}[\mathbb{E}[O_j|N_1,N_2,\ldots,N_{j-1}]] = \mathbb{E}\left[\sum_{i=1}^{j-1}P_{ij}N_i\right] = \sum_{i=1}^{j-1}P_{ij}\lambda_i
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+O_j \sim \text{Poisson}\left(\sum_{i=1}^{j-1}P_{ij}\lambda_i\right)
+\end{align*}
+
+$\mathbf{(c)}$
+$O_j \perp O_k$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.15}}$
+$\mathbf{(a)}$
+$N_i$ follows negative binomial distribution with parameters $n_i$ and $P_i$.
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{P}\{N_i = n, N_j = n\} &= \mathbb{P}\{n\text{ flips with ith and jth sides } n_i \text{ and } n_j \text{ times.}\}\\
+&= \mathbb{P}\{N_i = n, N_j = n|\text{ end with i}\}\mathbb{P}\{\text{end with i}\} + \\
+& \ \ \ \ \ \mathbb{P}\{N_i = n, N_j = n|\text{ end with j}\}\mathbb{P}\{\text{end with j}\}\\
+&= \binom{n-1}{n_i-1}P_i^{n_i}\binom{n-n_i}{n_j}P_j^{n_j}(1-P_i-P_j)^{n-n_i-n_j} + \\
+&\ \ \ \ \ \binom{n-1}{n_j-1}P_j^{n_j}\binom{n-n_j}{n_i}P_i^{n_i}(1-P_i-P_j)^{n-n_i-n_j}\\
+&= P_i^{n_i}P_j^{n_j}(1-P-i-P_j)^{n-N-i-n_j} \frac{(n-1)!(n_i+n_j)}{n_i!n_j!(n-n_i-n_j)!}\\
+&\neq \binom{n-1}{n_i-1}P_i^{n_i}(1-P_i)^{n-n_i}\binom{n-1}{n_j-1}P_j^{n_j}(1-P_j)^{n-n_j}\\
+&= \mathbb{P}\{N_i=n\}\mathbb{P}\{N_j=n\}
+\end{align*}
+
+So, $N_i$ and $N_j$ are dependent.
+
+$\mathbf{(c)}$
+Now, we have $r$ independent poisson processes $N_{i}(t), i\in\{1,\ldots,r\}$, where $N_i(t)$ has a poisson distribution with mean $\lambda P_i t = P_i t$ (since $\lambda = 1$).
+
+\begin{align*}
+\mathbb{P}\{T > t\} = \prod_{i=1}^{r}\mathbb{P}\{S^{(i)}_{n_i} > t\}
+\end{align*}
+
+where $S_{n_i}^{(i)} \sim \text{Gamma}(n_i, P_i)$.
+
+$\mathbf{(d)}$
+$T_i = S_{n_i}^{(i)}$ which are independent since the poisson processes are independent.
+
+$\mathbf{(e)}$
+$\mathbb{E}T = \int_{0}^{\infty}\mathbb{P}\{T>t\}$
+
+$\mathbf{(f)}$
+\begin{align*}
+T = \sum_{i=1}^{N}X_i \implies \mathbb{E}T = \mathbb{E}[\mathbb{E}[T|N]] = \frac{1}{\lambda}\mathbb{E}N = \mathbb{E}N
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.16}}$
+Let $N$ be the number of trials to be performed which follows $\text{Poisson}(\lambda)$. Let $O_i$ be the number of trials when $i$th outcome came up where the probability that a trial results in $i$th outcome is $P_i$. Then, $O_i$ will follow $\text{Poisson}(\lambda P_i)$.
+
+\begin{align*}
+X_j &= \sum_{i=1}^{n}\mathbb{I}(O_i=j)\\\\
+\mathbb{E}X_j &= \sum_{i=1}^{n}\mathbb{P}(O_i=j) = \sum_{i=1}^{n}\frac{\exp(-\lambda P_i)(\lambda P_i)^{j}}{j!}\\\\
+\operatorname{Var}X_j &= \mathbb{E}X_j^2 - (\mathbb{E}X_j)^2\\
+&= \sum_{i=1}^{n}\frac{\exp(\lambda P_i)(\lambda P_i)^{j}}{j!}\left(1 - \frac{\exp(-\lambda P_i)(\lambda P_i)^{j}}{j!}\right)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.17}}$
+$\mathbf{(a)}$
+\begin{align*}
+f_{X(i)}(x) &= \mathbb{P}\{i-1\text{ of the }X \text{'s} \leq x, \text{ one }X \text{ equals }x, \text{ remaining }X\text{'s} > x\}\\
+&= \binom{n}{i-1}\mathbb{P}\{X\leq x\}^{i-1} \binom{n-(i-1)}{1}\mathbb{P}\{X=x\} \binom{n-i}{n-i}\mathbb{P}\{X>x\}^{n-i}\\
+&= \frac{n!}{(i-1)!(n-i)!}F(x)^{i-1}f(x)\bar{F}(x)^{n-i}
+\end{align*}
+
+$\mathbf{(b)}$
+Atleast $i$ $X$'s.
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{P}\{X_{(i)} \leq x\} &= \sum_{k=i}^{n}\mathbb{P}\{k \text{ of the }X\text{'s are } \leq x \text{ and remaining are } > x\}\\
+&= \sum_{k=i}^{n}\binom{n}{k}F(x)^{k}\bar{F}(x)^{n-k}
+\end{align*}
+
+$\mathbf{(d)}$ Replace $y=F(x)$ and integrate $\mathbf{(a)}$.
+
+$\mathbf{(e)}$ Given $N(t) = n$, for $i \leq n$, $S_i$ follows the distribution of $i$th order statistic of $n$ random variables uniformly distributed in $(0,t)$. Therefore, $\mathbb{E}[S_i | N(t)=n] = \frac{i}{n+1}$ when $i \leq n$. Given $N(t)=n$, for $i > n$, $\mathbb{E}[S_i|N(t)=n] = \mathbb{E}[S_i|S_i>t] = \mathbb{E}[S_i\mathbb{I}(S_i > t)]/\mathbb{P}\{S_i > t\}$ which equals,
+
+\begin{align*}
+\frac{\int_{t}^{\infty}x\frac{\lambda^ix^{i-1}\exp(-\lambda x)}{(i-1)!}}{\int_{t}^{\infty}\frac{\lambda^ix^{i-1}\exp(-\lambda x)}{(i-1)!}} = \frac{i}{\lambda}\frac{\bar{G}(t)}{\bar{F}(t)}, \text{ where } G \sim \text{Gamma}(i+1,\lambda), F \sim \text{Gamma}(i,\lambda)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.18}}$
+\begin{align*}
+\mathbb{P}\{U_{(i)}=x|U_{(n)}=y\} &= \frac{\mathbb{P}\{U_{(i)} = x, U_{(n)} = y\}}{\mathbb{P}\{U_{n}=y\}}\mathbb{I}(x\leq y)\\
+&= \frac{\frac{n!}{(i-1)!(n-i-1)!}f(x)f(y)F(x)^{i-1}(F(y)-F(x))^{n-i-1}}{\frac{n!}{(n-1)!}f(y)F(y)^{n-1}}\mathbb{I}(x\leq y)\\
+&= \frac{n!}{(i-1)!(n-1-i)!}\frac{x^{i-1}(y-x)^{n-i-1}}{y^{n-1}}\mathbb{I}(x\leq y)\\
+&= \frac{n!}{(i-1)!(n-1-i)!}\left(\frac{x}{y}\right)^{i-1}\left(1-\frac{x}{y}\right)^{n-i-1}\mathbb{I}(x\leq y)\\
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.19}}$
+Type-$j$ bus load arrival, where the number of customers in the bus equals $j$, follows a poisson process $N_{j}(t)$ having rate $\lambda \alpha_j$. Let the total number of customers arrived by time $t$ is given by $N(t)$. Then,
+
+\begin{align*}
+N(t) = \sum_{j=1}^{\infty}jN_{j}(t)
+\end{align*}
+
+Since, $N_j(t)\sim \text{Poisson}(\lambda \alpha_jt)$, $N(t)$ is a sum of poisson random variables and therefore $N(t) \sim \text{Poisson}(\gamma)$ where $\gamma = \lambda\sum_{j=1}^{\infty}j\alpha_j$.
+
+Now, a randomly chosen customer who arrived at time $s$ will be served by time $t$ with probability $G(t-s)$. Let $\beta = \frac{1}{t}\int_{0}^{t}G(t-s)ds$, then the poisson process $N'(t)$ having rate $\gamma \beta$ corresponds to the number of customers served by time $t$. Clearly, $X(t) = N'(t)$.
+
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{E}X(t) = \gamma \beta t = \lambda\beta t\sum_{j=1}^{\infty}j\alpha_j
+\end{align*}
+
+$\mathbf{(b)}$
+$X(t) \sim \text{Poisson}(\lambda\beta t\sum_{j=1}^{\infty}j\alpha_j)$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.20}}$
+Let $p_i = \frac{1}{t}\int_{0}^{t}P_{i}(s)ds$. Then,
+
+\begin{align*}
+\mathbb{P}\{N_{i}(t)=n_i, i \in \{1,\ldots,k\}\} &= \sum_{m}\mathbb{P}\{N_{i}(t)=n_i, i \in \{1,\ldots,k\}|N(t)=m\}\mathbb{P}\{N(t)=m\}\\
+&= \mathbb{P}\left\{N_{i}(t)=n_i, i \in \{1,\ldots,k\}|N(t)=\sum_{j=1}^{k}n_j\right\}\mathbb{P}\left\{N(t)=\sum_{j=1}^{k}n_j\right\}\\
+&= \frac{\left(\sum_{j=1}^{k}n_j\right)!}{\prod_{j=1}^{k}n_j!}\prod_{j=1}^{k}p_j^{n_j}\cdot \exp\left(-\lambda t\right) \frac{(\lambda t)^{\sum_{j=1}^{k}n_j}}{\left(\sum_{j=1}^{k}n_j\right)!}\\
+&= \prod_{j=1}^{k}\exp(-\lambda p_j t) \frac{(\lambda p_j t)^{n_j}}{n_j!}
+\end{align*}
+
+Therefore, $N_{i}(t) \perp N_{j}(t), i \neq j$ and $N_{i}(t) \sim \text{Poisson}(\lambda p_i t)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.21}}$
+We need to show that,
+
+\begin{align*}
+\int_{0}^{s}\alpha(s)ds = \mathbb{E}[\text{amount of time individual is in state $i$ during its first $t$ units in the system}]
+\end{align*}
+
+Divide interval $(0,t]$ in $n$ equal parts and let $h = t/n$. Then, the amount of time individual is in state $i$ during its first $t$ units in the system equals $\sum_{i=1}^{n}\mathbb{I}(\text{individual is in state $i$ during }((i-1)h,ih])h$. Therefore,
+
+\begin{align*}
+\mathbb{E}&[\text{amount of time individual is in state $i$ during its first $t$ units in the system}] = \\
+&\ \ \ \ \ \lim_{h\rightarrow 0}\mathbb{E}[\sum_{i=1}^{n}\mathbb{I}(\text{individual is in state $i$ during }((i-1)h,ih])h]\\
+&= \lim_{h\rightarrow 0}\sum_{i=1}^{n}\mathbb{P}\{\text{individual is in state $i$ during }((i-1)h,ih]\}h\\
+&= \int_{0}^{t}\alpha(s)ds
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.22}}$
+A car entering at time $s$ will be located in the interval $(a,b)$ at time $t$ when its velocity satisfies $a < V(t-s) < b \implies \frac{a}{t-s} < V < \frac{b}{t-s}$, the probability of which is $P(s) = F(b/(t-s)) - F(a/(t-s))$. Let $p = \frac{1}{t}\int_{t}^{t}P(s)ds$, then, the number of cars located in the interval $(a,b)$ at time $t$ will follow poisson distribution with mean $\lambda p t$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.23}}$
+$\mathbf{(a)}$ Using $\operatorname{Var}[D(t)] = \operatorname{Var}[\mathbb{E}[D(t)|N(t)]] + \mathbb{E}[\operatorname{Var}[D(t)|N(t)]]$, we get,
+
+\begin{align*}
+\operatorname{Var}[\mathbb{E}[D(t)|N(t)]] &= \operatorname{Var}\left[\frac{N(t)}{\alpha t}(1-\exp(-\alpha t))\mathbb{E}[D]\right]\\
+&= \frac{\lambda(1-\exp(-\alpha t))^2\mathbb{E}[D]^2}{\alpha^2t}\\
+\operatorname{Var}[D(t)|N(t)] &= \mathbb{E}[D]^2\exp(-2\alpha t) \operatorname{Var}\left[\sum_{i=1}^{N(t)}\exp(\alpha S_i)|N(t)\right]\\
+&= \mathbb{E}[D]^2\exp(-2\alpha t)n\left(\frac{\exp(2\alpha t) - 1}{2\alpha t} -
+ \frac{(\exp(\alpha t)-1)^2}{\alpha^2t^2}\right)\\
+\mathbb{E}[\operatorname{Var}[D(t)|N(t)]] &= \mathbb{E}[D]^2\exp(-2\alpha t)\lambda\left(\frac{\exp(2\alpha t) - 1}{2\alpha} -
+ \frac{(\exp(\alpha t)-1)^2}{\alpha^2t}\right)\\
+\operatorname{Var}[D(t)] &= \frac{\mathbb{E}[D]^2\lambda(1-\exp(-2\alpha t))}{2\alpha}
+\end{align*}
+
+$\mathbf{(b)}$ Using property of independent increments of poisson process we have, 
+
+\begin{align*}
+D(t+s) &= D(t)\exp(-\alpha s) + \sum_{i=N(t)+1}^{N(t+s)}D_i\exp(-\alpha(t+s-S_i))\\
+&= D(t)\exp(-\alpha s) + D'(s)\exp(-\alpha t)
+\end{align*}
+
+where $D'(s) \perp D(t)$ and $D'(s)$ follows the same distribution as $D(s)$. So,
+
+\begin{align*}
+\operatorname{Cov}(D(t),D(t+s)) &= \mathbb{E}[D(t)D(t+s)] - \mathbb{E}[D(t)]\mathbb{E}[D(t+s)]\\
+&= \mathbb{E}[D(t)^2\exp(-\alpha s) + D(t)D'(s)\exp(-\alpha t)] \\
+&\ \ \ \ - \mathbb{E}[D(t)]^2\exp(-\alpha s) - \mathbb{E}[D(t)]\mathbb{E}[D'(s)]\exp(-\alpha t)\\
+&= \operatorname{Var}[D(t)]\exp(-\alpha s)\\
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.24}}$
+Let the time taken $T$ by a car to travel the highway of length $L$ follow distribution $G$. Then, $\mathbb{P}(T \leq t) = G(t) = \mathbb{P}(V \geq L/t) = \bar{F}(L/t)$. Let $v$ be the speed of the car that enters the highway at time $t$. Then, the time taken by the car to travel the highway is $t_v = L/v$. Let $s$ be the time a random car enters the highway and leaving after time $T$, then, the probability of an encounter with the car entering at time $t$ is,
+
+\begin{align*}
+P(s) = \left\{\begin{matrix}\mathbb{P}\{T \geq t-s+t_v\} = \bar{G}(t-s+t_v),&s<t\\\mathbb{P}\{T \leq t+t_v-s\}= G(t-s+t_v),&t \leq s < t+t_v\\0 ,& \text{otherwise}\end{matrix}\right.
+\end{align*}
+
+Then, expected number of encounters is given by,
+
+\begin{align*}
+\lambda\left(\int_{0}^{t}\bar{G}(t-s+t_v)ds + \int_{t}^{t+t_v}G(t-s+t_v)ds\right) = \lambda\left(1-\int_{t_v}^{t+t_v}G(s)ds + \int_{0}^{t_v}G(s)ds\right)
+\end{align*}
+
+The value of $t_v$ minimizing the above, satisfies,
+
+\begin{align*}
+G(t_v)-G(t+t_v) + G(t_v) = 0 \implies G(t_v) = 1/2 \text{ as } {t \rightarrow \infty}
+\end{align*}
+
+Thus, as $t \rightarrow \infty$,
+
+\begin{align*}
+\bar{F}(v) = 1/2 \implies v = F^{-1}(1/2)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.25}}$
+\begin{align*}
+W &= \sum_{i=1}^{N(t)}Y_i, \ \ \ \ Y_{i}\sim F_{S_{i}}\\
+\mathbb{P}\{W \leq w|N(t)=n\} &= \mathbb{P}\left\{\sum_{i=1}^{n}Y_i \leq w\bigg\vert N(t)=n\right\}
+\end{align*}
+
+Given $N(t) = n$, $S_1,S_2,\ldots,S_n$ are uniform$(0,t)$. Therefore, for all $i$,
+
+\begin{align*}
+\mathbb{P}\{Y_i \leq y|N(t)=n\} &= \int_{0}^{t}\mathbb{P}\{Y_i \leq y|N(t)=n, S_i=s\}\mathbb{P}\{S_i=s\}ds\\
+&= \int_{0}^{t}F_{s}(y).\frac{1}{t}ds = \frac{1}{t}\int_{0}^{t}F_{s}(y)ds
+\end{align*}
+
+Therefore, $W$ can be thought of as a compound poisson random variable, $\sum_{i=1}^{N}X_i$, where $X_i$ are iid with distribution,
+
+$$
+F(x) = \frac{1}{t}\int_{0}^{t}F_{s}(y)ds
+$$
+
+and are also independent with $N$ which follows poisson distribution with mean $\lambda t$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.26}}$
+\begin{align*}
+f_{S_1,S_2,\ldots,S_n|S_n=t}(s_1,s_2,\ldots,s_n) = \left\{\begin{matrix}f_{S_1,S_2,\ldots,S_n|S_n=t}(s_1,s_2,\ldots,t), & s_1 \leq s_2 \leq \ldots \leq s_n = t \\ 0, & \text{ otherwise}\end{matrix}\right.
+\end{align*}
+
+\begin{align*}
+f_{S_1,S_2,\ldots,S_n|S_n=t}(s_1,s_2,\ldots,t) &= \frac{f_{S_1,\ldots,S_n}(s_1,\ldots,t)}{f_{S_n}(t)}\\
+&= \frac{f_{X_1,\ldots,X_n}(s_1,s_2-s_1,\ldots,t-s_{n-1})}{f_{S_n}(t)}\\
+&= \frac{\lambda\exp(-\lambda s_1)\lambda\exp(-\lambda(s_2-s_1))\ldots \lambda\exp(-\lambda(t-s_{n-1}))}{\lambda^n t^{n-1}\exp(-\lambda t)/(n-1)!}\\
+&= \frac{(n-1)!}{t^{n-1}}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.28}}$
+First note that,
+\begin{align*}
+\mathbb{E}\left[Y_1+\ldots+Y_k|\sum_{i=1}^{n}Y_i=y\right] = \mathbb{E}\left[Y_{j_1}+\ldots+Y_{j_k}|\sum_{i=1}^{n}Y_i=y\right]
+\end{align*}
+
+Taking every combination of $k$ $Y_i$'s, adding them, taking expectation and then using the linearity of expectation we get,
+
+\begin{align*}
+&\binom{n}{k}\mathbb{E}\left[Y_1+\ldots+Y_k|\sum_{i=1}^{n}Y_i=y\right] = \binom{n-1}{k-1}\mathbb{E}\left[Y_1+\ldots+Y_n|\sum_{i=1}^{n}Y_i=y\right] = \binom{n-1}{k-1}y\\
+&\implies \mathbb{E}\left[Y_1+\ldots+Y_k|\sum_{i=1}^{n}Y_i=y\right] = \frac{ky}{n}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.29}}$
+First we divide the interval $(t,t+s]$ into $k$ equal subintervals and prove that the probability of greater than or equal to $2$ events in any of those subintervals approaches $0$ as $k$ approaches $\infty$.
+\begin{align*}
+\mathbb{P}\{\geq 2 \text{ events in a subinterval}\} &= \cup_{i=1}^{k}\mathbb{P}\left\{\geq 2 \text{ events in } \left(t+\frac{(i-1)s}{k},t+\frac{is}{k}\right]\right\}\\
+&\leq \sum_{i=1}^{k}\mathbb{P}\left\{\geq 2 \text{ events in } \left(t+\frac{(i-1)s}{k},t+\frac{is}{k}\right]\right\}\\
+&= ko(s/k) = t\frac{o(s/k)}{s/k} \rightarrow 0 \text{ as } k \rightarrow \infty
+\end{align*}
+
+Let $I_j$ be defined as,
+\begin{align*}
+I_j = \left\{\begin{matrix}1, & \text{ an event in }\left(t+\frac{(i-1)s}{k}, t+\frac{is}{k}\right]\\0, & 0\text{ event in }\left(t+\frac{(i-1)s}{k}, t+\frac{is}{k}\right]\end{matrix}\right.
+\end{align*}
+
+So, the number of events in $(t,t+s]$, by poisson approaximation of binomial distribution, follows a poisson distribution with mean,
+
+\begin{align*}
+\lim_{k\rightarrow \infty}\mathbb{E}\left[\sum_{j=1}^{k}I_j\right] = \lim_{k\rightarrow \infty} \sum_{j=1}^{k}\lambda\left(t+\frac{js}{k}\right)\frac{s}{k} = \int_{t}^{t+s}\lambda(x)dx = m(t+s)-m(t)
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.30}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 2.31}}$
+\begin{align*}
+\mathbb{P}\{N^{*}(t) = n\} = \mathbb{P}\{N(m^{-1}(t)) = n\} = \frac{\exp(-m(m^{-1}(t)))(m(m^{-1}(t)))^{n}}{n!} = \frac{\exp(-t)t^n}{n!}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.32(a)}}$
+Let $t_1,t_2,\ldots,t_n$ be such that $0 < t_1 < t_2 < \ldots < t_n < t$ and $\Delta_i$ be such that $t_i +\Delta_i < t_{i+1}$, then,
+
+\begin{align*}
+\mathbb{P}\{t_i & \leq S_i \leq t_i + h_i, i \in \{1,2,\ldots,n\}|N(t)=n \} \\
+&= \frac{e^{-m(t_1)}\left(\prod\limits_{i=1}^{n}e^{-(m(t_i+\Delta t_i)-m(t_i))}(m(t_i+\Delta t_i)-m(t_i))\right) e^{-(m(t)-m(t_n+\Delta t_n))}}{e^{-m(t)}m(t)^{n}/n!} \\
+&= \frac{n!\prod\limits_{i=1}^{n}(m(t_i+\Delta t_i)-m(t_i))}{m(t)}\\
+\end{align*}
+
+As $\Delta_i \rightarrow 0$,
+
+\begin{align*}
+f_{S_1,\ldots,S_{N(t)}|N(t)=n}(t_1,t_2,\ldots,t_n) = \frac{n!\prod_{i=1}^{n}\lambda(t_i)}{m(t)^n}
+\end{align*}
+
+Therefore, the unordered set of arrival times has the same distribution as n iid random variables having distribution function,
+
+\begin{align*}
+F(x) = \left\{\begin{matrix}m(x)/m(t) & x \leq t\\ 1 & x > t\end{matrix}\right.
+\end{align*}
+
+$\mathbf{(b)}$ Let $P(s)$ be the probability that a worker injured at time $s$  is out of work at time $t$. Then,
+
+\begin{align*}
+P(s) = \bar{F}(t-s)
+\end{align*}
+
+The two types of Poisson processes: $N_1(t)$ represents the number of workers out of work at time $t$ and $N_2(t)$ represents the number of workers at  work at time $t$. Now, a random worker injured before time $t$ will be out of work at time $t$ with probability $p$,
+
+\begin{align*}
+p &= \int_{0}^{t}\mathbb{P}\{\text{out of work at time }t|\text{injured at time }s\}\mathbb{P}\{\text{injured at time } s\}ds\\
+&= \int_{0}^{t}P(s)\frac{\lambda(s)}{m(t)}ds\\
+&= \frac{1}{m(t)}\int_{0}^{t}\bar{F}(t-s)\lambda(s)ds
+\end{align*}
+
+Finally, $\mathbb{E}[X(t)] = \mathbb{E}[N_1(t)] = m(t)p = \int_{0}^{t}\bar{F}(t-s)\lambda(s)ds = \operatorname{Var}(N_1(t)) = \operatorname{Var}(X(t))$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.33(a)}}$
+\begin{align*}
+\mathbb{P}\{X>t \} = \mathbb{P}\{0 \text{ events in } \bar{B}_{t}(0)\} = \exp(-\lambda \pi t^2)
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[X] = \int_{0}^{\infty}\mathbb{P}\{X>t\}dt = \int_{0}^{\infty}\exp(-\lambda \pi t^2)dt = \frac{1}{2\sqrt{\lambda}}
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{P}\{\pi R_1^2 > t\} = \mathbb{P}\{R_1 > \sqrt{t}/\sqrt{\pi}\} = \exp(-\lambda \pi t/\pi) = \exp(-\lambda t)
+\end{align*}
+
+\begin{align*}
+\mathbb{P}\{\pi R_2^2 -\pi R_1^2 >t |\pi R_1^2 = s\} &= \mathbb{P}\{0 \text{ event in } s/\pi < \|\vec{r}\|^2 \leq (s+t)/\pi|\pi R_1^2=s\}\\
+&= \mathbb{P}\{0 \text{ event in } s/\pi < \|\vec{r}\|^2 \leq (s+t)/\pi\} \
+ (\text{ non-overlapping regions})\\
+&= \exp(-\lambda(\pi(s+t)/\pi - \pi s/\pi)) = \exp(-\lambda t)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.34}}$
+\begin{align*}
+W &= \sum_{i=1}^{N(t)}Y_i, \ \ \ \ Y_{i}\sim F_{S_{i}}\\
+\mathbb{P}\{W \leq w|N(t)=n\} &= \mathbb{P}\left\{\sum_{i=1}^{n}Y_i \leq w\bigg\vert N(t)=n\right\}
+\end{align*}
+
+Using $\mathbf{2.32(a)}$, for all $i$,
+
+\begin{align*}
+\mathbb{P}\{Y_i \leq y|N(t)=n\} &= \int_{0}^{t}\mathbb{P}\{Y_i \leq y|N(t)=n, S_i=s\}\mathbb{P}\{S_i=s\}ds\\
+&= \int_{0}^{t}F_{s}(y).\frac{dm(s)}{m(t)} = \frac{1}{m(t)}\int_{0}^{t}F_{s}(y)dm(s)
+\end{align*}
+
+Therefore, $W$ can be thought of as a compound poisson random variable, $\sum_{i=1}^{N}X_i$, where $X_i$ are iid with distribution,
+
+$$
+F(x) = \frac{1}{m(t)}\int_{0}^{t}F_{s}(y)dm(s)
+$$
+
+and are also independent with $N$ which follows poisson distribution with mean $\lambda(t)$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.35(a)}}$
+\begin{align*}
+N^*(t+s)-N^*(t) &= N(t+s+\tau) - N(t+\tau)\\
+N^*(t) &= N(t+\tau)-N(\tau)\\
+N(t+\tau)-N(\tau) \perp N(t+s+\tau) - N(t+\tau) &\implies N^*(t+s)-N^*(t) \perp N^*(t)
+\end{align*}
+
+$\mathbf{(b)}$
+Last implication is still valid.
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.36}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.37}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.38}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.39}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.40}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.41}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.42}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+\clearpage
+\begin{center}
+    \textbf{\large{3. Renewal Theory}}
+\end{center}
+
+$\textbf{Ex. 3.1(a)}$ True.\\~\\
+
+$\textbf{(b)}$ True.\\~\\
+
+$\textbf{(c)}$ If $F(0) = 0$, then true. If $F(0) > 0$, then false.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.2}}$
+\begin{align*}
+&N(\infty)+1 = n \iff N(\infty) = n-1 \iff X_i < \infty,\ \forall i < n \wedge X_{n} = \infty\\
+&\mathbb{P}\{N(\infty) + 1 = n\} = \mathbb{P}\{X_i < \infty, \ \forall i < n \wedge X_n = \infty\} = \mathbb{P}\{X_n = \infty\}\prod_{i=1}^{n-1}\mathbb{P}\{X_i < \infty\} \\
+&\ \ \ \ = F(\infty)^{n-1}(1-F(\infty))
+\end{align*}
+
+Therefore, $N(\infty)+1$ is geometric with mean $1/(1-F(\infty))$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.3}}$
+\begin{align*}
+\mathbb{P}\{X_{N(t)+1} \geq x\} &= \mathbb{P}\{X_{N(t)+1}\geq x|S_{N(t)}=0\}\bar{F}(t) + \int_{0}^{t}\mathbb{P}\{X_{N(t)+1}\geq x|S_{N(t)}=y\}\bar{F}(t-y)dm(y)\\
+&= \mathbb{P}\{X_1\geq x|X_1>t\}\bar{F}(t) + \int_{0}^{t}\mathbb{P}\{X\geq x|X>t-y\}\bar{F}(t-y)dm(y)\\
+&= \mathbb{I}(x\leq t)(\bar{F}(t)+\int_{0}^{t-x}\bar{F}(t-y)dm(y) +\int_{t-x}^{t}dm(y)) + \mathbb{I}(x>t)\bar{F}(x)(1 + m(t))\\
+&= \mathbb{I}(x\leq t)(\mathbb{P}\{X\leq t-x\} + m(t)-m(t-x)) + \mathbb{I}(x>t)\bar{F}(x)(1 + m(t))
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.4}}$
+\begin{align*}
+m(t) &= \sum_{n=1}^{\infty}F_{n}(t) = F(t) + F(t) * \left(\sum_{n=1}^{\infty}F_{n}(t)\right) = F(t) + F(t) * m(t) \\
+&= F(t) + \int_{0}^{t}m(t-x)dF(x)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.5}}$
+\begin{align*}
+m &= F + m*F\\
+F &= m-m*F\\
+F &= m - m_2 + m_2*F\\
+F(t) &= \sum_{n=1}^{\infty}(-1)^{n+1}m_n(t)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.6}}$
+$$
+\forall s \leq t, \ \mathbb{E}[N(s)|N(t)] = \frac{s}{t}N(t) \implies m(s) = \mathbb{E}[N(s)] = \mathbb{E}[\mathbb{E}[N(s)|N(t)]] = \frac{s}{t}m(t)
+$$
+
+Therefore, $m(t) = kt$ where $k$ is a positive constant.
+
+Using $\mathbf{3.4}$, we get,
+
+\begin{align*}
+kt &= F(t) + \int_{0}^{t}k(t-x)dF(x)\\
+k &= \frac{dF(t)}{dt} + kF(t)\\
+F(t) &= 1-\exp(-kt)
+\end{align*}
+
+Hence, the interarrival times distribution is exponential and therefore $\{N(t),t\geq 0\}$ is a Poisson process.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.7}}$
+Using $\mathbf{3.4}$, for $t \in [0,1]$, we get,
+
+\begin{align*}
+m(t) &= t + \int_{0}^{t}m(t-x)dt\\
+\frac{dm(t)}{dt} &= 1 + m(t)\\
+m(t) &= \exp(t)-1\\\\
+\mathbb{E}(N(1)+1) &= m(1)+1 = e
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.8}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.9}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 3.10}}$
+$\mathbf{(a)}$
+\begin{align*}
+\lim_{m\rightarrow\infty} \frac{\sum\limits_{i=1}^{N_1+N_2+\ldots+N_m}X_i}{N_1+N_2+\ldots+N_m} = \mathbb{E}[X_1]
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\lim_{m\rightarrow\infty} \frac{\sum\limits_{i=1}^{m}S_i}{m}.\frac{m}{\sum\limits_{i=1}^{m}N_i} = \frac{\mathbb{E}[S_1]}{\mathbb{E}[N_1]}
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{E}[X_1] = \frac{\mathbb{E}[S_1]}{\mathbb{E}[N_1]} \implies \mathbb{E}[S_1] = \mathbb{E}[X_1]\mathbb{E}[N_1]
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.11}}$
+$\mathbf{(a)}$
+\begin{align*}
+X_i &= \left\{\begin{matrix}2&w.p.\ 1/3\\4&w.p.\ 1/3\\8&w.p.\ 1/3\end{matrix}\right.\\
+N &= \min\{n: X_n = 2\}\\
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[T] = \mathbb{E}[X_1]\mathbb{E}[N] = \frac{14}{3} \frac{1}{1/3} = 14
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{E}\left[\sum_{i=1}^{N}X_i|N=n\right] &= (4+8)\frac{1}{2}(n-1) + 2 = 6n-4\\
+\mathbb{E}\left[\sum_{i=1}^{n}X_i\right] = \frac{14n}{3}
+\end{align*}
+
+$\mathbf{(d)}$
+\begin{align*}
+\mathbb{E}\left[T\right] &= \mathbb{E}[\mathbb{E}[T|N]] = \mathbb{E}[6N-4] = 6.3-4 = 14
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.12}}$
+\begin{align*}
+&h(t) = \mathbb{I}(t\leq a)\\
+&\lim_{t\rightarrow\infty}\int_{0}^{t}h(t-x)dm(x) = \lim_{t\rightarrow\infty}\int_{t-a}^{t}dm(x) = \lim_{t\rightarrow\infty} m(t)-m(t-a) = \lim_{t\rightarrow\infty}\frac{1}{\mu}\int_{0}^{t}h(x)dx = \frac{a}{\mu}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.13}}$
+\begin{align*}
+\frac{\mathbb{E}[T_i]}{\mathbb{E}[\sum_{i=1}^{n}T_i]} = \frac{\mu_i}{\sum_{j=1}^{n}\mu_j}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.14}}$
+$\mathbf{(a)}$
+\begin{align*}
+(t-x,t]
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+(t,t+x]
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>x\} = \mathbb{P}\{A(t+x)>x\}
+\end{align*}
+
+$\mathbf{(d)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>y, A(t)>x\} &= \mathbb{P}\{\text{No event in }(t,t+y], \text{No event in }(t-x,t]\}\\
+&= \mathbb{P}\{\text{No event in }(t-x,t+y]\}\\
+&= \exp(-\lambda (x+y))
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.15}}$
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>x|S_{N(t)}=t-s\} = \mathbb{P}\{X>x+s|X>s\} = \frac{\bar{F}(x+s)}{\bar{F}(x)}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>x|A(t+x/2) = s\} = \left\{\begin{matrix}0&s < x/2\\\mathbb{P}\{X>x/2+s|X>s-x/2\} = \frac{\bar{F}(s+x/2)}{\bar{F}(s-x/2)}&s\geq x/2\end{matrix}\right.
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>x|A(t+x)>s\} &= \mathbb{P}\{\text{No event in } (t,t+x]|\text{No event in } (t+x-s,t+x]\}\\
+&= \left\{\begin{matrix}1&s\geq x\\\frac{\mathbb{P}\{\text{No event in }(t,t+x]\}}{\mathbb{P}\{\text{No event in}(t+x-s,t+x]\}} = \frac{\exp(-\lambda x)}{\exp(-\lambda s)} = \exp(-\lambda (x-s))&s<x\end{matrix}\right.
+\end{align*}
+
+$\mathbf{(d)}$
+\begin{align*}
+\mathbb{P}\{Y(t)>x, A(t)>y\} &= \mathbb{P}\{Y(t>x),S_{N(t)}<t-y\}\\
+&= \int_{0}^{t-y}\mathbb{P}\{Y(t)>x|S_{N(t)}=s\}dF_{S_N(t)}(s)\\
+&= \int_{0}^{t-y}\frac{\bar{F}(x+t-s)}{\bar{F}(x)} \cdot \bar{F}(t-s)dm(s)
+\end{align*}
+
+$\mathbf{(e)}$
+\begin{align*}
+\frac{A(t)}{t} = \frac{t-S_{N(t)}}{t} = 1- \frac{S_{N(t)}}{N(t)}\cdot\frac{N(t)}{t} \rightarrow 1-\mu\cdot\frac{1}{\mu} = 0
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.16}}$
+\begin{align*}
+\mathbb{E}[Y(t)] \rightarrow \frac{\mathbb{E}[X^2]}{2\mathbb{E}[X]} = \frac{n/\lambda^2 + n^2/\lambda^2}{2n/\lambda} = \frac{n+1}{2\lambda}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.17}}$
+\begin{align*}
+g = h + g*F = h + F*(h+F*g) = \ldots = h + h*\sum_{n=1}^{\infty}F_n = h + h*m
+\end{align*}
+
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{P}\{\text{on at } t\} &= \mathbb{P}\{\text{on at } t|S_{N(t)} = 0\}\bar{F}(t) + \int_{0}^{t}\mathbb{P}\{\text{on at }t|S_{N(t)}=y\}\bar{F}(t-y)dm(y)\\
+&= \bar{H}(t) + \int_{0}^{t}\bar{H}(t-y)dm(y) \rightarrow \frac{\mu_{H}}{\mu_{F}}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[A(t)] &= \mathbb{E}[A(t)|S_{N(t)}=0]\bar{F}(t) + \int_{0}^{t}\mathbb{E}[A(t)|S_{N(t)}=y]\bar{F}(t-y)dm(y)\\
+&= t\bar{F}(t) + \int_{0}^{t}(t-y)\bar{F}(t-y)dm(y)\\
+&\rightarrow \frac{\int_{0}^{\infty}t\bar{F}(t)dt}{\mu} = \frac{\mathbb{E}[X^2]}{2\mathbb{E}[X]}
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.18}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 3.19}}$
+\begin{align*}
+\mathbb{P}\{S_{N(t)}\leq s\} &= \sum_{n=0}^{\infty}\mathbb{P}\{S_{n}\leq s, S_{n+1}>t\} \\
+&= \mathbb{P}\{S_1 > t\} + \sum_{n=1}^{\infty}\int_{0}^{\infty}\mathbb{P}\{S_{n}\leq s,S_{n+1}>t|S_n=y\}\mathbb{P}\{S_{n}=y\}dy\\
+&= \bar{G}(t) + \sum_{n=1}^{\infty}\int_{0}^{s}\mathbb{P}\{S_{n+1}>t|S_{n}=y\}d(G*F_{n-1})(y)\\
+&= \bar{G}(t) + \int_{0}^{s}\bar{F}(t-y)dm_{D}(y)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.20}}$
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{E}[T_{.\rightarrow HHTHHTT}] = \mathbb{E}[T_{HHTHHTT\rightarrow HHTHHTT}] = 2^7
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[T_{.\rightarrow HHTT}] &= 2^4\\
+\mathbb{E}[T_{.\rightarrow HTHT}] &= \mathbb{E}[T_{.\rightarrow HT}] + \mathbb{E}[T_{HT\rightarrow HTHT}] = 2^2 + 2^4
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.21}}$
+$T_{.\rightarrow WWWWWWW}$ is, by definition, stopping time. Using Wald's equation,
+
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{E}\left[\sum_{i=1}^{T_{.\rightarrow WWWWWWW}}X_i\right] = \mathbb{E}[X_i]\mathbb{E}[T_{.\rightarrow WWWWWWW}] = (2p-1)(\sum_{i=1}^{7}p^{-i})
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}\left[\sum_{i=1}^{T_{.\rightarrow WWWWWWW}}Y_i\right] = \mathbb{E}[Y_i]\mathbb{E}[T_{.\rightarrow WWWWWWW}] = p(\sum_{i=1}^{7}p^{-i})
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.22}}$
+\begin{align*}
+\mathbb{E}[N_{A}] &= \mathbb{E}[N_{HH}] + p^{-4}q^{-2} = p^{-1} + p^{-2} + p^{-4}q^{-2}\\
+\mathbb{E}[N_{B}] &= p^{-2}q^{-3}\\
+\mathbb{E}[N_{A|B}] &= \mathbb{E}[N_{A}]\\
+\mathbb{E}[N_{B|A}] &= \mathbb{E}[N_{B|H}] = \mathbb{E}[N_{B}] - \mathbb{E}[N_{H}] = \mathbb{E}[N_{B}] - p^{-1}
+\end{align*}
+
+$M = \min\{N_A,N_B\}$ and $a = \mathbb{P}\{A \text{ before } B\}$
+
+$\mathbf{(a)(b)}$
+\begin{align*}
+\mathbb{E}[N_{A}] &= \mathbb{E}[N_A-M] + \mathbb{E}[M] = \mathbb{E}[N_{A}-M|M=N_{B}]a + \mathbb{E}[M]\\
+70 &= \mathbb{E}[N_{A|B}]a + \mathbb{E}[M] = (2+2^2+2^6)a+\mathbb{E}[M] = 70a+\mathbb{E}[M]\\
+\mathbb{E}[N_B] &= \mathbb{E}[N_{B|A}](1-a) + \mathbb{E}[M]\\
+32 &= 30(1-a) + \mathbb{E}[M]
+\end{align*}
+
+So, $a = 0.68$ and $\mathbb{E}[M] = 22.4$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.23}}$
+Let $A$ be the set of binary strings of length $k$ where $1\equiv H$ and $0 \equiv T$. Let $\sigma$ be the binary string corresponding to first $k$ flips of coin and $F$ be the number of additional flips required to obtain the same pattern.
+\begin{align*}
+\mathbb{E}[F] = \sum_{a\in A}\mathbb{E}[F|\sigma = a]\mathbb{P}\{\sigma = a\} = \sum_{a \in A} \frac{1}{\mathbb{P}\{\sigma = a\}}\mathbb{P}\{\sigma = a\} = 2^{k}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.24}}$
+Let a renewal correspond to last $4$ cards being of same suit. Let $L$ denote the suit of the last renewal (i.e. of the $4$ consecutive cards of same suit), $N$ denote the suit of the card just after the last renewal. $T$ be the time to get the first renewal i.e. the first time $4$ consecutive cards of same suit appear. Let $T'$ be the time between two renewals. Since, 
+
+\begin{align*}
+\mathbb{E}[T'|L=i] &= \mathbb{E}[T'|L=i,N=i]\mathbb{P}\{N=i|L=i\} + \mathbb{E}[T'|L=i,N\neq i]\mathbb{P}\{N\neq i|L=i\} \\
+&= 1\cdot 1/4+\mathbb{E}[T]\cdot 3/4
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+\mathbb{E}[T'] &= \sum_{i=1}^{4}\mathbb{E}[T|L=i]\mathbb{P}\{L=i\}\\
+&= 1/4+\frac{3}{4}\mathbb{E}[T]
+\end{align*}
+
+Finally, using $\mathbb{E}[T'] = \lim_{n\rightarrow \infty}\mathbb{P}\{\text{renewal at }n\}^{-1} = 4^{3}$, we have, $\mathbb{E}[T] = 85$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.25}}$
+$\mathbf{(a)}$
+\begin{align*}
+m_{D} = G*\sum_{n=1}^{\infty}F_{n-1} = G+ G*\sum_{n=1}^{\infty}F_{n} = G+G*m
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[A_{D}(t)] &= t\bar{G}(t) + \int_{0}^{t}(t-y)\bar{F}(t-y)dm_{D}(y)\\
+&\rightarrow 0 + \frac{\int_{0}^{\infty}x^2dF(x)}{2\int_{0}^{\infty}xdF(x)} \ \ \ \ (\text{by key-renewal theorem of delayed renewal process})
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{E}[X] - \int_{0}^{t}xg(x)dx &= \int_{t}^{\infty}xg(x)dx \geq t\int_{t}^{\infty}g(x)dx = t\bar{G}(t)\\
+0 \leq \lim_{t\rightarrow\infty}t\bar{G}(t) &\leq \lim_{t\rightarrow\infty} \left(\mathbb{E}[X]-\int_{0}^{t}xg(x)dx\right) = 0
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.26}}$
+The proof is similar to the proof of $m(t+a)-m(t)\rightarrow \frac{a}{\mathbb{E}[X]}$.
+\begin{align*}
+\mathbb{E}[R(t+a)] - \mathbb{E}[R(t)] \rightarrow a\lim_{t\rightarrow \infty}\frac{R(t)}{t} = a\frac{\mathbb{E}[R]}{\mathbb{E}[X]}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.27}}$
+\begin{align*}
+\mathbb{E}[R_{N(t)+1}] &= \mathbb{E}[R_{N(t)+1}|S_{N}(t) = 0]\bar{F}(t) + \int_{0}^{t}\mathbb{E}[R_{N(t)+1}|S_{N}(t)=y]\bar{F}(t-y)dm(y)\\
+&= \mathbb{E}[R_1|X_1>t]\bar{F}(t) + \int_{0}^{t}\mathbb{E}[R|X>t-y]\bar{F}(t-y)dm(y)\\
+&\rightarrow \frac{1}{\mu}\int_{0}^{\infty}\mathbb{E}[R|X>t]\bar{F}(t)dt\\
+&= \frac{1}{\mu}\int_{0}^{\infty}\int_{-\infty}^{\infty}\int_{t}^{\infty}rdF_{R,X}(r,x)dt\\
+&= \frac{1}{\mu}\int_{0}^{\infty}\int_{-\infty}^{\infty}\int_{0}^{x}dtrdF_{R,X}(r,x)\\
+&= \frac{\mathbb{E}[RX]}{\mu}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.28}}$
+\begin{align*}
+N^{*} &= \sqrt{\frac{2K}{\mu c}}\\
+\mathbb{E}[\text{cost}(N^*)] &= \sqrt{\frac{2Kc}{\mu}}-c/2
+\end{align*}
+
+\begin{align*}
+\mathbb{E}[\text{cost}] &= \frac{c\mu\mathbb{E}[N(T)^2-N(T)]/2+K}{T} = \frac{c\mu^3T^2/2+K}{T}\\
+T^* &= \sqrt{\frac{2\mu K}{c}}\\
+\mathbb{E}[T^*] &= \sqrt{\frac{2Kc}{\mu}}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.29}}$
+$\mathbf{(a)}$
+\begin{align*}
+\mathbb{E}[\text{cycle time}] &= \mathbb{E}[\min(A,X)]\\
+\mathbb{E}[\text{reward in a cycle}] &= C_1\mathbb{P}\{X\geq A\} + (C_1+C_2)\mathbb{P}\{X < A\}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{E}[\text{cycle time}] &= \left(\frac{1}{\mathbb{P}\{X<A\}}-1\right)A + \mathbb{E}[X|X<A] = \frac{\mathbb{E}[\min(A,X)]}{\mathbb{P}\{X<A\}}\\
+\mathbb{E}[\text{reward in a cycle}] &= \left(\frac{1}{\mathbb{P}\{X<A\}}-1\right)C_1 + C_1+C_2 = \frac{C_1\mathbb{P}\{X\geq A\} + (C_1+C_2)\mathbb{P}\{X < A\}}{\mathbb{P}\{X<A\}}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.30}}$
+Let $T$ be the time to get $m$ consecutive tails. Then, long run proportion of the number of heads is,
+
+\begin{align*}
+\frac{N_{H}(t)}{t} &\rightarrow \frac{\mathbb{E}[\sum_{n=1}^{T}\mathbb{I}(X_n=H)]}{\mathbb{E}[T]} = \frac{\int_{0}^{1}\sum_{k=1}^{m}p(1-p)^{-k}Cp^{n-1}(1-p)^{m-1}dp}{\int_{0}^{1}\sum_{k=1}^{m}(1-p)^{-k}Cp^{n-1}(1-p)^{m-1}dp}\\
+&= 1 - \frac{\int_{0}^{1}\sum_{k=1}^{m}(1-p)^{-(k-1)}Cp^{n-1}(1-p)^{m-1}dp}{\int_{0}^{1}\sum_{k=1}^{m}(1-p)^{-k}Cp^{n-1}(1-p)^{m-1}dp} = 1 - \frac{\rightarrow \text{const}<\infty}{\rightarrow \infty} = 1
+\end{align*}
+
+The denominator reaches infinity when $k = m$.
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.31}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.32}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.33}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.34}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.35}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 3.36}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+\clearpage
+\begin{center}
+    \textbf{\large{4. Markov Chains}}
+\end{center}
+
+${\textbf{Ex. 4.1}}$
+\begin{align*}
+\mathbb{P}\{X_{n+1}=y|X_n=x\} = \left\{\begin{matrix}\alpha_{S-y}&x<s, y <S\\
+\alpha_{0} + \sum_{j=S+1}^{\infty}\alpha_{j}&x<s, y=S\\\alpha_{x-y}&x\geq s, y < x\\\alpha_{0} + \sum_{j=x+1}^{\infty}\alpha_{j}& x\geq s, y = x\end{matrix}\right.
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.2}}$
+Markovian property: Past is independent of future given present.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.3}}$
+Let the minimum number of steps required to reach $j$ from $i$ is $k$ steps i.e. $(P_{ij}^{k} > 0)$ such that $k > n$. Since the number of states are $n$, there must exist atleast one state which is visited twice on the path from $i$ to $j$. Let $m$ be such a state. Then, there is a closed path starting and ending on $m$ and removing this path (except the state $m$) from the path from $i$ to $j$ still connects $i$ and $j$ in $u$ steps where $u < k$ i.e. $(P_{ij}^{u}>0)$ which contradicts our assumption. Therefore, $\exists\ k \leq n$ such that $P_{ij}^{k} > 0$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.4}}$
+Condition on the number of steps for visiting $j$ from $i$ for the first time.
+\begin{align*}
+P_{ij}^{n} = \mathbb{P}\{X_{n}=j|X_0=i\} &= \sum_{k=0}^{n}\mathbb{P}\{X_{k}=j,X_{u}\neq j, u < k|X_{0}=i\}\mathbb{P}\{X_{n}=j|X_{k}=j\}\\
+&= \sum_{k=0}^{n}f_{ij}^{k}P_{jj}^{n-k}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.5}}$
+$\mathbf{(a)}$
+Probability of reaching $j$ from $i$ in $n$ steps without visiting $k$,
+
+$\mathbf{(b)}$
+Condition on the number of steps for the last visit to $i$ from $i$.
+\begin{align*}
+P_{ij}^{n} = \mathbb{P}\{X_{n}=j|X_0=i\} &= \sum_{k=0}^{n}\mathbb{P}\{X_{k}=i|X_{0}=i\}\mathbb{P}\{X_{n}=j, X_{u}\neq i, u>k |X_{k}=i\}\\
+&= \sum_{k=0}^{n}P_{ii}^{k}P_{ij/i}^{n-k}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.6}}$
+\begin{align*}
+P_{(0,0)(0,0)}^{2n} &= \sum_{k=0}^{n}\frac{(2n)!}{k!k!(n-k)!(n-k)!}\left(\frac{1}{4}\right)^{2n}\\
+&= \binom{2n}{n}\left(\frac{1}{4}\right)^{2n}\sum_{k=0}^{n}\binom{n}{k}\binom{n}{n-k}\\
+&= \binom{2n}{n}^2\left(\frac{1}{4}\right)^{2n}\\
+&\approx \frac{(2n)^{4n+1}e^{-4n}2\pi}{n^{4n+2}e^{-4n}(2\pi)^{2}4^{2n}} = \frac{1}{2\pi n}\\
+\therefore \ \sum_{n=0}^{\infty}P_{(0,0),(0,0)}^{2n} &= \infty
+\end{align*}
+
+\begin{align*}
+P_{(0,0,0)(0,0,0)}^{2n} &= \sum_{k_1+k_2=0, k_i\geq 0}^{n}\frac{(2n)!}{k_1!k_1!k_2!k_2!(n-k_1-k_2)!(n-k_1-k_2)!}\left(\frac{1}{6}\right)^{2n}\\
+&= \binom{2n}{n}\left(\frac{1}{6}\right)^{2n}\sum_{k_1+k_2=0, k_i\geq 0}^{n}\binom{k_1+k_2}{k_1}^2\binom{n}{k_1+k_2}^{2}\\
+&= \binom{2n}{n}\left(\frac{1}{6}\right)^{2n}\sum_{k=0}^{n}\sum_{m=0}^{k}\binom{k}{m}^2\binom{n}{k}^{2}\\
+&= \binom{2n}{n}\left(\frac{1}{6}\right)^{2n}\sum_{k=0}^{n}\binom{2k}{k}\binom{n}{k}^{2}\\
+&\propto \frac{1}{n^{3/2}}\\
+\therefore \ \sum_{n=0}^{\infty}P_{(0,0,0),(0,0,0)}^{2n} &< \infty
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.7}}$
+$\mathbf{(a)}$
+\begin{align*}
+\lim_{n\rightarrow\infty}P_{00}^{2n} = \frac{1}{\mu_{00}} \implies \mu_{00} = \lim_{n\rightarrow\infty}\frac{2^{2n}}{\binom{2n}{n}} = \lim_{n\rightarrow\infty}\frac{2^{2n}n^{2n+1}e^{-2n}2\pi}{(2n)^{2n+1/2}e^{-2n}\sqrt{2\pi}} = \lim_{n\rightarrow\infty}\sqrt{n\pi} = \infty
+\end{align*}
+
+$\mathbf{(b)}$
+Using complex integration.
+\begin{align*}
+\mathbb{E}[N_{2n}] = \sum_{k=0}^{n}u_k\left(\frac{1}{2}\right)^{2k}
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mathbb{E}[N_{n}] \rightarrow \frac{2n+1}{\sqrt{n\pi}}-1 \propto \sqrt{n}
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.8}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 4.9}}$
+Multiple applications of Markovian Property.
+\begin{align*}
+\mathbb{P}\{X_{k}=i_k|X_j = i_j, \forall j \neq k\} &= \mathbb{P}\{X_{k}=i_k|X_{j} = i_{j}, \forall j\geq k-1\}\\
+&= \frac{\mathbb{P}\{X_{k-1}=i_{k-1}|X_k=i_k, X_{j}=i_{j}, \forall j\geq k+1\}\mathbb{P}\{X_{k}=i_k|X_{j}=i_{j}, \forall j\geq k+1\}}{\mathbb{P}\{X_{k-1}=i_{k-1}|X_{j}=i_{j}, \forall j\geq k+1\}}\\
+&= \frac{\mathbb{P}\{X_{k-1}=i_{k-1}|X_k=i_k, X_{k+1}=i_{k+1}\}\mathbb{P}\{X_{k}=i_k|X_{k+1}=i_{k+1}\}}{\mathbb{P}\{X_{k-1}=i_{k-1}|X_{k+1}=i_{k+1}\}}\\
+&= \mathbb{P}\{X_{k}=i_{k}|X_{k-1}=i_{k-1}, X_{k+1}=i_{k+1}\}
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.10}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 4.11}}$
+$\mathbf{(a)}$
+\begin{align*}
+\sum_{n=1}^{\infty}P_{ij}^{n} = \mathbb{E}\left[\sum_{n=1}^{\infty}\mathbb{I}(X_n=j)|X_0=i\right] &= \sum_{k=1}^{\infty}\mathbb{E}\left[\sum_{n=k}^{\infty}\mathbb{I}(X_n=j)|X_k=j\right]f_{ij}^{k}\\
+&= \sum_{k=1}^{\infty}\frac{f_{ij}^{k}}{1-f_{jj}} = f_{ij}/(1-f_{jj}) < \infty
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\frac{1}{1-f_{jj}} = \mathbb{E}\left[\sum_{n=0}^{\infty}\mathbb{I}(X_n=j)|X_0=j\right] = 1+\sum_{n=1}^{\infty}P_{jj}^{n}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.12}}$
+\begin{align*}
+\vec{1}P = \vec{1}
+\end{align*}
+
+Therefore, $\pi_i = \frac{1}{n}$.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.13}}$
+Let $m$ and $n$ be such that $P_{ij}^{m}>0$, $P_{ji}^{n}>0$. Since $d(i) = d(j)$, assume that $d(i) = k$.
+\begin{align*}
+\pi_{i}>0 \implies \lim_{s\rightarrow \infty}P_{jj}^{m+n+sk} &\geq \lim_{s\rightarrow \infty}P_{ji}^{n}P_{ii}^{sk}P_{ij}^{m} > 0 \implies \pi_{j}>0\\
+\pi_{i}=0 \implies \lim_{s\rightarrow \infty}P_{ii}^{m+n+sk} &\geq \lim_{s\rightarrow \infty}P_{ij}^{m}P_{jj}^{sk}P_{ji}^{n} \implies 0 \geq P_{ij}^{m}P_{ji}^{n}\pi_{j} \implies \pi_j = 0
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.14}}$
+If $i$ is a null recurrent state, then the corresponding class of states $C$ will be null recurrent implying $P_{ij}^{n} \rightarrow 0, \forall j \in C$. This implies $\sum_{j\in C}P_{ij}^{n} \rightarrow 0$ contradicting $\sum_{j\in C}P_{ij}^{n} = 1$. All transient states will imply that some state is visited infinitely many times contradicting that a transient state can only be visited a finite number of times.
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.15}}$
+
+\begin{align*}
+\sum_{i=0}^{\infty}i\pi_i = \lambda \mathbb{E}[S] + \frac{\lambda^2\mathbb{E}[S^2]}{2(1-\lambda \mathbb{E}[S])}
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.16}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.17}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.18}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 4.19}}$
+$\mathbf{(a)}$
+enters state $j$ from state $i$.
+
+$\mathbf{(b)}$
+enters a state in $A^{c}$ from $A$.
+
+$\mathbf{(c)}$
+If a transition from $A$ to $A^c$ is denoted by $+1$ and from $A^{c}$ to $A$ is denoted by $-1$ with all other transitions denoted by $0$, then the sum can only be $-1, 0$ or $1$ depdending on the initial and final state of the chain. 
+
+$\mathbf{(d)}$
+\begin{align*}
+&\lim_{n\rightarrow \infty}|N_{n}(A,A^{c})/n-N_{n}(A^{c},A)/n| \leq \lim_{n\rightarrow \infty}1/n = 0 \\
+&\implies \lim_{n\rightarrow \infty}N_{n}(A,A^{c})/n = \lim_{n\rightarrow \infty}N_{n}(A^c,A)/n\\
+&\implies \sum_{j\in A^c}\sum_{i\in A}\pi_{i}P_{ij} = \sum_{j \in A^c}\sum_{i \in A}\pi_j P_{ji}
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.20}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+${\textbf{Ex. 4.21}}$
+\begin{align*}
+&\pi_{0} = (1-p_1) \pi_1, \ \pi_{j} = \pi_{j-1}p_{j-1} + \pi_{j+1}(1-p_{j+1}) \implies \pi_j = \pi_0\prod_{i=0}^{j-1}\frac{p_i}{1-p_{i+1}}, j > 0\\
+& \sum_{n}\pi_n = 1 \implies \pi_0 = \frac{1}{1+\sum_{n=1}^{\infty}\prod_{i=0}^{n-1}\frac{p_i}{1-p_{i+1}}} \implies \sum_{n=1}^{\infty}\prod_{i=0}^{n-1}\frac{p_i}{1-p_{i+1}} < \infty
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.22}}$
+\begin{align*}
+\mathbb{E}[B] = \frac{1}{2p-1}\left\{\frac{n[1-(q/p)^i]}{1-(q/p)^n} - 1\right\}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.23}}$
+\begin{align*}
+\mathbb{P}\{W|i,N\} &= \frac{\mathbb{P}\{N|i,W\}\mathbb{P}\{W|i\}}{\mathbb{P}\{N|i\}} = \frac{\mathbb{P}\{N|i+1\}\mathbb{P}\{W|i\}}{\mathbb{P}\{N|i\}}\\
+&= \left\{\begin{matrix}\frac{(1-(q/p)^{i+1})/(1-(q/p)^N)\cdot p}{(1-(q/p)^i)/(1-(q/p)^N)} & p\neq 1/2\\ \frac{(i+1)/N\cdot 1/2}{i/N}\end{matrix}\right.
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.24}}$
+$\mathbf{(a)}$
+\begin{align*}
+M_0 = I \implies M_n = I + M_{n-1}Q = \ldots = I + Q + Q + \ldots + Q^n
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+M_n - I = Q + Q + \ldots + Q^n + Q^{n+1}-Q^{n+1} \implies M_n - I + Q^{n+1} = Q(I+Q+\ldots+Q^n)
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+M_n &= I-Q^{n+1} + Q(I-Q)^{-1}(I-Q^{n+1}) = (I+Q(I-Q)^{-1})(I-Q^{n+1})\\
+&= ((I-Q)(I-Q)^{-1} + Q(I-Q)^{-1})(I-Q^{n+1}) = (I-Q)^{-1}(I-Q^{n+1})
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.25}}$
+\begin{align*}
+Q &= \begin{bmatrix}0&0.7&0&0&0\\0.3&0&0.7&0&0\\0&0.3&0&0.7&0\\0&0&0.3&0&0.7\\0&0&0&0.3&0\end{bmatrix}\\
+M &= (I-Q)^{-1}\\
+M_n &= I + Q + Q^2 + \ldots + Q^n
+\end{align*}
+
+$\mathbf{(a)}$
+\begin{align*}
+M_{3,5}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+M_{3,1}
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+M_{7_{3,5}}
+\end{align*}
+
+$\mathbf{(d)}$
+\begin{align*}
+f_{3,1} = \frac{M_{3,1}}{M_{1,1}}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.26}}$
+$\mathbf{(a)}$
+\begin{align*}
+\mu_{i,n} &= P_{in} + \sum_{j\neq n}(1+\mu_{j,n})P_{ij} =  1 + \sum_{j\neq n}P_{ij}\mu_{j,n} = 1 + p\mu_{i+1,n} + (1-p)\mu_{i-1,n}, \ \ \forall i \not\in \{0,n\}\\
+\mu_{0,n} &= 1 + \mu_{1,n}\\
+\mu_{n,n} &= 1 + \mu_{n-1,n}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+m_{i} &= P_{i,i+1} + (1+m_{i-1} + m_{i})P_{i,i-1} = 1 + (m_{i-1}+m_{i})(1-p)\\
+pm_{i} &= 1 + (1-p)m_{i-1}\\
+m_0 &= 1\\
+m_1 &= \frac{1}{p} + \frac{1-p}{p}\\
+m_2 &= \frac{1}{p} + \frac{1-p}{p}\left(\frac{1}{p} + \frac{1-p}{p}\right) = \frac{1}{p} + \frac{1-p}{p^2} + \left(\frac{1-p}{p}\right)^2\\
+m_3 &= \frac{1}{p} + \frac{1-p}{p^2} + \frac{(1-p)^2}{p^3} + \left(\frac{1-p}{p}\right)^3\\
+m_i &= \frac{1}{p}\sum_{j=0}^{i-1}\left(\frac{1-p}{p}\right)^{j} + \left(\frac{1-p}{p}\right)^i = \frac{1}{p}\left(\frac{1-(q/p)^i}{1-q/p}\right) + (q/p)^{i}
+\end{align*}
+
+$\mathbf{(c)}$
+\begin{align*}
+\mu_{i,n} = m_i + \mu_{i+1,n} \implies \mu_{i,n} = \sum_{j=i}^{n-1}m_j
+\end{align*}
+
+$\mathbf{(d)}$
+\begin{align*}
+\mathbb{E}[X_j] = 1+\frac{1}{2p-1}\left[\frac{n(1-q/p)}{1-(q/p)^n} - 1\right]
+\end{align*}
+
+
+$\mathbf{(e)}$
+\begin{align*}
+\mathbb{E}[N] = (1-(q/p)^n)/(1-q/p)
+\end{align*}
+
+$\mathbf{(f)}$
+\begin{align*}
+\mu_{0,n} = \mathbb{E}\left[\sum_{i=1}^{N}X_i\right] = \mathbb{E}[X_i]\mathbb{E}[N] = \frac{1}{2p-1}\left[n-2q\left(\frac{1-(q/p)^n}{1-q/p}\right)\right]
+\end{align*}
+
+$\mathbf{(g)}$
+Use $\mathbf{(a)}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.27}}$
+Assuming $p,q>0$ so that $f_{i,j}=1$.
+\begin{align*}
+\mathbb{P}\{\text{last node is }i\} &= \mathbb{P}\{\text{last node is }i|i-1\text{ is visited before }i+1\}\mathbb{P}\{i-1\text{ is visited before }i+1\} \\ &\ + \mathbb{P}\{\text{last node is }i|i+1\text{ is visited before }i-1\}\mathbb{P}\{i+1\text{ is visited before }i-1\}\\
+\end{align*}
+
+\begin{align*}
+\mathbb{P}\{i-1\text{ is visited before }i+1\} &= \frac{1-\left(\frac{q}{p}\right)^{m-i}}{1-\left(\frac{q}{p}\right)^{m-1}}\\
+\mathbb{P}\{i+1\text{ is visited before }i-1\} &= 1 - \mathbb{P}\{i-1\text{ is visited before }i+1\}\\
+\mathbb{P}\{\text{last node is }i|i-1\text{ is visited before }i+1\} &= \mathbb{P}\{i+1\text{ is visited before }i|\text{Start from }i-1\}f_{i+1,i}\\
+&= \frac{1-\left(\frac{p}{q}\right)}{1-\left(\frac{p}{q}\right)^{m}}\\
+\mathbb{P}\{\text{last node is }i|i+1\text{ is visited before }i-1\} &= \frac{1-\left(\frac{q}{p}\right)}{1-\left(\frac{q}{p}\right)^{m}}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.28}}$
+\begin{align*}
+\mathbb{E}[T_{00}] = \sum_{i=1}^{m}\mathbb{E}[T_{00}|\text{last node is }i]\mathbb{P}\{\text{last node is }i\}
+\end{align*}
+\begin{align*}
+\mathbb{E}[T_{00}|\text{last node is }i] = \frac{1}{2p-1}\left\{\frac{(m+1)[1-(q/p)^i]}{1-(q/p)^{m+1}} - 1\right\}\\
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.29}}$
+
+\vspace{0.2in}
+\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.30}}$
+Let $Z_i = X_i-Y_i$, so $\mathbb{P}\{Z_i=1\} = P_1(1-P_2)$, $\mathbb{P}\{Z_i=-1\} = (1-P_1)P_2$ and $\mathbb{P}\{Z_i=0\} = P_1P_2 + (1-P_1)(1-P_2)$.
+
+\begin{align*}
+\mathbb{P}\{\text{error}\} &= \mathbb{P}\{\text{reach $-M$} \text{ before }M|\text{start from }0\}\\
+f_{i,-M} &= f_{i-1,-M}(1-P_1)P_2 + f_{i+1,M}(1-P_2)P_1 + f_{i,M}(P_1P_2 + (1-P_1)(1-P_2))\\
+f_{i,-M} -f_{i-1,-M} &= \frac{(1-P_2)P_1}{(1-P_1)P_2}(f_{i+1,-M} - f_{i,-M}) = \lambda (f_{i+1,-M} - f_{i,-M})\\
+\mathbb{P}\{\text{error}\} &= \frac{1-\lambda ^{M}}{1-\lambda^{2M}} = \frac{1}{1+\lambda^{M}}\\
+\mathbb{E}[N] &= \mathbb{E}\left[\sum_{i=1}^{N}Z_i\right]/\mathbb{E}[Z_1] = \frac{M(\lambda^M-1)}{\lambda^M+1}/(P_1-P_2)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.31}}$
+\begin{align*}
+P = \begin{bmatrix}1 & 0 & 0\\0.54&0.28&0.18\\0.54&0.18&0.28\end{bmatrix}
+\end{align*}
+
+Since $det(P) \neq 0$, P is non-singular and therefore we can find invertible matrix $S$ and diagonal matrix $\Lambda$ such that $P = S\Lambda S^{-1}$. Therefore, $P^{n} = S\Lambda^{n}S^{-1}$.
+
+$\mathbf{(a)}$
+\begin{align*}
+P^{n}_{2,2}
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mu_{1,0} &= P_{1,0} + (1+\mu_{1,0})P_{1,1} + (1+\mu_{2,0})P_{1,2} = 1+0.28\mu_{1,0}+0.18\mu_{2,0}\\
+\mu_{2,0} &= P_{2,0} + (1+\mu_{1,0})P_{2,1} + (1+\mu_{2,0})P_{2,2} = 1+0.18\mu_{1,0}+0.28\mu_{2,0}\\
+\mu_{1,0} &= \frac{1}{0.54}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.32}}$
+$f_{0,0} = 1$ and $f_{N,0} = f_{N-1,0}$
+\begin{align*}
+f_{n,0} = \mathbb{P}\{N_0(\infty)>0|X_0=n\} &= \sum_{j=0}^{n}\mathbb{P}\{N_0(\infty)>0|X_1=j\}\mathbb{P}\{X_1=j|X_0=n\}\\
+&= f_{n-1,0}p + f_{n,0}q + f_{n+1,0}p\\
+f_{n+1,0}-f_{n,0} &= f_{n,0}-f_{n-1,0}\\
+f_{N,0} &= f_{N-1,0} = f_{N-2,0} = \ldots = f_{1,0} = f_{0,0} = 1
+\end{align*}
+
+Let $a_n = \mathbb{E}[T|X_0=n]$. $a_0 = 0$ and $a_N = 1+a_{N-1}$. 
+
+\begin{align*}
+\mathbb{E}[T|X_0=n] &= (1+\mathbb{E}[T|X_1=n])q + (1+\mathbb{E}[T|X_1=n-1])p + (1+\mathbb{E}[T|X_1=n+1])p\\
+a_n &= 1 + a_{n}q + p a_{n-1} + pa_{n+1}\\
+a_{n+1}-a_{n} &= -\frac{1}{p} + a_{n}-a_{n-1}\\
+a_1 &= 1+\frac{N-1}{p}\\
+a_n &= n + \frac{n}{p}(2N - n - 1)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.33}}$
+$\mathbf{(a)}$
+\begin{align*}
+\pi_{0} = 1 \iff \mu\leq 1 \text{ and } \mu>1 \implies \mathbb{E}[X_n] \rightarrow \infty
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+a_n = \operatorname{Var}(X_n|X_0=1) &= \mathbb{E}[\operatorname{Var}(X_n|X_1=m)|X_0=1] + \operatorname{Var}(\mathbb{E}[X_n|X_1=m]|X_0=1)\\
+&= \mathbb{E}[ma_{n-1}|X_0=1] + \operatorname{Var}(m\mu^{n-1}|X_0=1)\\
+&= a_{n-1}\mu + \mu^{2n-2}\sigma^2\\
+&= \left\{\begin{matrix}n\sigma^2&\text{if }\mu=1\\\sigma^2\mu^{n-1}\frac{\mu^{n}-1}{\mu-1}& \text{if }\mu \neq 1\end{matrix}\right.
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.34}}$
+$\mathbf{(a)}$
+\begin{align*}
+&\pi_{0} = \pi_0^0(1-p)^2 + \pi_0^12p(1-p) + \pi_0^2p^2\\
+& p^2\pi_0^2 + \pi_0(2p(1-p)-1) + (1-p)^2 = 0\\
+&\pi_* = \frac{(1-p)^2}{p^2}
+\end{align*}
+
+$\mathbf{(b)}$
+Use iterative conditioning.
+
+\begin{align*}
+\pi_{0} = \sum_{n=0}^{\infty}\pi_*^{n}\exp(-\lambda)\frac{\lambda^n}{n!} = \exp(\lambda(\pi_*-1)) = \exp(\lambda(1-2p)/p^2)
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.35}}$
+$\mathbf{(a)}$
+\begin{align*}
+\pi_0 = \sum_{n=0}^{\infty}\pi_0^{n}\exp(-\lambda)\frac{\lambda^n}{n!} = \exp(\lambda (\pi_0-1)) \implies \lambda \pi_0\exp(-\lambda \pi_0) = \lambda \exp(-\lambda)
+\end{align*}
+
+$\mathbf{(b)}$
+\begin{align*}
+\mathbb{P}\{X_1=n|X_0=1,\pi_0=1\} = \exp(-\lambda)\frac{\lambda^n}{n!} = \exp(-a)\frac{a^n}{n!}
+\end{align*}
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.36}}$
+\begin{align*}
+\mathbb{E}[T_N] \approx \log N &= \log\left(\frac{n^{n+1/2}e^{-n}\sqrt{2\pi}}{m^{m+1/2}e^{-m}\sqrt{2\pi}(n-m)^{n-m+1/2}e^{-(n-m)}\sqrt{2\pi}}\right)\\
+&\approx (n+1/2)\log n - (m+1/2)\log m - (n-m+1/2)\log(n-m)\\
+&\approx n\log\frac{n}{n-m} + m\log\frac{n-m}{m}\\
+& = m\left[c\log\left(\frac{c}{c-1}\right) + \log(c-1)\right]
+\end{align*}
+
+\vspace{0.2in}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.37}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.38}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.39}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.40}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.41}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.42}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.43}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.44}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.45}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 4.46}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{comment}
+\clearpage
+\begin{center}
+    \textbf{\large{5. Continuous-Time Markov Chains}}
+\end{center}
+
+${\textbf{Ex. 5.1}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.2}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.3}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.4}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.5}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.6}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.7}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.8}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.9}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.10}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.11}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.12}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.13}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.14}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.15}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.16}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.17}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.18}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.19}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.20}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.21}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.22}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.23}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.24}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.25}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.26}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.27}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.28}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.29}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.30}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.31}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.32}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.33}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.34}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.35}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.36}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 5.37}}$
+
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

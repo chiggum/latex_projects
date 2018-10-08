@@ -1,0 +1,84 @@
+\documentclass[12pt]{article}
+
+\usepackage{answers}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\rto}{\rightarrow\ }
+\newcommand{\Rto}{\Rightarrow\ }
+\newcommand{\lto}{\leftarrow\ }
+\newcommand{\Lto}{\Leftarrow\ }
+\def\xrto{\ensuremath\xrightarrow}
+\def\xRto{\ensuremath\xRightarrow}
+\def\xlto{\ensuremath\xleftarrow}
+\def\xLto{\ensuremath\xLeftarrow}
+\def\rvec{\ensuremath\overrightarrow}
+\def\lvec{\ensuremath\overleftarrow}
+
+\def\mc{\ensuremath\mathcal}
+\def\mf{\ensuremath\mathbf}
+\def\td{\ensuremath\tilde}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+ 
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{definition}[2][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{solution}[2][Solution]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+ 
+\begin{document}
+ 
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+ 
+\title{Differentiation - The Amplitwist Concept}%replace with the appropriate homework number
+\author{Dhruv Kohli\\ %replace with your name
+Complex Analysis} %if necessary, replace with your course title
+ 
+\maketitle
+\begin{enumerate}
+    \item Given $f((x,y)) = (u(x,y),v(x,y))$ what mapping takes infinitely small vectors emanating from a point $q$ in $z$-plane to an image vector emanating from $Q=f(q)$ in $w$-plane. If the infintely small vector in $z$-plane is $\rvec{qp}=q+(dx;dy)$ and its image in $w$-plane is $\rvec{QP} = Q + (du;dv)$, then, $du = \Delta u$ due to $dx + \Delta u$ due to $dy$ which equals $(\partial u/\partial x)dx + (\partial u/\partial y)dy = \partial_{x}udx + \partial_{y}udy$. Similarly, $dv=\partial_{x}vdx+\partial_{y}vdy$. So,
+    \begin{align*}
+        (du;dv) &= (\partial_{x}u,\partial_{y}u;\partial_{x}v,\partial_{y}v)(dx;dy) = J(dx;dy)\\
+        \rvec{qp} &\xrto[\text{by Jacobian at $q=(x,y)$}]{\text{Linear transformation}} \rvec{QP}
+    \end{align*}
+    Example: $z\rto z^2$ which can be viewed in $\R^2$ as $(x,y)\rto(x^2-y^2,2xy)$. Here, $J = (2x,-2y;2y,2x)$. Taking $x=r\cos\theta$ and $y = r\sin\theta$, $J=2r(\cos\theta,-\sin\theta;\sin\theta,\cos\theta)$. So, for $q=(x,y)$, $\rvec{qp}$ is first translated so that it emanates from $Q=f(q)$ and is then, expanded by $2r$ and rotated by $\theta$ to get a vector $\rvec{QP}$.
+    \item If local effect of mapping is to amplify all the infinitesimal vectors by same amount then this amount is called amplification and the mapping is said to amplify infinitesimal vectors. If local effect of mapping is to rotate all the infinitesimal vectors emanating from $q$ by same angle about $q$ then the angle of rotation is called twist and the mapping is said to twist the vectors. In general, a mapping both amplifies and twist the infinitesimal vectors and the combined effect is called amplitwist. Example - draw sketch of $z\rto z^2$ for two infinitesimal vectors emanating from $q$. It can be observed that if $f$ is locally an amplitwist then it is conformal and infinitesimal geometric shapes are mapped (amplitwisted) to similar infinitesimal geometric shapes.
+    \item For a real mapping $x\rto f(x)$, $x$ is mapped to $f(x)$ and $df = f'(x)dx$. So, if we define $\mf{arg}[y] = 0$ if $y>0$ and $\mf{arg}[y] = \pi$ if $y<0$, then, a vector emanating from $x$, $dx$ in positive direction (for negative direction take $-dx$), is mapped to another vector emanating from $f(x)$ by expanding $dx$ by $|f'(x)|$ and rotating it by $\mf{arg}[f'(x)]$ i.e. $df = |f'(x)|e^{i\mf{arg}[f'(x)]}dx$. Now, for a complex mapping $z\rightarrow f(z)$, a natural way to define $f'(z)$ is, as a complex number representing the amount by which an infinitesimal vector emanating from $z$ is expanded and rotated to get image vector at $f(z)$. However, in complex plane there can be infinitely many directions and so infinitely many vectors emanating from $z$ (unlike the real case where there is only a single direction). So, we define $z\rto f(z)$ to be differentiable at $z$ when all the infinitesimal vectors emanating from $z$ undergo equal expansion and equal rotation to produce image vectors emanating from $f(z)$ (i.e. local effect of mapping at $z$ is an amplitwist) or in other words, $f'(z)$ does not depend on the direction of the initial infinitesimal vector. A typical mapping may produce different expansions and different rotations for the infinitesimal vectors in different directions emanating from $z$. Such a mapping is non-differentiable at $z$. Analytic functions are precisely those mappings which are differentiable everywhere. Note that infinitesimal discs are mapped to infinitesimal discs by analytic functions. But that doesn't mean that analytic functions preserve circles. Mobius transformations are the only analytic mappings which preserve circles.
+    \item Note that, even though $z\rto \bar{z}$ has an amplification, it is non-analytic because it doesn't has twist. Then angle of rotation of infinitesimal vectors depends on its direction. By an argument based on similarity of infinitesimal triangles, it can be shown that a mapping is locally an amplitwist at a point $p$ (differentiable at $p$) if it is conformal throughout an infinitesimal neighbourhood of $p$ AND if $f(z)$ possess an amplification throughout a neighbourhood of $p$ then either $f(z)$ or $\bar{f(z)}$ is analytic at $p$ (magnitude of angles of similar triangles are equal but for a twist sense needs to be equal too).
+    \item A mapping between spheres represent an analytic function $\iff$ it is conformal.
+    \item $p$ is a critical point of $z\rto f(z)$ if $f'(p) = 0$. $f'(p) = 0 \iff f$ is non-conformal at $p$. $(\Lto)$ if $f'(p) \neq 0$ then $f$ is differentiable at $p$ and therefore, is conformal at $p$. $(\Rto)$ Take example $z\rto f(z)=z^2$ and check that $f(z)$ is non-conformal at $0$ and $f'(0)=0$. Behaviour of a mapping near a critical point (say $0$) is essentially given by $z^m, m \geq 2$ and critical point is of order $m-1$. When we say $f$ is conformal then we neglect critical points.
+    \item Form real function $R(x)$, if $R'(x)\neq 0$ in the neighbourhood of $x$ then $R$ has one-to-one mapping in the neighbourhood of $x$. But if $R'(x)=0$ then $R$ may ($R(x)=x^2$ at $x=0$) or may not ($R(x)=x^3$ at $x=0$) have two-to-one mapping. For complex mapping $f(z)$, if $f'(z) \neq 0$ then one-to-one mapping between infinitesimal disc around $z$ and infinitesimal disc around $f(z)$. But if $f'(z) = 0$ then surely many-to-one mapping from infinitesimal vectors emanating from $z$ to infinitesimal vectors emanating from $w=f(z)$. Since behaviour near a critical point is given by $z^m$ where $m-1$ is order of the critical point, note that such a critical point, by above argument of many-to-one, is also branch point of order $m-1$. $p$ is a critical point of order $m-1$ $\iff$ it is a branch point of order $m-1$.
+    \item Coming back to the local linear transformation mapping (represented by Jacobian matrix) between infinitesimal vectors emanating from $q$ and those emanating from $Q$. In general, a linear transformation transforms a circle by stretching it in one direction (represented by an eigenvector) by a factor, stretching it by another factor in the perpendicular direction and twisting the figure by an an angle about its centre. So, four bits of information is possesed by such a mapping - $v,\lambda_1,\lambda_2,\theta$, which justifies the four degree of freedom of the corresponding $2\times 2$ matrix. For analytic functions $\lambda_1 = \lambda_2$ and $v$ can be any directions. So, degree of freedom of the matrix corresponding to an analytic function must be $2$. Note that such a local linear transformation mapping sends infinitesimal circles to infinitesimal circles in the way described above and if such mapping preserves orientation then it is conformal. The converse is also true - an orientation preserving conformal mapping is analytic and therefore sends infintesimal circles to infinitesimal circles in the way described above. To find how such a matrix corresponding to local linear transformation associated with analytic function looks like, note that the matrix represents the amplitwist and therefore the local linear transformation represents multiplication by a complex number. So, $(x+iy)(a+ib) = (ax-by)+i(ay+bx)$ and therefore, $(x;y)\rto (a,-b;b,a)(x;y)$. So, the matrix is of type $(a,-b;b,a)$. Comparing this matrix with the Jacobian matrix representing local linear transformation corresponding to analytic function at $(x,y)$ i.e. $(\partial_{x}u,\partial_{y}u;\partial_{x}v,\partial_{y}v)$, we get,
+    \begin{align*}
+        \partial_{x}u &= \partial_{y}v\\
+        \partial_{x}v &= -\partial_{y}u
+    \end{align*}
+    These are known as Cauchy-Riemann equations which must be satisfied in an infinitesimal neighbourhood of $p$ in order for the mapping to be analytic at $p$ (because conformality in the neighbourhood of $p$ $\iff$ analytic at $p$). Finally, since $a+ib$ plays the role of amplitwist we have $f'((x,y)) = \partial_{x}u + i\partial_{x}v (=\partial_{x}f) = \partial_{y}v - i\partial_{y}u (=-i\partial_{y}f)$.
+\end{enumerate}
+\end{document}

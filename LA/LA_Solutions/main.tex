@@ -1,0 +1,233 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\begin{document}
+\raggedright
+
+${\textbf{Ex. 2.2.41}}$
+
+$\textbf{(a)} \ $ If $x_p$ is a particular solution of $Ax = b$ and $x_n$ is a linear combination of its special solutions (i.e. $Ax_n = 0$)  then,
+
+$$
+A(c_1x_p+c_2x_n) = c_1Ax_p + c_2Ax_n = c_1b + 0 = c_1 b \neq b, \ \ \ \  \forall c_1 \neq 1
+$$
+
+$\textbf{(b)} \ $ Probably True. A system $Ax=b$ has atmost one particular solution. [CHECK]
+
+$\textbf{(c)} \ $ Consider the following system,
+
+$$
+\begin{bmatrix}1 & 1 \\ 0 & 0\end{bmatrix} \mathbf{x} = \begin{bmatrix}2 \\ 0\end{bmatrix}
+$$
+
+Then, the solution is given by
+
+$$
+\mathbf{x} = \mathbf{x_p} + \mathbf{x_n} = \begin{bmatrix}2 \\ 0\end{bmatrix} + c\begin{bmatrix}-1 \\ 1\end{bmatrix}, \ \ \ \ \forall c \in \mathbb{R}
+$$
+
+Now, $\|\mathbf{x_p}\|_2 = 2$ where as $\begin{bmatrix}1 \\ 1 \end{bmatrix}$ is also a solution which can be obtained by setting $c = 1$ and its length is $\sqrt{2}$.
+
+$\textbf{(d)} \ $ $\mathbf{0}$ vector is always in the null space.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+${\textbf{Ex. 2.2.42}}$
+
+$\textbf{(a)} \ $ For $A = \begin{bmatrix}1 & 0 \\ 0 & 1 \\ 0 & 0\end{bmatrix}$, there will be one solution if $b_3 = 0$ otherwise no solution.
+
+$\textbf{(b)} \ $ For $A = \begin{bmatrix}1 & 0 & 0\\ 0 & 1 & 0\end{bmatrix}$, third variable will always by a free variable. So, irrespective of choice of $b$ there will be an infinity of solutions.
+
+$\textbf{(c)} \ $ For $A = \begin{bmatrix}1 & 0 & 0\\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix}$, there will be no solution if $b_3 \neq 0$ otherwise there will be an infinity of solution because the third variable is a free variable.
+
+$\textbf{(d)} \ $ For an invertible matrix i.e. a matrix with all non zero pivots on the diagonal in the reduced form.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.43}}$
+
+$\textbf{(a)} \ $ $r < \min(m,n)$.
+
+$\textbf{(b)} \ $ $r = m < n$.
+
+$\textbf{(c)} \ $ $r = n < m$.
+
+$\textbf{(d)} \ $ $r = m = n$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.44}}$
+
+$$
+U_{A} = \begin{bmatrix}6&4&2\\0&0&0\\0&0&q-3\end{bmatrix} \text{ and } U_B = \begin{bmatrix}3&1&3\\0&2-q/3&0\end{bmatrix}
+$$
+
+For $A$, $q=3$ gives rank $1$, $q \neq 3$ gives rank $2$ and rank $3$ is not possible for any choice of $q$.
+
+For $B$, $q=6$ gives rank $1$, $q \neq 6$ gives rank $2$ and rank $3$ is not possible for any choice of $q$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.45}}$
+
+$$
+\begin{bmatrix}R & 0\end{bmatrix} = \begin{bmatrix}1&2&0&0\\0&0&1&0\end{bmatrix} \text{ and } \begin{bmatrix}R & d\end{bmatrix} = \begin{bmatrix}1&2&0&-1\\0&0&1&2\end{bmatrix}
+$$
+
+$$
+x_n = \begin{bmatrix}-2&1&0\end{bmatrix}^T \text{ and } x_p = \begin{bmatrix}-1&0&2\end{bmatrix}^T
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.46}}$
+
+free, is not, infinite.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.47}}$
+
+$\textbf{(a)} \ $ $A$ is $3\times 2$ matrix and will have only $x = \begin{bmatrix}0\\1\end{bmatrix}$ as the solution to $b = \begin{bmatrix}1\\2\\3\end{bmatrix}$ if exactly one row of the augmented matrix $\begin{bmatrix}A&b\end{bmatrix}$ becomes zero and remaining two rows have non zero pivots. An example of such an $A$ will be $\begin{bmatrix}1&1\\1&2\\3&3\end{bmatrix}$.
+
+$\textbf{(b)} \ $ $A$ is $2\times 3$ matrix and therefore, there exist atleast one free variable. So, if there exist a solution for $Ax=b$ then there will be an infinity of solutions. So there is no matrix $A$ satisfying the requirement in question.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.48}}$
+
+No matrix $A$ satisfies the requirement. A trivial reason is that no entry in the first row will be eliminated so the non diagonal entries in the first row must be zero for $U$ to reach $I$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.49}}$
+
+$$
+U_A = \begin{bmatrix}1&2&2&4&6\\0&0&1&2&3\\0&0&0&0&0\end{bmatrix} \rightarrow N_A = \begin{bmatrix}0&0&-2\\0&0&1\\-3&-2&0\\0&1&0\\1&0&0\end{bmatrix} \rightarrow R_A = \begin{bmatrix}1&2&0&0&0\\0&0&1&2&3\\0&0&0&0&0\end{bmatrix}
+$$
+
+$$
+U_B = \begin{bmatrix}2&4&2\\0&4&4\\0&0&0\end{bmatrix} \rightarrow N_B = \begin{bmatrix}1\\-1\\1\end{bmatrix} \rightarrow R_B = \begin{bmatrix}1&0&-1\\0&1&1\\0&0&0\end{bmatrix}
+$$
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.50}}$
+
+$$
+\begin{bmatrix}R&0\end{bmatrix} = \begin{bmatrix}1&0&0&0\\0&0&1&0\\0&0&0&0\end{bmatrix} \rightarrow N = \begin{bmatrix}0\\1\\0\end{bmatrix}
+$$
+
+
+$$
+\begin{bmatrix}R&d\end{bmatrix} = \begin{bmatrix}1&0&0&-1\\0&0&1&2\\0&0&0&5\end{bmatrix} \rightarrow \text{ No solution}
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.51}}$
+
+free, $\begin{bmatrix}0&0&0&1&0\end{bmatrix}^T$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.52}}$
+
+$$
+R = \begin{bmatrix}0&1&1&0&0&1&1\\0&0&0&1&0&1&1\\0&0&0&0&1&1&1\\0&0&0&0&0&0&0\end{bmatrix}
+$$
+
+$$
+U = \begin{bmatrix}0&1&1&1&1&1&1\\0&0&0&1&1&1&1\\0&0&0&0&1&1&1\\0&0&0&0&0&0&0\end{bmatrix}
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.53}}$
+
+$$
+R = \begin{bmatrix}1&0&-2&0\\0&1&-3&0\\0&0&0&1\end{bmatrix}
+$$
+
+Rank of $A$ is $3$ and complete solution is $c_1\begin{bmatrix}2&3&1&0\end{bmatrix}^T, \ \forall c_1 \in \mathbb{R}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.54}}$
+
+$\textbf{(a)} \ $ False. $\begin{bmatrix}1&0&0\\0&1&0\\0&0&0\end{bmatrix}$ has third variable as free variable.
+
+$\textbf{(b)} \ $ True. Rank = $m = n$
+
+$\textbf{(c)} \ $ True. Rank $\leq \min(m,n)$.
+
+$\textbf{(d)} \ $ True. Rank $\leq \min(m,n)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.55}}$
+
+$$
+\begin{bmatrix}R & d\end{bmatrix} = \begin{bmatrix}1 & 0 & 1 \\ 0 & 0 & 0\end{bmatrix} \rightarrow \begin{bmatrix}R & \begin{bmatrix}1 & 3\end{bmatrix}^T\end{bmatrix} = \begin{bmatrix}1 & 0 & 1 \\ 3 & 0 & 3\end{bmatrix}
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.56}}$
+
+$$
+\begin{bmatrix}U & c\end{bmatrix} = \begin{bmatrix}1&0&2&3&2 \\ 0&3&0&-3&3\\0&0&0&3&6\end{bmatrix} \rightarrow \begin{bmatrix}R & d\end{bmatrix} = \begin{bmatrix}1&0&2&0&-4 \\ 0&1&0&0&3\\0&0&0&1&2\end{bmatrix}
+$$
+$$
+x = x_p+x_n = \begin{bmatrix}-4\\3\\0\\2\end{bmatrix} + c\begin{bmatrix}-6\\3\\1\\2\end{bmatrix}
+$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.58}}$
+
+$x_5$ is a free variable. Special solution $\begin{bmatrix}-1&0&0&0&1\end{bmatrix}^T$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+${\textbf{Ex. 2.2.59}}$
+
+$A = \begin{bmatrix}1&-3&-1\end{bmatrix}$. $x_2$ and $x_3$ are free variables. Special solutions are $\begin{bmatrix}3&1&0\end{bmatrix}^T$ and $\begin{bmatrix}1&0&1\end{bmatrix}^T$. First components are $12,3,1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{0.2in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
